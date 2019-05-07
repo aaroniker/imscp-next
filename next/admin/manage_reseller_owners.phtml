@@ -1,0 +1,128 @@
+<script>
+    $(function () {
+        var $oTable = $('.datatable').dataTable(
+            {
+                language: <?= getDataTablesPluginTranslations(true, ['emptyTable' =>  tr('No reseller found for the selected administrator.')]); ?>,
+                displayLength: 10,
+                stateSave: true,
+                pagingType: "simple"
+            }
+        );
+
+        $(".dataTables_paginate").on("click", function () {
+            $oTable.find("thead input[type=checkbox],tfoot input[type=checkbox]").prop('checked', false);
+        });
+        $oTable.find("tbody").on("click", "input[type=checkbox]", function () {
+            $oTable.find("thead input[type=checkbox],tfoot input[type=checkbox]").prop("checked", false);
+        });
+        $oTable.find("thead :checkbox, tfoot input[type=checkbox]").click(function (e) {
+            if ($oTable.find("tbody input[type=checkbox]").length !== 0) {
+                $oTable.find("input[type=checkbox]").prop("checked", $(this).is(":checked"));
+                return;
+            }
+
+            e.preventDefault();
+        });
+
+        if($oTable.fnSettings().fnRecordsTotal() < 1) {
+            $("input[type=submit]").remove();
+        } else {
+            $("form").on('submit', function ($e) {
+                var $form = $(this);
+
+                if($form.get(0).uaction.value === 'change_from') {
+                    return true;
+                }
+
+                $e.preventDefault();
+                $form.find("#Submit").blur();
+
+                if ($("input[type=checkbox]:checked", $oTable.fnGetNodes()).length < 1) {
+                    alert("<?= tojs(tr('You must select at least one reseller.')); ?>");
+                    return false;
+                }
+
+                return jQuery.imscp.confirm(
+                    "<?= tojs(tr('Are you sure you want to move the selected resellers?')); ?>",
+                    function (ret) {
+                        if (ret) {
+                            $form.get(0).submit();
+                        }
+                    }
+                );
+            });
+        }
+
+        $("#from_administrator,#to_administrator").on('change', function() {
+            var $toUpdId = $("#"+($(this).attr('id') === 'from_administrator' ? 'to_administrator' : 'from_administrator'));
+            var thisElVal = this.value;
+
+            if (thisElVal !== $toUpdId.val()) {
+                return;
+            }
+
+            $("option", $toUpdId).each(function () {
+                if (this.value !== thisElVal) {
+                    $toUpdId.val(this.value).trigger('change');
+                    return false;
+                }
+            });
+        });
+        $("#from_administrator").trigger('change').on('change', function () {
+            var $form = $("form");
+            $form.get(0).uaction.value = 'change_from';
+            $form.submit();
+        });
+    });
+</script>
+<p class="message static_info">
+    <?= tohtml(tr('Below you can move resellers from an administrator to another administrator by selecting them and clicking the submit button.')); ?><br>
+</p>
+<form action="manage_reseller_owners.php" method="post">
+    <table class="datatable">
+        <thead>
+        <tr>
+            <th><label><input type="checkbox" id="select_all"></label></th>
+            <th><?= tohtml(tr('Reseller name')); ?></th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td><label><input type="checkbox" id="select_all"></label></td>
+            <td><?= tohtml(tr('Reseller name')); ?></td>
+        </tr>
+        </tfoot>
+        <tbody>
+        <!-- BDP: from_administrator_resellers_list -->
+        <!-- BDP: from_administrator_reseller_item -->
+        <tr>
+            <td><input id="reseller_id_{RESELLER_ID}" type="checkbox" name="administrator_resellers[]" value="{RESELLER_ID}"{ADMINISTRATOR_RESELLER_CHECKED}></td>
+            <td><label for="reseller_id_{RESELLER_ID}">{RESELLER_NAME}</label></td>
+        </tr>
+        <!-- EDP: from_administrator_reseller_item -->
+        <!-- EDP: from_administrator_resellers_list -->
+        </tbody>
+        <tbody>
+        <tr style="background-color:#b0def5">
+            <td colspan="2" class="buttons">
+                <label for="from_administrator"><?= tohtml(tr('From administrator')); ?></label>
+                <select name="from_administrator" id="from_administrator">
+                    <!-- BDP: from_administrator_item -->
+                    <option value="{FROM_ADMINISTRATOR_ID}"{FROM_ADMINISTRATOR_SELECTED}>{FROM_ADMINISTRATOR_NAME}</option>
+                    <!-- EDP: from_administrator_item -->
+                </select>
+                <label for="to_administrator"><?= tohtml(tr('to administrator')) ;?></label>
+                <select name="to_administrator" id="to_administrator">
+                    <!-- BDP: to_administrator_item -->
+                    <option value="{TO_ADMINISTRATOR_ID}"{TO_ADMINISTRATOR_SELECTED}>{TO_ADMINISTRATOR_NAME}</option>
+                    <!-- EDP: to_administrator_item -->
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="buttons">
+        <input type="submit" id="Submit" value="<?= tohtml(tr('Move selected resellers'), 'htmlAttr');?>">
+        <input type="hidden" name="uaction" value="move_resellers">
+    </div>
+</form>

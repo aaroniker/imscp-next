@@ -1,0 +1,348 @@
+<script>
+    $(function () {
+        $.each(imscp_i18n.core.error_field_stack, function (i, k) {
+            $("#" + k).css("border-color", "#ca1d11");
+        });
+
+        $(".datatable").dataTable({
+            language: imscp_i18n.core.dataTable,
+            stateSave: true,
+            pagingType: "simple"
+        });
+
+        // Prevent click event on readonly input
+        $('#ip_data').find('input').click(function (e) {
+            if ($(this).is("[readonly]")) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    });
+</script>
+<form name="editFrm" method="post" action="reseller_edit.php?edit_id={EDIT_ID}" autocomplete="off">
+    <table class="firstColFixed">
+        <thead>
+        <tr>
+            <th colspan="2"><?= tohtml(tr('Login data')); ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><?= tohtml(tr('Username')); ?></td>
+            <td><?= tohtml($this->form->getValue('admin_name')); ?></td>
+        </tr>
+        <tr>
+            <td><label for="password"><?= tohtml(tr('Password')); ?></label></td>
+            <td><input type="password" name="admin_pass" id="password" class="pwd_generator" value="" autocomplete="new-password"></td>
+        </tr>
+        <tr>
+            <td><label for="cpassword"><?= tohtml(tr('Password confirmation')); ?></label></td>
+            <td><input type="password" name="admin_pass_confirmation" id="cpassword" value="" autocomplete="new-password"></td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- BDP: ips_block -->
+    <table class="firstColFixed datatable">
+        <thead>
+        <tr>
+            <th>{TR_IP_ADDRESS}</th>
+            <th>{TR_ASSIGN}</th>
+            <th>{TR_STATUS}</th>
+        </tr>
+        </thead>
+        <tbody id="ip_data">
+        <!-- BDP: ip_block -->
+        <tr>
+            <td><label for="ip_{IP_ID}">{IP_NUMBER}</label></td>
+            <td><input type="checkbox" id="ip_{IP_ID}" name="reseller_ips[]" value="{IP_ID}"{IP_ASSIGNED}{IP_READONLY}></td>
+            <td>{IP_STATUS}</td>
+        </tr>
+        <!-- EDP: ip_block -->
+        </tbody>
+    </table>
+    <!-- EDP: ips_block -->
+    <table class="firstColFixed">
+        <thead>
+        <tr>
+            <th colspan="2">{TR_ACCOUNT_LIMITS}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><label for="max_dmn_cnt">{TR_MAX_DMN_CNT}</label></td>
+            <td><input type="number" name="max_dmn_cnt" id="max_dmn_cnt" min="0" value="{MAX_DMN_CNT}"></td>
+        </tr>
+        <tr>
+            <td><label for="max_sub_cnt">{TR_MAX_SUB_CNT}</label></td>
+            <td><input type="number" name="max_sub_cnt" id="max_sub_cnt" min="-1" value="{MAX_SUB_CNT}"></td>
+        </tr>
+        <tr>
+            <td><label for="max_als_cnt">{TR_MAX_ALS_CNT}</label></td>
+            <td><input type="number" name="max_als_cnt" id="max_als_cnt" min="-1" value="{MAX_ALS_CNT}"></td>
+        </tr>
+        <tr>
+            <td><label for="max_mail_cnt">{TR_MAX_MAIL_CNT}</label></td>
+            <td><input type="number" name="max_mail_cnt" id="max_mail_cnt" min="-1" value="{MAX_MAIL_CNT}"></td>
+        </tr>
+        <tr>
+            <td><label for="max_ftp_cnt">{TR_MAX_FTP_CNT}</label></td>
+            <td><input type="number" name="max_ftp_cnt" id="max_ftp_cnt" min="-1" value="{MAX_FTP_CNT}"></td>
+        </tr>
+        <tr>
+            <td><label for="max_sql_db_cnt">{TR_MAX_SQL_DB_CNT}</label></td>
+            <td><input type="number" name="max_sql_db_cnt" id="max_sql_db_cnt" min="-1" value="{MAX_SQL_DB_CNT}"></td>
+        </tr>
+        <tr>
+            <td><label for="max_sql_user_cnt">{TR_MAX_SQL_USER_CNT}</label></td>
+            <td><input type="number" name="max_sql_user_cnt" id="max_sql_user_cnt" min="-1" value="{MAX_SQL_USER_CNT}"></td>
+        </tr>
+        <tr>
+            <td><label for="max_traff_amnt">{TR_MAX_TRAFF_AMNT}</label></td>
+            <td><input type="number" name="max_traff_amnt" id="max_traff_amnt" min="0" max="17592186044416" value="{MAX_TRAFF_AMNT}"></td>
+        </tr>
+        <tr>
+            <td><label for="max_disk_amnt">{TR_MAX_DISK_AMNT}</label></td>
+            <td><input type="number" name="max_disk_amnt" id="max_disk_amnt" min="0" max="17592186044416" value="{MAX_DISK_AMNT}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="firstColFixed">
+        <thead>
+        <tr>
+            <th colspan="2">{TR_FEATURES}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><label>{TR_PHP_EDITOR}</label></td>
+            <td>
+                <div class="radio">
+                    <input type="radio" name="php_ini_system" id="php_ini_system_yes" value="yes"{PHP_INI_SYSTEM_YES}>
+                    <label for="php_ini_system_yes">{TR_YES}</label>
+                    <input type="radio" name="php_ini_system" id="php_ini_system_no" value="no"{PHP_INI_SYSTEM_NO}>
+                    <label for="php_ini_system_no">{TR_NO}</label>
+                </div>
+                <button type="button" id="php_editor_dialog_open">{TR_SETTINGS}</button>
+                <div id="php_editor_dialog" title="{TR_PHP_EDITOR_SETTINGS}">
+                    <div class="php_editor_error static_success">
+                        <span id="php_editor_msg_default">{TR_FIELDS_OK}</span>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th colspan="2">{TR_PERMISSIONS}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                {TR_PHP_INI_AL_ALLOW_URL_FOPEN}
+                                <span class="icon i_help" title="{TR_PHP_INI_PERMISSION_HELP}"></span>
+                            </td>
+                            <td>
+                                <div class="radio">
+                                    <input type="radio" name="php_ini_al_allow_url_fopen" id="php_ini_al_allow_url_fopen_yes" value="yes"{PHP_INI_AL_ALLOW_URL_FOPEN_YES}>
+                                    <label for="php_ini_al_allow_url_fopen_yes">{TR_YES}</label>
+                                    <input type="radio" name="php_ini_al_allow_url_fopen" id="php_ini_al_allow_url_fopen_no" value="no"{PHP_INI_AL_ALLOW_URL_FOPEN_NO}>
+                                    <label for="php_ini_al_allow_url_fopen_no">{TR_NO}</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {TR_PHP_INI_AL_DISPLAY_ERRORS}
+                                <span class="icon i_help" title="{TR_PHP_INI_PERMISSION_HELP}"></span>
+                            </td>
+                            <td>
+                                <div class="radio">
+                                    <input type="radio" name="php_ini_al_display_errors" id="php_ini_al_display_errors_yes" value="yes"{PHP_INI_AL_DISPLAY_ERRORS_YES}>
+                                    <label for="php_ini_al_display_errors_yes">{TR_YES}</label>
+                                    <input type="radio" name="php_ini_al_display_errors" id="php_ini_al_display_errors_no" value="no"{PHP_INI_AL_DISPLAY_ERRORS_NO}>
+                                    <label for="php_ini_al_display_errors_no">{TR_NO}</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- BDP: php_editor_disable_functions_block -->
+                        <tr>
+                            <td>
+                                {TR_PHP_INI_AL_DISABLE_FUNCTIONS}
+                                <span class="icon i_help" title="{TR_PHP_INI_PERMISSION_HELP}"></span>
+                            </td>
+                            <td>
+                                <div class="radio">
+                                    <input type="radio" name="php_ini_al_disable_functions" id="php_ini_al_disable_functions_yes" value="yes"{PHP_INI_AL_DISABLE_FUNCTIONS_YES}>
+                                    <label for="php_ini_al_disable_functions_yes">{TR_YES}</label>
+                                    <input type="radio" name="php_ini_al_disable_functions" id="php_ini_al_disable_functions_no" value="no"{PHP_INI_AL_DISABLE_FUNCTIONS_NO}>
+                                    <label for="php_ini_al_disable_functions_no">{TR_NO}</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- EDP: php_editor_disable_functions_block -->
+                        <!-- BDP: php_editor_mail_function_block -->
+                        <tr>
+                            <td>
+                                {TR_PHP_INI_AL_MAIL_FUNCTION}
+                                <span class="icon i_help" title="{TR_PHP_INI_AL_MAIL_FUNCTION_HELP}"></span>
+                            </td>
+                            <td>
+                                <div class="radio">
+                                    <input type="radio" name="php_ini_al_mail_function" id="php_ini_al_mail_function_yes" value="yes"{PHP_INI_AL_MAIL_FUNCTION_YES}>
+                                    <label for="php_ini_al_mail_function_yes">{TR_YES}</label>
+                                    <input type="radio" name="php_ini_al_mail_function" id="php_ini_al_mail_function_no" value="no"{PHP_INI_AL_MAIL_FUNCTION_NO}>
+                                    <label for="php_ini_al_mail_function_no">{TR_NO}</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- EDP: php_editor_mail_function_block -->
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th colspan="2">{TR_DIRECTIVES_VALUES}</th>
+                        </tr>
+                        </thead>
+                        <tbody id="php_ini_values">
+                        <tr>
+                            <td><label for="max_execution_time">{TR_MAX_EXECUTION_TIME}</label></td>
+                            <td><input type="number" name="max_execution_time" id="max_execution_time" min="1" max="10000" value="{MAX_EXECUTION_TIME}"> <span>{TR_SEC}</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="max_input_time">{TR_MAX_INPUT_TIME}</label></td>
+                            <td><input type="number" name="max_input_time" id="max_input_time" min="1" max="10000" value="{MAX_INPUT_TIME}"> <span>{TR_SEC}</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="memory_limit">{TR_MEMORY_LIMIT}</label></td>
+                            <td><input type="number" name="memory_limit" id="memory_limit" min="1" max="10000" value="{MEMORY_LIMIT}"> <span>{TR_MIB}</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="post_max_size">{TR_POST_MAX_SIZE}</label></td>
+                            <td><input type="number" name="post_max_size" id="post_max_size" min="1" max="10000" value="{POST_MAX_SIZE}"> <span>{TR_MIB}</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="upload_max_filesize">{TR_UPLOAD_MAX_FILESIZE}</label></td>
+                            <td><input type="number" name="upload_max_filesize" id="upload_max_filesize" min="1" max="10000" value="{UPLOAD_MAX_FILESIZE}"> <span>{TR_MIB}</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>{TR_SOFTWARES_INSTALLER}</td>
+            <td>
+                <div class="radio">
+                    <input type="radio" name="software_allowed" id="software_allowed_yes" value="yes"{SOFTWARES_INSTALLER_YES} >
+                    <label for="software_allowed_yes">{TR_YES}</label>
+                    <input type="radio" name="software_allowed" id="software_allowed_no" value="no"{SOFTWARES_INSTALLER_NO} >
+                    <label for="software_allowed_no">{TR_NO}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>{TR_SOFTWARES_REPOSITORY}</td>
+            <td>
+                <div class="radio">
+                    <input type="radio" name="softwaredepot_allowed" id="softwaredepot_allowed_yes" value="yes"{SOFTWARES_REPOSITORY_YES}>
+                    <label for="softwaredepot_allowed_yes">{TR_YES}</label>
+                    <input type="radio" name="softwaredepot_allowed" id="softwaredepot_allowed_no" value="no"{SOFTWARES_REPOSITORY_NO}>
+                    <label for="softwaredepot_allowed_no">{TR_NO}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>{TR_WEB_SOFTWARES_REPOSITORY}</td>
+            <td>
+                <div class="radio">
+                    <input type="radio" name="websoftwaredepot_allowed" id="websoftwaredepot_allowed_yes" value="yes"{WEB_SOFTWARES_REPOSITORY_YES}>
+                    <label for="websoftwaredepot_allowed_yes">{TR_YES}</label>
+                    <input type="radio" name="websoftwaredepot_allowed" id="websoftwaredepot_allowed_no" value="no"{WEB_SOFTWARES_REPOSITORY_NO}>
+                    <label for="websoftwaredepot_allowed_no">{TR_NO}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>{TR_SUPPORT_SYSTEM}</td>
+            <td>
+                <div class="radio">
+                    <input type="radio" name="support_system" id="support_system_yes" value="yes"{SUPPORT_SYSTEM_YES}>
+                    <label for="support_system_yes">{TR_YES}</label>
+                    <input type="radio" name="support_system" id="support_system_no" value="no"{SUPPORT_SYSTEM_NO}>
+                    <label for="support_system_no">{TR_NO}</label>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="firstColFixed">
+        <thead>
+        <tr>
+            <th colspan="2"><?= tohtml(tr('Personal data')); ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><label for="fname"><?= tohtml(tr('First name')); ?></label></td>
+            <td><input type="text" name="fname" id="fname" value="<?= tohtml($this->form->getValue('fname'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="lname"><?= tohtml(tr('Last name')); ?></label></td>
+            <td><input type="text" name="lname" id="lname" value="<?= tohtml($this->form->getValue('lname'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="gender"><?= tohtml(tr('Gender')); ?></label></td>
+            <td>
+                <select id="gender" name="gender">
+                    <option value="M"<?= $this->form->getValue('gender') == 'M' ? ' selected' : ''; ?>><?= tohtml(tr('Male')); ?></option>
+                    <option value="F"<?= $this->form->getValue('gender') == 'F' ? ' selected' : ''; ?>><?= tohtml(tr('Female')); ?></option>
+                    <option value="U"<?= $this->form->getValue('gender') == 'U' ? ' selected' : ''; ?>><?= tohtml(tr('Unknown')); ?></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="firm"><?= tohtml(tr('Company')); ?></label></td>
+            <td><input type="text" name="firm" id="firm" value="<?= tohtml($this->form->getValue('firm'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="street1"><?= tohtml(tr('Street 1')); ?></label></td>
+            <td><input type="text" name="street1" id="street1" value="<?= tohtml($this->form->getValue('street1'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="street2"><?= tohtml(tr('Street 2')); ?></label></td>
+            <td><input type="text" name="street2" id="street2" value="<?= tohtml($this->form->getValue('street2'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="zip"><?= tohtml(tr('Zip/Postal code')); ?></label></td>
+            <td><input type="text" name="zip" id="zip" value="<?= tohtml($this->form->getValue('zip'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="city"><?= tohtml(tr('City')); ?></label></td>
+            <td><input type="text" name="city" id="city" value="<?= tohtml($this->form->getValue('city'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="state"><?= tohtml(tr('State/Province')); ?></label></td>
+            <td><input type="text" name="state" id="state" value="<?= tohtml($this->form->getValue('state'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="country"><?= tohtml(tr('Country')); ?></label></td>
+            <td><input type="text" name="country" id="country" value="<?= tohtml($this->form->getValue('country'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="email"><?= tohtml(tr('Email')); ?></label></td>
+            <td><input type="text" name="email" id="email" value="<?= tohtml(decode_idna($this->form->getValue('email')), 'htmlAttr'); ?>" required></td>
+        </tr>
+        <tr>
+            <td><label for="phone"><?= tohtml(tr('Phone')); ?></label></td>
+            <td><input type="text" name="phone" id="phone" value="<?= tohtml($this->form->getValue('phone'), 'htmlAttr'); ?>"></td>
+        </tr>
+        <tr>
+            <td><label for="fax"><?= tohtml(tr('Fax')); ?></label></td>
+            <td><input type="text" name="fax" id="fax" value="<?= tohtml($this->form->getValue('fax'), 'htmlAttr'); ?>"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="buttons">
+        <button name="Submit" type="submit"><?= tohtml(tr('Update')); ?></button>
+        <a class="link_as_button" href="users.php"><?= tohtml(tr('Cancel'), 'htmlAttr'); ?></a>
+    </div>
+</form>
