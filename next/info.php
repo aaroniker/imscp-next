@@ -19,12 +19,11 @@
  */
 
 return [
-    'theme_name'      => 'default',
-    'theme_version'   => '1.0.0',
+    'theme_name'      => 'next',
+    'theme_version'   => '0.0.1',
     'theme_authors'   => [
-        'Henrik Schytte' => 'henrik@schytte.net',
-        'Marc Pujol'     => 'kilburn@la3.org'
+        'Aaron Iker' => 'mail@aaroniker.me'
     ],
-    'theme_licence'   => 'GPLv2++',
-    'theme_color_set' => ['black', 'blue', 'green', 'red', 'yellow']
+    'theme_licence'   => 'MIT',
+    'theme_color_set' => []
 ];
