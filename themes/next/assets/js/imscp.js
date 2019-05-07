@@ -61,10 +61,8 @@
     // Function to initialize buttons
     var initButtons = function (context) {
         if (context == "simple") {
-            $(".link_as_button,button").button({ icons: { secondary: "ui-icon-triangle-1-e"} });
             $("input").first().focus();
         } else {
-            $("input:submit, input:button, input:reset, button, .link_as_button").button();
             $(".radio, .checkbox").buttonset();
         }
     };
@@ -134,20 +132,6 @@
         }
     };
 
-    // Function to fix/improve jQuery UI behaviors
-    var fixJqueryUI = function () {
-        // Dirty fix for http://bugs.jqueryui.com/ticket/7856
-        $('input[type=radio], input[type=checkbox]').on("change", function () {
-            $(this).blur();
-        });
-
-        $(document).on("change", "button,input", function () {
-            $("button,input").removeClass("ui-state-focus ui-state-hover");
-        });
-
-        $.ui.dialog.prototype._focusTabbable = $.noop;
-    };
-
     // Function to initialize layout
     var initLayout = function (context) {
         initPageMessages();
@@ -166,7 +150,6 @@
     // Main function to initialize application
     $(function() {
         initLayout($('body').hasClass('simple') ? 'simple' : 'ui');
-        fixJqueryUI();
     });
 })(jQuery);
 
