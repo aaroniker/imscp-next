@@ -1,0 +1,99 @@
+//main: ../style.scss
+
+.btn {
+    --color: #fff;
+    --background: var(--primary);
+    --hover: var(--primary-dark);
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    position: relative;
+    white-space: nowrap;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: bold;
+    min-width: 160px;
+    background: var(--background);
+    color: var(--color);
+    border-radius: 4px;
+    transition: color .3s ease, background .3s ease;
+    &:link,
+    &:active,
+    &:visited,
+    &:focus {
+        --color: #fff;
+    }
+    &:hover {
+        --background: var(--hover);
+    }
+    svg {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: top;
+        margin-top: 2px;
+        position: relative;
+        left: -4px;
+    }
+    &.outline {
+        --color: var(--background);
+        --outline: var(--background);
+        background: none;
+        box-shadow: none;
+        &:before {
+            content: '';
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            z-index: 0;
+            border-radius: inherit;
+            transition: opacity .3s ease;
+            opacity: .75;
+            border: 1px solid var(--outline);
+        }
+        &:hover,
+        &:active {
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+    &.white {
+        --background: #fff;
+        --color: var(--primary);
+        &.outline {
+            --color: #fff;
+            --outline: #fff;
+            --background: none;
+        }
+    }
+    &.link {
+        --background: none;
+        --color: var(--primary);
+    }
+    &.sm {
+        font-size: 14px;
+        padding: 6px 16px;
+        min-width: 120px;
+        svg {
+            width: 16px;
+            height: 16px;
+            margin-top: 4px;
+            left: -3px;
+        }
+    }
+    &.center {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &.block {
+        display: block;
+        width: 100%;
+    }
+}

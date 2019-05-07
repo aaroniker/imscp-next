@@ -1,0 +1,10 @@
+//compileCompressed: ../css/style.min.css
+
+@import 'vars';
+@import 'mixins';
+
+@import 'base/reset';
+@import 'base/base';
+
+@import 'components/buttons';
+@import 'components/forms';

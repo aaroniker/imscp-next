@@ -1,0 +1,23 @@
+//main: style.scss
+
+:root {
+
+    --black: #1A1D31;
+    --grey-dark: #36394E;
+    --grey: #707388;
+    --grey-light: #9699AF;
+    --grey-lighter: #CACDDF;
+    --light: #DADCEC;
+    --pale: #F8F9FF;
+
+    --primary: #648BFF;
+    --primary-dark: #587FF5;
+
+    --text: var(--grey);
+    --text-light: var(--grey-light);
+
+    --border-dark: var(--grey-light);
+    --border: var(--grey-lighter);
+    --line: var(--light);
+
+}

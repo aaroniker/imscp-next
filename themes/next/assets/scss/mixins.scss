@@ -1,0 +1,32 @@
+//main: style.scss
+
+$breakpoints: (
+    xs: 576px,
+    sm: 768px,
+    md: 992px,
+    lg: 1200px
+);
+
+@mixin min($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @media(min-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+@mixin max($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media(max-width: map-get($breakpoints, $breakpoint) - 1) {
+            @content;
+        }
+    } @else {
+        @media(max-width: $breakpoint) {
+            @content;
+        }
+    }
+}

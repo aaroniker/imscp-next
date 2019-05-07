@@ -1,0 +1,41 @@
+//main: ../style.scss
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    --color: var(--primary);
+    text-decoration: none;
+    color: var(--color);
+    &:link,
+    &:active,
+    &:visited,
+    &:focus {
+        text-decoration: none;
+        color: var(--color);
+    }
+}
+
+hr {
+    margin: 0;
+    clear: both;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+}

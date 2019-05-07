@@ -1,0 +1,96 @@
+//main: ../style.scss
+
+.form-field,
+.form-select select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    display: block;
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--text);
+    border-radius: 6px;
+    transition: border .3s ease, color .3s ease;
+    &:hover {
+        &:not(:focus) {
+            &:not(:disabled) {
+                border-color: var(--border-dark);
+            }
+        }
+    }
+    &:focus {
+        outline: none;
+        border-color: var(--primary);
+    }
+}
+
+.form-field {
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+        -webkit-text-fill-color: var(--text) !important;
+    }
+    &::placeholder {
+        color: var(--text-light);
+    }
+}
+
+.form-element {
+    margin-bottom: 24px;
+}
+
+.form-select {
+    position: relative;
+    select {
+        padding: 12px 34px 12px 16px;
+        &.empty {
+            color: var(--text-light);
+        }
+        &:disabled {
+            cursor: not-allowed;
+            pointer-events: none;
+            border-color: var(--line);
+            color: var(--text-light);
+        }
+    }
+    select::-ms-expand {
+        display: none;
+    }
+    &:before {
+        --scale: 1;
+        content: '';
+        display: block;
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-style: solid;
+        border-width: 2px 2px 0 0;
+        border-color: var(--border);
+        right: 12px;
+        top: 50%;
+        pointer-events: none;
+        transform: rotate(135deg) translateY(90%) scale(var(--scale));
+        transition: border-color .3s ease;
+    }
+    &:hover {
+        &:before {
+            border-color: var(--border-dark);
+        }
+    }
+    &.sm {
+        select {
+            padding: 4px 26px 4px 8px;
+            font-size: 11px;
+            border-radius: 4px;
+        }
+        &:before {
+            --scale: .7;
+            right: 6px;
+        }
+    }
+}
