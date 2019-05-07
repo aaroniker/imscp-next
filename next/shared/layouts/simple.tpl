@@ -5,22 +5,20 @@
     <meta charset="{THEME_CHARSET}">
     <meta name="robots" content="nofollow, noindex">
     <link rel="shortcut icon" href="{THEME_ASSETS_PATH}/images/favicon.ico">
-    <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/jquery-ui.css?v={THEME_ASSETS_VERSION}">
-    <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/simple.css?v={THEME_ASSETS_VERSION}">
+    <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/jquery-ui.css">
+    <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/simple.css">
     <script>
         imscp_i18n = {JS_TRANSLATIONS};
     </script>
-    <script src="{THEME_ASSETS_PATH}/js/jquery/jquery.js?v={THEME_ASSETS_VERSION}"></script>
-    <script src="{THEME_ASSETS_PATH}/js/jquery/jquery-ui.js?v={THEME_ASSETS_VERSION}"></script>
-    <script src="{THEME_ASSETS_PATH}/js/imscp.js?v={THEME_ASSETS_VERSION}"></script>
+    <script src="{THEME_ASSETS_PATH}/js/jquery/jquery.js"></script>
+    <script src="{THEME_ASSETS_PATH}/js/jquery/jquery-ui.js"></script>
+    <script src="{THEME_ASSETS_PATH}/js/imscp.js"></script>
 </head>
 <body class="black simple">
 <div class="wrapper">
     <!-- BDP: header_block -->
-    <div id="header">
-        <div id="logo"><span>{productLongName}</span></div>
-        <div id="copyright"><span><a href="{productLink}" target="blank">{productCopyright}</a></span></div>
-    </div>
+    {productLongName}
+    <a href="{productLink}" target="blank">{productCopyright}</a>
     <!-- EDP: header_block -->
     <div id="content">
         <!-- BDP: page_message -->
