@@ -19,8 +19,10 @@ echo '<ul>';
 foreach(clone iMSCP_Registry::get('navigation') as $obj) {
     if($obj->_visible) {
         echo $obj->_active ? '<li class="active">' : '<li>';
-        echo isset($icons[$obj->_class]) ? '<i data-eva="'.$icons[$obj->_class].'"></i>' : '<i data-eva="arrow-right-outline"></i>';
-        echo '<a href="'.$obj->_uri.'">'.$obj->_label.'</a>';
+        echo '<a href="'.$obj->_uri.'">';
+        echo isset($icons[$obj->_class]) ? '<i data-eva="'.$icons[$obj->_class].'" data-eva-fill="currentColor"></i>' : '<i data-eva="arrow-right-outline" data-eva-fill="currentColor"></i>';
+        echo '<span>'.$obj->_label.'</span>';
+        echo '</a>';
         if(count($obj->_pages)) {
             echo '<ul>';
             foreach($obj->_pages as $sub) {
