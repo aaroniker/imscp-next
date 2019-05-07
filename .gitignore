@@ -1,3 +1,5 @@
 .ftpconfig
 .DS_Store
 themes/default
+public
+library
