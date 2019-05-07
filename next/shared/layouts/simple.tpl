@@ -5,7 +5,7 @@
     <meta charset="{THEME_CHARSET}">
     <meta name="robots" content="nofollow, noindex">
     <link rel="shortcut icon" href="{THEME_ASSETS_PATH}/images/favicon.ico">
-    <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/jquery-ui-black.css?v={THEME_ASSETS_VERSION}">
+    <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/jquery-ui.css?v={THEME_ASSETS_VERSION}">
     <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/simple.css?v={THEME_ASSETS_VERSION}">
     <script>
         imscp_i18n = {JS_TRANSLATIONS};
