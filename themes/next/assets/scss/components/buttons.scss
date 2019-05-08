@@ -4,6 +4,8 @@
     --color: #fff;
     --background: var(--primary);
     --hover: var(--primary-dark);
+    --shadow-c: var(--primary-shadow);
+    --shadow-blur: 8px;
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -18,8 +20,9 @@
     min-width: 160px;
     background: var(--background);
     color: var(--color);
-    border-radius: 4px;
-    transition: color .3s ease, background .3s ease;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px var(--shadow-blur) var(--shadow-c);
+    transition: color .3s ease, background .3s ease, box-shadow .3s ease;
     &:link,
     &:active,
     &:visited,
@@ -28,6 +31,7 @@
     }
     &:hover {
         --background: var(--hover);
+        --shadow-blur: 20px;
     }
     svg {
         display: inline-block;
@@ -66,6 +70,7 @@
     &.white {
         --background: #fff;
         --color: var(--primary);
+        --shadow-c: var(--shadow);
         &.outline {
             --color: #fff;
             --outline: #fff;
@@ -75,6 +80,7 @@
     &.link {
         --background: none;
         --color: var(--primary);
+        box-shadow: none;
     }
     &.sm {
         font-size: 14px;

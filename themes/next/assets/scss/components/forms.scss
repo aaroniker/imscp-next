@@ -15,7 +15,7 @@
     line-height: 20px;
     font-weight: 500;
     color: var(--text);
-    border-radius: 6px;
+    border-radius: var(--border-radius);
     transition: border .3s ease, color .3s ease;
     &:hover {
         &:not(:focus) {
@@ -42,6 +42,13 @@
 
 .form-element {
     margin-bottom: 24px;
+    label {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-dark);
+        margin: 0 0 4px 0;
+        display: block;
+    }
 }
 
 .form-select {
