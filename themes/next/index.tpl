@@ -1,15 +1,21 @@
-<form name="login" action="index.php" method="post">
+<form id="login" name="login" action="index.php" method="post">
 
-    <label for="username">{TR_USERNAME}</label>
-    <input type="text" class="form-field" name="uname" id="username" value="{UNAME}">
+    <div class="form-element">
+        <label for="username">{TR_USERNAME}</label>
+        <input type="text" class="form-field" name="uname" id="username" value="{UNAME}">
+    </div>
 
-    <label for="password">{TR_PASSWORD}</label>
-    <input type="password" class="form-field" name="upass" id="password" value="">
+    <div class="form-element">
+        <label for="password">{TR_PASSWORD}</label>
+        <input type="password" class="form-field" name="upass" id="password" value="">
+    </div>
 
-    <!-- BDP: lost_password_support -->
-    <a href="lostpassword.php">{TR_LOSTPW}</a>
-    <!-- EDP: lost_password_support -->
-    <button class="btn" type="submit" name="Submit">{TR_LOGIN}</button>
+    <div class="action">
+        <!-- BDP: lost_password_support -->
+        <a href="lostpassword.php">{TR_LOSTPW}</a>
+        <!-- EDP: lost_password_support -->
+        <button class="btn" type="submit" name="Submit">{TR_LOGIN}</button>
+    </div>
 
     <!-- BDP: ssl_support -->
     <a class="{SSL_IMAGE_CLASS}" href="{SSL_LINK}" title="{TR_SSL_DESCRIPTION}">{TR_SSL}</a>

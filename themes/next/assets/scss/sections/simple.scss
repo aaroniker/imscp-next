@@ -1,0 +1,16 @@
+//main: ../style.scss
+
+#login {
+    .action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a {
+            --color: var(--text);
+            display: block;
+            &:hover {
+                --color: var(--text-dark);
+            }
+        }
+    }
+}
