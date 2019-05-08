@@ -6,36 +6,116 @@
     border-radius: 16px 0 0 16px;
     background: var(--pale);
     padding: 32px 40px;
-    .headline {
-        & > ul {
-            margin: 0 0 16px 0;
-            padding: 0;
-            list-style: none;
+    .toolbar {
+        .top {
             display: flex;
-            li {
-                position: relative;
-                a {
-                    --color: var(--text-light);
-                    line-height: 20px;
-                    display: block;
-                    svg {
-                        width: 16px;
-                        height: 16px;
-                        display: inline-block;
-                        vertical-align: top;
-                        margin: 2px 4px;
-                    }
-                }
-                &:hover {
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 0 16px 0;
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                li {
+                    position: relative;
                     a {
-                        --color: var(--text);
-                    }
-                }
-                &:last-child {
-                    a {
-                        --color: var(--text-dark);
+                        --color: var(--text-light);
+                        line-height: 24px;
+                        display: block;
                         svg {
-                            display: none;
+                            width: 16px;
+                            height: 16px;
+                            display: inline-block;
+                            vertical-align: top;
+                            margin: 4px;
+                        }
+                    }
+                    &:hover {
+                        a {
+                            --color: var(--text);
+                        }
+                    }
+                    &:last-child {
+                        a {
+                            --color: var(--text-dark);
+                            svg {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .logged {
+                background: #fff;
+                height: 28px;
+                padding: 0 16px 0 3px;
+                border-radius: 12px;
+                display: block;
+                line-height: 26px;
+                font-weight: 500;
+                font-size: 14px;
+                box-shadow: 0 1px 3px var(--shadow);
+                border: 1px solid var(--line);
+                --color: var(--text-dark);
+                svg {
+                    color: var(--primary);
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    margin: 3px 2px 3px 0;
+                    vertical-align: top;
+                }
+            }
+        }
+        .headline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1 {
+                margin: 0;
+                line-height: 48px;
+            }
+            .user {
+                display: flex;
+                align-items: center;
+                span {
+                    display: block;
+                    margin: 0 12px 0 0;
+                    font-weight: 500;
+                }
+                div {
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    font-weight: bold;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    border-radius: 50%;
+                    background: var(--lighter);
+                    text-align: center;
+                }
+                ul {
+                    margin: 0 0 0 12px;
+                    padding: 0;
+                    list-style: none;
+                    display: flex;
+                    align-items: center;
+                    li {
+                        &:not(:last-child) {
+                            margin-right: 8px;
+                        }
+                        a {
+                            --color: var(--text);
+                            display: block;
+                            &:hover {
+                                --color: var(--text-dark);
+                            }
+                            svg {
+                                width: 20px;
+                                height: 20px;
+                                display: block;
+                            }
                         }
                     }
                 }

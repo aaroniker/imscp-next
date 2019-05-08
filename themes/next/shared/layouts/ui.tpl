@@ -3,8 +3,12 @@
 <head>
 
     <title>{TR_PAGE_TITLE}</title>
+
     <meta charset="{THEME_CHARSET}">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="nofollow, noindex">
+
     <link rel="shortcut icon" href="{THEME_ASSETS_PATH}/images/favicon.ico">
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -42,19 +46,20 @@
 
     <section id="content">
 
-        <div class="headline">
-            <!-- INCLUDE "../partials/navigation/breadcrumbs.tpl" -->
-            <h1>{TR_SECTION_TITLE}</h1>
+        <div class="toolbar">
+            <div class="top">
+                <!-- INCLUDE "../partials/navigation/breadcrumbs.tpl" -->
+                <!-- BDP: logged_from -->
+                <!-- INCLUDE "../partials/logged.php" -->
+                <!-- EDP: logged_from -->
+            </div>
+            <div class="headline">
+                <h1>{TR_SECTION_TITLE}</h1>
+                <!-- INCLUDE "../partials/user.php" -->
+            </div>
         </div>
 
         <h2>{TR_TITLE}</h2>
-
-        <ul>
-            <!-- BDP: logged_from -->
-            <li><a href="change_user_interface.php?action=go_back">{YOU_ARE_LOGGED_AS}</a></li>
-            <!-- EDP: logged_from -->
-            <li><a class="logout" href="/index.php?action=logout">{TR_MENU_LOGOUT}</a></li>
-        </ul>
 
         <!-- BDP: page_message -->
         <div class="{MESSAGE_CLS}">{MESSAGE}</div>

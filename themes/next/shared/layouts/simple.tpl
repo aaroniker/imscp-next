@@ -3,8 +3,12 @@
 <head>
 
     <title>{TR_PAGE_TITLE}</title>
+
     <meta charset="{THEME_CHARSET}">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="nofollow, noindex">
+
     <link rel="shortcut icon" href="{THEME_ASSETS_PATH}/images/favicon.ico">
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -18,9 +22,11 @@
     <script src="{THEME_ASSETS_PATH}/js/jquery/jquery.js"></script>
     <script src="{THEME_ASSETS_PATH}/js/jquery/jquery-ui.js"></script>
     <script src="{THEME_ASSETS_PATH}/js/imscp.js"></script>
+    <script src="https://unpkg.com/eva-icons"></script>
 
 </head>
 <body class="simple">
+
     <section>
 
         <!-- BDP: header_block -->
@@ -36,5 +42,10 @@
         <a class="copyright" href="{productLink}" target="blank">{productCopyright}</a>
 
     </section>
+
+    <script>
+        eva.replace();
+    </script>
+
 </body>
 </html>

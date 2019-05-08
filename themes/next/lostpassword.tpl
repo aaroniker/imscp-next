@@ -1,28 +1,30 @@
+<form id="simple-form" name="lostpasswordFrm" action="lostpassword.php" method="post">
 
-<div id="login">
-    <form name="lostpasswordFrm" action="lostpassword.php" method="post">
-        <table>
-            <tr>
-                <td colspan="2" class="center">
-                    <a href="lostpassword.php" title="{GET_NEW_IMAGE}">
-                        <img id="captcha" src="imagecode.php" width="{CAPTCHA_WIDTH}" height="{CAPTCHA_HEIGHT}" alt="captcha image">
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td class="left"><label for="capcode">{TR_CAPCODE}</label></td>
-                <td class="right"><input type="text" name="capcode" id="capcode" tabindex="1"></td>
-            </tr>
-            <tr>
-                <td class="left"><label for="uname">{TR_USERNAME}</label></td>
-                <td class="right"><input type="text" name="uname" id="uname" tabindex="2" value="{UNAME}"></td>
-            </tr>
-            <tr>
-                <td colspan="2" class="right">
-                    <button name="Submit" type="submit" tabindex="3">{TR_SEND}</button>
-                    <a class="link_as_button" href="/" tabindex="4">{TR_CANCEL}</a>
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
+    <div class="form-element">
+        <a href="lostpassword.php" title="{GET_NEW_IMAGE}">
+            <img id="captcha" src="imagecode.php" width="{CAPTCHA_WIDTH}" height="{CAPTCHA_HEIGHT}" alt="captcha image">
+        </a>
+    </div>
+
+    <div class="form-element">
+        <label for="capcode">{TR_CAPCODE}</label>
+        <input type="text" class="form-field" name="capcode" id="capcode">
+    </div>
+
+    <div class="form-element">
+        <label for="username">{TR_USERNAME}</label>
+        <input type="text" class="form-field" name="uname" id="username" value="{UNAME}">
+    </div>
+
+    <div class="action">
+        <a href="/">
+            <i data-eva="close-circle" data-eva-fill="currentColor"></i>
+            {TR_CANCEL}
+        </a>
+        <button class="btn" type="submit" name="Submit">
+            <i data-eva="email" data-eva-fill="currentColor"></i>
+            {TR_SEND}
+        </button>
+    </div>
+
+</form>

@@ -1,6 +1,6 @@
 //main: ../style.scss
 
-#login {
+#simple-form {
     .action {
         display: flex;
         align-items: center;
@@ -8,6 +8,14 @@
         a {
             --color: var(--text);
             display: block;
+            line-height: 24px;
+            svg {
+                width: 20px;
+                height: 20px;
+                margin: 2px 2px 2px 0;
+                display: inline-block;
+                vertical-align: top;
+            }
             &:hover {
                 --color: var(--text-dark);
             }

@@ -1,4 +1,4 @@
-<form id="login" name="login" action="index.php" method="post">
+<form id="simple-form" name="login" action="index.php" method="post">
 
     <div class="form-element">
         <label for="username">{TR_USERNAME}</label>
@@ -12,9 +12,15 @@
 
     <div class="action">
         <!-- BDP: lost_password_support -->
-        <a href="lostpassword.php">{TR_LOSTPW}</a>
+        <a href="lostpassword.php">
+            <i data-eva="question-mark-circle" data-eva-fill="currentColor"></i>
+            {TR_LOSTPW}
+        </a>
         <!-- EDP: lost_password_support -->
-        <button class="btn" type="submit" name="Submit">{TR_LOGIN}</button>
+        <button class="btn" type="submit" name="Submit">
+            <i data-eva="unlock" data-eva-fill="currentColor"></i>
+            {TR_LOGIN}
+        </button>
     </div>
 
     <!-- BDP: ssl_support -->
