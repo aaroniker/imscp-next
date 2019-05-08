@@ -1,6 +1,7 @@
 # Information
 
 Still heavily work in progress, so it may looks a bit unfinished.
+
 If there is **broken functionality** please report [under issues](https://github.com/aaroniker/imscp-next/issues).
 
 ## How to use
