@@ -1,0 +1,44 @@
+//main: ../style.scss
+
+.message {
+    --color: none;
+    --border: none;
+    --background: none;
+    border-radius: var(--border-radius);
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--background);
+    border: 1px solid var(--border);
+    color: var(--color);
+    &.static_success,
+    &.success {
+        --color: var(--success);
+        --border: var(--success);
+        --background: var(--success-pale);
+    }
+    &.static_error,
+    &.error {
+        --color: var(--error);
+        --border: var(--error);
+        --background: var(--error-pale);
+    }
+    &.static_warning,
+    &.warning {
+        --color: var(--warning);
+        --border: var(--warning);
+        --background: var(--warning-pale);
+    }
+    &.static_info,
+    &.info {
+        --color: var(--primary);
+        --border: var(--primary);
+        --background: var(--primary-pale);
+    }
+}
+
+.message-container {
+    .message {
+        margin: 16px 0;
+    }
+}

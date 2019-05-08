@@ -33,9 +33,11 @@
         <h1>i-MSCP</h1>
         <!-- EDP: header_block -->
 
-        <!-- BDP: page_message -->
-        <div id="notice" class="{MESSAGE_CLS}">{MESSAGE}</div>
-        <!-- EDP: page_message -->
+        <div class="message-container">
+            <!-- BDP: page_message -->
+            <div class="message {MESSAGE_CLS}">{MESSAGE}</div>
+            <!-- EDP: page_message -->
+        </div>
 
         {LAYOUT_CONTENT}
 

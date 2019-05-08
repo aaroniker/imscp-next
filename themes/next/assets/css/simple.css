@@ -1,44 +1,4 @@
-.warning,
-.success,
-.error,
-.info {
-    padding: 15px 5px 15px 50px;
-    border: 1px solid;
-    text-align: left;
-    background-repeat: no-repeat;
-    background-position: 10px center;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-}
 
-.warning {
-    color: #954a00;
-    border-color: #954a00;
-    background-color: #ffec9c;
-    background-image: url(../images/messages/warning.png);
-}
-
-.success {
-    color: #3d7a15;
-    border-color: #3d7a15;
-    background-color: #d6f1b3;
-    background-image: url(../images/messages/success.png);
-}
-
-.error {
-    color: #ca1d11;
-    border-color: #ca1d11;
-    background-color: #fdbfad;
-    background-image: url(../images/messages/error.png);
-}
-
-.info {
-    color: #0f3d87;
-    border-color: #0f3d87;
-    background-color: #b0def5;
-    background-image: url(../images/messages/info.png);
-}
 .ui-tooltip {
     background: #000000;
     border-color: #000000;

@@ -59,11 +59,13 @@
             </div>
         </div>
 
-        <h2>{TR_TITLE}</h2>
+        <div class="message-container">
+            <!-- BDP: page_message -->
+            <div class="message {MESSAGE_CLS}">{MESSAGE}</div>
+            <!-- EDP: page_message -->
+        </div>
 
-        <!-- BDP: page_message -->
-        <div class="{MESSAGE_CLS}">{MESSAGE}</div>
-        <!-- EDP: page_message -->
+        <h2>{TR_TITLE}</h2>
 
         {LAYOUT_CONTENT}
 

@@ -1,22 +1,3 @@
-/**
- * i-MSCP - internet Multi Server Control Panel
- * Copyright (C) 2010-2017 by Laurent Declercq <l.declercq@nuxwin.com>
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
-
 $(document).ready(function() {
 
     $('#sidebar > .inner > nav > ul > li > span').on('click', e => {
@@ -26,57 +7,13 @@ $(document).ready(function() {
         });
     });
 
-    // Function to initialize page messages
-    var initPageMessages = function () {
-        $("body").on("message_timeout", ".success,.info,.warning,.error", function () {
-            $(this).hide().slideDown('fast').delay(10000).slideUp("normal", function () {
-                $(this).remove();
-            });
-        });
-
-        $(".success,.info,.warning,.error").trigger("message_timeout");
-    };
-
-    // Function to initialize tooltips
-    var initTooltips = function (context) {
-        if (context == "simple") {
-            $("a").tooltip(
-                {
-                    tooltipClass: "ui-tooltip-notice",
-                    track: true,
-                    position: { collision: "flipfit" },
-                    content: function() {
-                        return $(this).attr('title');
-                    }
-                }
-            );
-        } else {
-            $(".main_menu a").tooltip({ track: true });
-            $(".body a, .body span, .body input, .dataTables_paginate div").tooltip(
-                {
-                    tooltipClass: "ui-tooltip-notice",
-                    track: true,
-                    position: { collision: "flipfit" },
-                    content: function() {
-                        var title = $( this ).attr("title") || "";
-                        return $(this).attr('title');
-                    }
-                }
-            );
-        }
-    };
-
     // Function to initialize buttons
-    var initButtons = function (context) {
-        if (context == "simple") {
-            $("input").first().focus();
-        } else {
-            $(".radio, .checkbox").buttonset();
-        }
+    var initButtons = () => {
+        $(".radio, .checkbox").buttonset();
     };
 
     // Function to initialize tables
-    var initTables = function () {
+    var initTables = function() {
         $("body").on("updateTable", "table", function () {
             $(this).find("tbody:first > tr:visible:odd").removeClass("odd").addClass("even");
             $(this).find("tbody:first > tr:visible:even").removeClass("even").addClass("odd");
@@ -140,24 +77,14 @@ $(document).ready(function() {
         }
     };
 
-    // Function to initialize layout
-    var initLayout = function (context) {
-        initPageMessages();
-        initTooltips(context);
-
-        if (context == "simple") {
-            $(".no_header #header").hide();
-        } else {
-           passwordGenerator();
-           initTables();
-        }
-
-        initButtons(context);
+    var initLayout = () => {
+        passwordGenerator();
+        initTables();
+        initButtons();
     };
 
-    // Main function to initialize application
     $(function() {
-        initLayout($('body').hasClass('simple') ? 'simple' : 'ui');
+        initLayout();
     });
 
 });
