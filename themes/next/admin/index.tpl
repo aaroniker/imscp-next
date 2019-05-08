@@ -1,57 +1,46 @@
-
-<table class="firstColFixed">
-    <thead>
-    <tr>
-        <th>{TR_PROPERTIES}</th>
-        <th>{TR_VALUES}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>{TR_ADMIN_USERS}</td>
-        <td>{ADMIN_USERS}</td>
-    </tr>
-    <tr>
-        <td>{TR_RESELLER_USERS}</td>
-        <td>{RESELLER_USERS}</td>
-    </tr>
-    <tr>
-        <td>{TR_NORMAL_USERS}</td>
-        <td>{NORMAL_USERS}</td>
-    </tr>
-    <tr>
-        <td>{TR_DOMAINS}</td>
-        <td>{DOMAINS}</td>
-    </tr>
-    <tr>
-        <td>{TR_SUBDOMAINS}</td>
-        <td>{SUBDOMAINS}</td>
-    </tr>
-    <tr>
-        <td>{TR_DOMAINS_ALIASES}</td>
-        <td>{DOMAINS_ALIASES}</td>
-    </tr>
-    <tr>
-        <td>{TR_MAIL_ACCOUNTS}</td>
-        <td>{MAIL_ACCOUNTS}</td>
-    </tr>
-    <tr>
-        <td>{TR_FTP_ACCOUNTS}</td>
-        <td>{FTP_ACCOUNTS}</td>
-    </tr>
-    <tr>
-        <td>{TR_SQL_DATABASES}</td>
-        <td>{SQL_DATABASES}</td>
-    </tr>
-    <tr>
-        <td>{TR_SQL_USERS}</td>
-        <td>{SQL_USERS}</td>
-    </tr>
-    </tbody>
-</table>
-<h2 class="traffic"><span>{TR_SERVER_TRAFFIC}</span></h2>
-<div class="graph">
-    <span style="width:{TRAFFIC_PERCENT_WIDTH}%">&nbsp;</span>
-    <strong>{TRAFFIC_PERCENT}%</strong>
+<div id="overview-stats">
+    <div class="box">
+        <strong>{ADMIN_USERS}</strong>
+        <span>{TR_ADMIN_USERS}</span>
+    </div>
+    <div class="box">
+        <strong>{RESELLER_USERS}</strong>
+        <span>{TR_RESELLER_USERS}</span>
+    </div>
+    <div class="box">
+        <strong>{NORMAL_USERS}</strong>
+        <span>{TR_NORMAL_USERS}</span>
+    </div>
+    <div class="box">
+        <strong>{DOMAINS}</strong>
+        <span>{TR_DOMAINS}</span>
+    </div>
+    <div class="box">
+        <strong>{SUBDOMAINS}</strong>
+        <span>{TR_SUBDOMAINS}</span>
+    </div>
+    <div class="box">
+        <strong>{DOMAINS_ALIASES}</strong>
+        <span>{TR_DOMAINS_ALIASES}</span>
+    </div>
+    <div class="box">
+        <strong>{MAIL_ACCOUNTS}</strong>
+        <span>{TR_MAIL_ACCOUNTS}</span>
+    </div>
+    <div class="box">
+        <strong>{FTP_ACCOUNTS}</strong>
+        <span>{TR_FTP_ACCOUNTS}</span>
+    </div>
+    <div class="box">
+        <strong>{SQL_DATABASES}</strong>
+        <span>{TR_SQL_DATABASES}</span>
+    </div>
+    <div class="box">
+        <strong>{SQL_USERS}</strong>
+        <span>{TR_SQL_USERS}</span>
+    </div>
+    <div class="box">
+        <strong title="{TRAFFIC_WARNING}">{TRAFFIC_PERCENT}%</strong>
+        <span>{TR_SERVER_TRAFFIC}</span>
+    </div>
 </div>
-<p>{TRAFFIC_WARNING}</p>

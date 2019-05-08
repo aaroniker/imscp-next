@@ -1,0 +1,25 @@
+//main: ../style.scss
+
+#overview-stats {
+    --auto-grid-min-size: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+    grid-gap: 32px;
+    .box {
+        padding: 8px 20px;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 4px var(--shadow);
+        border-left: 4px solid var(--primary);
+        strong {
+            display: block;
+            color: var(--text-dark);
+            font-weight: bold;
+            font-size: 20px;
+        }
+        span {
+            display: block;
+            font-size: 14px;
+        }
+    }
+}

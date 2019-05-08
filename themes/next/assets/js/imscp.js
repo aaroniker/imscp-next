@@ -12,6 +12,12 @@ $(document).ready(function() {
         $('html, body').toggleClass('openSide');
     });
 
+    $('#overview-stats .box strong').each(function() {
+        let _this = $(this),
+            text = _this.text();
+        _this.text(text.indexOf(' ') > -1 ? text.split(' ')[0] : text);
+    });
+
     // Function to initialize buttons
     var initButtons = () => {
         $(".radio, .checkbox").buttonset();
