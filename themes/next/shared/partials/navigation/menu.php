@@ -18,22 +18,28 @@ $icons = [
 echo '<ul>';
 foreach(clone iMSCP_Registry::get('navigation') as $obj) {
     if($obj->_visible) {
-        echo $obj->_active ? '<li class="active">' : '<li>';
+
+        echo $obj->_active || $obj->_uri == $_SERVER['REQUEST_URI'] || count(array_filter($obj->_pages, function($r) {
+            return $r->_active || $r->_uri == $_SERVER['REQUEST_URI'];
+        })) ? '<li class="active opened">' : '<li>';
+
         echo '<a href="'.$obj->_uri.'">';
         echo isset($icons[$obj->_class]) ? '<i data-eva="'.$icons[$obj->_class].'" data-eva-fill="currentColor"></i>' : '<i data-eva="arrow-right-outline" data-eva-fill="currentColor"></i>';
-        echo '<span>'.$obj->_label.'</span>';
+        echo $obj->_label;
         echo '</a>';
+
         if(count($obj->_pages)) {
-            echo '<ul>';
+            echo '<span></span><ul>';
             foreach($obj->_pages as $sub) {
                 if($sub->_visible) {
-                    echo $sub->_active ? '<li class="active">' : '<li>';
+                    echo $sub->_active || $sub->_uri == $_SERVER['REQUEST_URI'] ? '<li class="active">' : '<li>';
                     echo '<a href="'.$sub->_uri.'">'.$sub->_label.'</a>';
                     echo '</li>';
                 }
             }
             echo '</ul>';
         }
+
         echo '</li>';
     }
 }

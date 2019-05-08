@@ -24,15 +24,30 @@
     <script src="https://unpkg.com/eva-icons"></script>
 
 </head>
-<body>
+<body class="interface">
 
-    <!-- INCLUDE "../partials/navigation/menu.php" -->
+    <section id="sidebar">
+        <div class="inner">
+            <img src="{ISP_LOGO}" alt="i-MSCP logo">
+            <nav>
+                <!-- INCLUDE "../partials/navigation/menu.php" -->
+            </nav>
+            <ul>
+                <li>i-MSCP <span>{VERSION}</span></li>
+                <li>Build <span>{BUILDDATE}</span></li>
+                <li>Codename <span>{CODENAME}</span></li>
+            </ul>
+        </div>
+    </section>
 
-    <div id="wrapper">
+    <section id="content">
 
-        <img src="{ISP_LOGO}" alt="i-MSCP logo">
+        <div class="headline">
+            <!-- INCLUDE "../partials/navigation/breadcrumbs.tpl" -->
+            <h1>{TR_SECTION_TITLE}</h1>
+        </div>
 
-        <h1>{TR_SECTION_TITLE}</h1>
+        <h2>{TR_TITLE}</h2>
 
         <ul>
             <!-- BDP: logged_from -->
@@ -40,22 +55,17 @@
             <!-- EDP: logged_from -->
             <li><a class="logout" href="/index.php?action=logout">{TR_MENU_LOGOUT}</a></li>
         </ul>
-        <!-- INCLUDE "../partials/navigation/breadcrumbs.tpl" -->
 
-        <h2>{TR_TITLE}</h2>
         <!-- BDP: page_message -->
         <div class="{MESSAGE_CLS}">{MESSAGE}</div>
         <!-- EDP: page_message -->
+
         {LAYOUT_CONTENT}
 
-    </div>
-
-    i-MSCP {VERSION}<br>
-    Build: {BUILDDATE}<br>
-    Codename: {CODENAME}
+    </section>
 
     <script>
-        eva.replace()
+        eva.replace();
     </script>
 
 </body>

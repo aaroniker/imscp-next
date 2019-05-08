@@ -1,0 +1,196 @@
+//main: ../style.scss
+
+#sidebar {
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 11;
+    width: 260px;
+    transition: transform .3s ease;
+    @include max(md) {
+        transform: translateX(-100%);
+        &.openSide {
+            transform: translateX(0);
+        }
+    }
+    .inner {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: -20px;
+        padding: 0 20px 32px 0;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        @include max(md) {
+            padding-top: 42px;
+        }
+        @include max(sm) {
+            padding-top: 32px;
+        }
+        & > img {
+            align-self: flex-start;
+            display: block;
+            margin: 40px 32px;
+            max-width: 106px;
+        }
+        & > nav {
+            padding: 0 32px;
+            @include max(sm) {
+                padding: 0 24px;
+            }
+            @include max(xs) {
+                padding: 0 20px;
+            }
+            & > ul {
+                & > li {
+                    position: relative;
+                    margin: 0 0 24px 0;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    a {
+                        display: block;
+                        position: relative;
+                        font-weight: 500;
+                        padding-left: 32px;
+                        transition: color .3s ease;
+                    }
+                    & > a {
+                        font-size: 16px;
+                        line-height: 29px;
+                        color: var(--text);
+                        svg {
+                            position: absolute;
+                            left: 0;
+                            top: 4px;
+                            width: 20px;
+                            height: 20px;
+                            display: block;
+                            opacity: .4;
+                            transition: opacity .3s ease;
+                        }
+                        &:hover {
+                            color: var(--text-light);
+                            svg {
+                                opacity: .8;
+                            }
+                        }
+                    }
+                    & > span {
+                        width: 24px;
+                        height: 24px;
+                        display: block;
+                        position: absolute;
+                        z-index: 1;
+                        top: 3px;
+                        right: -6px;
+                        cursor: pointer;
+                        &:before,
+                        &:after {
+                            --r: 0deg;
+                            content: '';
+                            width: 2px;
+                            height: 8px;
+                            border-radius: 1px;
+                            background: var(--text);
+                            position: absolute;
+                            right: 8px;
+                            top: 7px;
+                            transform-origin: 50% 50%;
+                            transition: transform .3s ease, background .3s ease;
+                            transform: scale(.92, .8) rotate(var(--r));
+                        }
+                        &:before {
+                            margin-right: 5px;
+                            --r: -50deg;
+                        }
+                        &:after {
+                            --r: 50deg;
+                        }
+                        &:hover {
+                            &:before,
+                            &:after {
+                                background: var(--text-light);
+                            }
+                        }
+                    }
+                    &.active {
+                        & > a {
+                            color: #fff;
+                            svg {
+                                opacity: 1;
+                                color: var(--primary);
+                            }
+                        }
+                    }
+                    &.opened {
+                        & > span {
+                            &:before,
+                            &:after {
+                                background: var(--text-light);
+                            }
+                            &:before {
+                                --r: -130deg;
+                            }
+                            &:after {
+                                --r: 130deg;
+                            }
+                        }
+                        ul {
+                            display: block;
+                        }
+                    }
+                    ul {
+                        padding: 8px 0 4px 0;
+                        display: none;
+                        li {
+                            margin: 12px 0 0 0;
+                            a {
+                                line-height: 20px;
+                                font-size: 14px;
+                                color: var(--text);
+                                &:before {
+                                    content: '';
+                                    width: 6px;
+                                    height: 6px;
+                                    position: absolute;
+                                    border-radius: 50%;
+                                    top: 7px;
+                                    left: 9px;
+                                    display: block;
+                                    background: none;
+                                }
+                                &:hover {
+                                    color: var(--text-light);
+                                }
+                            }
+                            &.active {
+                                a {
+                                    color: var(--text-lighter);
+                                    &:before {
+                                        background: var(--primary);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & > ul {
+            padding: 24px 32px 0 32px;
+            list-style: none;
+            font-size: 12px;
+            margin: auto 0 0 0;
+            color: var(--text-dark);
+            li {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}

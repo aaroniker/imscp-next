@@ -20,18 +20,21 @@
     <script src="{THEME_ASSETS_PATH}/js/imscp.js"></script>
 
 </head>
-<body class="black simple">
-<div class="wrapper">
-    <!-- BDP: header_block -->
-    {productLongName}
-    <a href="{productLink}" target="blank">{productCopyright}</a>
-    <!-- EDP: header_block -->
-    <div id="content">
+<body class="simple">
+    <section>
+
+        <!-- BDP: header_block -->
+        <h1>i-MSCP</h1>
+        <!-- EDP: header_block -->
+
         <!-- BDP: page_message -->
         <div id="notice" class="{MESSAGE_CLS}">{MESSAGE}</div>
         <!-- EDP: page_message -->
+
         {LAYOUT_CONTENT}
-    </div>
-</div>
+
+        <a class="copyright" href="{productLink}" target="blank">{productCopyright}</a>
+
+    </section>
 </body>
 </html>
