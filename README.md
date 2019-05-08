@@ -1,8 +1,11 @@
-# imscp-next
+# Information
+
+Still heavily work in progress, so it may looks a bit unfinished.
+If there is **broken functionality** please report [under issues](https://github.com/aaroniker/imscp-next/issues).
 
 ## How to use
 
-* Download & copy the `next` folder to `/var/www/imscp/gui/themes`
+* Download & copy the `themes/next` folder to `/var/www/imscp/gui/themes`
 * Set `USER_INITIAL_THEME` in your `/etc/imscp/imscp.conf` from `default` to `next`
 
 ## Development
