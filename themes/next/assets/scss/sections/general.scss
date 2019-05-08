@@ -139,6 +139,7 @@
 .user-panel {
     --avatar-bg: var(--lighter);
     --text-c: var(--text);
+    --text-c-l: var(--text-light);
     --text-c-hover: var(--text-dark);
     display: flex;
     align-items: center;
@@ -146,6 +147,7 @@
         display: block;
         margin: 0 12px 0 0;
         font-weight: 500;
+        color: var(--text-c-l);
         @include max(md) {
             margin: 0 0 0 12px;
         }
@@ -296,6 +298,7 @@
         }
         .user-panel {
             --text-c: var(--text);
+            --text-c-l: var(--text);
             --text-c-hover: var(--text-light);
         }
     }

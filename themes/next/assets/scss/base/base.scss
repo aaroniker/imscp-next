@@ -86,6 +86,9 @@ a {
         text-decoration: none;
         color: var(--color);
     }
+    &:hover {
+        --color: var(--primary-dark);
+    }
 }
 
 hr {
