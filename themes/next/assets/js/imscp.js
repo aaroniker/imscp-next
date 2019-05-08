@@ -7,6 +7,11 @@ $(document).ready(function() {
         });
     });
 
+    $('#mobile .burger').on('click', e => {
+        $(e.currentTarget).toggleClass('active');
+        $('html, body').toggleClass('openSide');
+    });
+
     // Function to initialize buttons
     var initButtons = () => {
         $(".radio, .checkbox").buttonset();

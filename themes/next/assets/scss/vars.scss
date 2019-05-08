@@ -37,4 +37,10 @@
 
     --border-radius: 3px;
 
+    --sidebar-width: 260px;
+
+    @include max(xs) {
+        --sidebar-width: 220px;
+    }
+
 }

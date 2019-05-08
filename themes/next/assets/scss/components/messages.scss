@@ -40,5 +40,8 @@
 .message-container {
     .message {
         margin: 16px 0;
+        @include max(xs) {
+            margin: 12px 0;
+        }
     }
 }

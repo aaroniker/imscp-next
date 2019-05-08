@@ -7,13 +7,12 @@
     top: 0;
     bottom: 0;
     z-index: 11;
-    width: 260px;
+    width: var(--sidebar-width);
     transition: transform .3s ease;
     @include max(md) {
-        transform: translateX(-100%);
-        &.openSide {
-            transform: translateX(0);
-        }
+        left: auto;
+        right: 100%;
+        top: 76px;
     }
     .inner {
         position: absolute;
@@ -26,16 +25,16 @@
         display: flex;
         flex-direction: column;
         @include max(md) {
-            padding-top: 42px;
-        }
-        @include max(sm) {
-            padding-top: 32px;
+            padding-top: 12px;
         }
         & > img {
             align-self: flex-start;
             display: block;
             margin: 40px 32px;
             max-width: 106px;
+            @include max(md) {
+                display: none;
+            }
         }
         & > nav {
             padding: 0 32px;
@@ -44,6 +43,9 @@
             }
             @include max(xs) {
                 padding: 0 20px;
+            }
+            @include max(xxs) {
+                padding: 0 16px;
             }
             & > ul {
                 & > li {
@@ -190,6 +192,17 @@
             li {
                 display: flex;
                 justify-content: space-between;
+            }
+        }
+        .aaroniker {
+            color: var(--grey-dark);
+            display: table;
+            margin: 12px auto 0 auto;
+            svg {
+                display: block;
+                margin: 0 auto;
+                width: 24px;
+                height: 20px;
             }
         }
     }

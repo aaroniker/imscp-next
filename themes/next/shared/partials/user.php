@@ -1,4 +1,4 @@
-<div class="user">
+<div class="user-panel">
     <span><?=$_SESSION['user_logged']; ?></span>
     <div><?=$_SESSION['user_logged'][0]; ?></div>
     <ul>

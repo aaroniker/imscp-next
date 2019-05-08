@@ -15,6 +15,9 @@ h1 {
     font-weight: normal;
     color: var(--text-dark);
     font-size: 32px;
+    @include max(sm) {
+        font-size: 24px;
+    }
 }
 
 h2 {
@@ -22,4 +25,20 @@ h2 {
     color: var(--text-dark);
     font-size: 24px;
     margin: 20px 0;
+    @include max(sm) {
+        margin: 16px 0;
+        font-size: 20px;
+    }
+}
+
+h3 {
+    font-weight: normal;
+    color: var(--text-dark);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 12px 0;
+    @include max(sm) {
+        margin: 8px 0;
+        font-size: 18px;
+    }
 }

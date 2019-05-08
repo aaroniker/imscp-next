@@ -7,6 +7,18 @@
 html,
 body {
     min-height: 100vh;
+    @include max(md) {
+        &.openSide {
+            overflow: hidden;
+            #sidebar {
+                transform: translateX(100%);
+            }
+            #content {
+                border-radius: 16px 0 0 16px;
+                transform: translateX(var(--sidebar-width));
+            }
+        }
+    }
 }
 
 html {
@@ -44,6 +56,16 @@ body {
                 &:hover {
                     --color: var(--text);
                 }
+            }
+        }
+        .aaroniker {
+            position: absolute;
+            display: block;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            svg {
+                display: block;
             }
         }
     }
