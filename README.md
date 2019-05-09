@@ -1,9 +1,11 @@
-![iMSCP Theme](https://aaroniker.me/screen@2x.png)
+# I-MSCP Next
 
-# Information
+![iMSCP Theme Next](https://aaroniker.me/screen@2x.png)
+
+## Important
 
 Still heavily work in progress, so it may looks a bit unfinished.  
-If there is **broken functionality** or layout issues please report [under issues](https://github.com/aaroniker/imscp-next/issues).
+If there is **broken functionality** or layout issues (maybe broken layout for some languages because of the translation) please report [under issues](https://github.com/aaroniker/imscp-next/issues).
 
 ## How to use
 
