@@ -18,6 +18,10 @@ I added my personal logo to the bottom at the login page & the sidebar - it's to
 * Remove `<a class="aaroniker" ...>...</a>` at `themes/next/shared/layouts/simple.tpl` at line 48
 * Remove `<a class="aaroniker" ...>...</a>` at `themes/next/shared/layouts/ui.tpl` at line 44
 
+## Known bugs
+
+* `Profile -> Layout` settings doenst affect the theme yet
+
 ## Development
 
 * Set `DEBUG = 1` in your `/etc/imscp/imscp.conf`
