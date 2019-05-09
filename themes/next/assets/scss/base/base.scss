@@ -59,11 +59,15 @@ body {
             }
         }
         .aaroniker {
+            --color: var(--text-lighter);
             position: absolute;
             display: block;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
+            &:hover {
+                --color: var(--text-light);
+            }
             svg {
                 display: block;
             }

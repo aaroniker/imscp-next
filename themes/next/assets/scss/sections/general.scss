@@ -115,7 +115,7 @@
 
 .logged {
     --background: #fff;
-    --color: var(--text-dark);
+    --color: var(--text);
     --border: var(--line);
     background: var(--background);
     height: 28px;
@@ -126,6 +126,9 @@
     font-weight: 500;
     font-size: 14px;
     box-shadow: 0 1px 3px var(--shadow-dark);
+    &:hover {
+        --color: var(--text-dark);
+    }
     svg {
         color: var(--primary);
         width: 20px;
@@ -295,6 +298,9 @@
         .logged {
             --background: var(--grey-dark);
             --color: var(--text-light);
+            &:hover {
+                --color: var(--text-lighter);
+            }
         }
         .user-panel {
             --text-c: var(--text);

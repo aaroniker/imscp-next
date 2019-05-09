@@ -5,6 +5,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
     grid-gap: 32px;
+    @include max(sm) {
+        grid-gap: 24px;
+    }
+    @include max(xs) {
+        grid-gap: 16px;
+    }
     .box {
         padding: 8px 20px;
         background: #fff;
@@ -15,7 +21,7 @@
             display: block;
             color: var(--text-dark);
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
             line-height: 28px;
             svg {
                 display: inline-block;
