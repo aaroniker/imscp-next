@@ -1,3 +1,5 @@
+![iMSCP Theme](https://aaroniker.me/screen.png)
+
 # Information
 
 Still heavily work in progress, so it may looks a bit unfinished.  
