@@ -12,11 +12,6 @@ $(document).ready(function() {
         $('html, body').toggleClass('openSide');
     });
 
-    // Function to initialize buttons
-    var initButtons = () => {
-        $(".radio, .checkbox").buttonset();
-    };
-
     // Function to initialize tables
     var initTables = function() {
         $("body").on("updateTable", "table", function () {
@@ -85,7 +80,6 @@ $(document).ready(function() {
     var initLayout = () => {
         passwordGenerator();
         initTables();
-        initButtons();
     };
 
     $(function() {
@@ -228,7 +222,7 @@ $(document).ready(function() {
 
         var $phpEditorDialogOpen = $("#php_editor_dialog_open");
 
-        $phpEditorDialogOpen.button("option", "icons", { primary: "ui-icon-gear" }).click(function () {
+        $phpEditorDialogOpen.click(function () {
             $phpEditorDialog.dialog("open");
         });
 
