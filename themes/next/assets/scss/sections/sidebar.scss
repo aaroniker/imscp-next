@@ -44,9 +44,6 @@
             @include max(xs) {
                 padding: 0 20px;
             }
-            @include max(xxs) {
-                padding: 0 16px;
-            }
             & > ul {
                 & > li {
                     position: relative;
@@ -195,9 +192,6 @@
             @include max(xs) {
                 padding: 16px 20px 0 20px;
             }
-            @include max(xxs) {
-                padding: 16px 16px 0 16px;
-            }
             li {
                 display: flex;
                 justify-content: space-between;
@@ -212,9 +206,6 @@
             }
             @include max(xs) {
                 margin-left: 20px;
-            }
-            @include max(xxs) {
-                margin-left: 16px;
             }
             &:hover {
                 --color: var(--grey);
