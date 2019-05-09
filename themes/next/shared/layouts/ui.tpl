@@ -32,7 +32,7 @@
 
     <section id="sidebar">
         <div class="inner">
-            <img src="{ISP_LOGO}" alt="i-MSCP logo">
+            <img src="/themes/next/assets/images/imscp_logo90.png" alt="i-MSCP logo">
             <nav>
                 <!-- INCLUDE "../partials/navigation/menu.php" -->
             </nav>
@@ -50,7 +50,7 @@
     </section>
 
     <section id="mobile">
-        <img src="{ISP_LOGO}" alt="i-MSCP logo">
+        <img src="/themes/next/assets/images/imscp_logo90.png" alt="i-MSCP logo">
         <div class="right">
             <!-- BDP: logged_from -->
             <!-- INCLUDE "../partials/logged.php" -->
