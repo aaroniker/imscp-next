@@ -1,77 +1,60 @@
+<?php
+    $resellerProperties = imscp_getResellerProperties($_SESSION['user_id']);
+?>
 
-<table class="firstColFixed">
-    <thead>
-    <tr>
-        <th colspan="2">{TR_ACCOUNT_LIMITS}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>{DOMAINS}</td>
-        <td>{DMN_MSG}</td>
-    </tr>
-    <tr>
-        <td>{SUBDOMAINS}</td>
-        <td>{SUB_MSG}</td>
-    </tr>
-    <tr>
-        <td>{ALIASES}</td>
-        <td>{ALS_MSG}</td>
-    </tr>
-    <tr>
-        <td>{MAIL_ACCOUNTS}</td>
-        <td>{MAIL_MSG}</td>
-    </tr>
-    <tr>
-        <td>{TR_FTP_ACCOUNTS}</td>
-        <td>{FTP_MSG}</td>
-    </tr>
-    <tr>
-        <td>{SQL_DATABASES}</td>
-        <td>{SQL_DB_MSG}</td>
-    </tr>
-    <tr>
-        <td>{SQL_USERS}</td>
-        <td>{SQL_USER_MSG}</td>
-    </tr>
-    </tbody>
-</table>
-<table class="firstColFixed">
-    <thead>
-    <tr>
-        <th colspan="2">{TR_FEATURES}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>{TR_SUPPORT}</td>
-        <td>{SUPPORT_STATUS}</td>
-    </tr>
-    <tr>
-        <td>{TR_PHP_EDITOR}</td>
-        <td>{PHP_EDITOR_STATUS}</td>
-    </tr>
-    <tr>
-        <td>{TR_APS}</td>
-        <td>{APS_STATUS}</td>
-    </tr>
-    </tbody>
-</table>
-<h2 class="traffic"><span>{TR_TRAFFIC_USAGE}</span></h2>
-<!-- BDP: traffic_warning_message -->
-<div class="warning">{TR_TRAFFIC_WARNING}</div>
-<!-- EDP: traffic_warning_message -->
-<div class="graph">
-    <span style="width:{TRAFFIC_PERCENT_WIDTH}%"></span>
-    <strong>{TRAFFIC_PERCENT}%</strong>
-</div>
-<p>{TRAFFIC_USAGE_DATA}</p>
-<h2 class="diskusage"><span>{TR_DISK_USAGE}</span></h2>
-<!-- BDP: disk_warning_message -->
-<div class="warning">{TR_DISK_WARNING}</div>
-<!-- EDP: disk_warning_message -->
-<p>{DISK_USAGE_DATA}</p>
-<div class="graph">
-    <span style="width:{DISK_PERCENT_WIDTH}%"></span>
-    <strong>{DISK_PERCENT}%</strong>
+<div id="overview-stats">
+    <div class="box">
+        <strong>{DMN_MSG}</strong>
+        <span>{DOMAINS}</span>
+    </div>
+    <div class="box">
+        <strong>{SUB_MSG}</strong>
+        <span>{SUBDOMAINS}</span>
+    </div>
+    <div class="box">
+        <strong>{ALS_MSG}</strong>
+        <span>{ALIASES}</span>
+    </div>
+    <div class="box">
+        <strong>{MAIL_MSG}</strong>
+        <span>{MAIL_ACCOUNTS}</span>
+    </div>
+    <div class="box">
+        <strong>{FTP_MSG}</strong>
+        <span>{TR_FTP_ACCOUNTS}</span>
+    </div>
+    <div class="box">
+        <strong>{SQL_DB_MSG}</strong>
+        <span>{SQL_DATABASES}</span>
+    </div>
+    <div class="box">
+        <strong>{SQL_USER_MSG}</strong>
+        <span>{SQL_USERS}</span>
+    </div>
+    <div class="box">
+        <strong class="<?=($resellerProperties['support_system'] == 'yes') ? 'success' : 'error'; ?>">
+            <?=($resellerProperties['support_system'] == 'yes') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+        </strong>
+        <span>{TR_SUPPORT}</span>
+    </div>
+    <div class="box">
+        <strong class="<?=($resellerProperties['php_ini_system'] == 'yes') ? 'success' : 'error'; ?>">
+            <?=($resellerProperties['php_ini_system'] == 'yes') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+        </strong>
+        <span>{TR_PHP_EDITOR}</span>
+    </div>
+    <div class="box">
+        <strong class="<?=($resellerProperties['software_allowed'] == 'yes') ? 'success' : 'error'; ?>">
+            <?=($resellerProperties['software_allowed'] == 'yes') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+        </strong>
+        <span>{TR_APS}</span>
+    </div>
+    <div class="box">
+        <strong>{TRAFFIC_PERCENT}% <small>{TRAFFIC_USAGE_DATA}</small></strong>
+        <span>{TR_TRAFFIC_USAGE}</span>
+    </div>
+    <div class="box">
+        <strong>{DISK_PERCENT}% <small>{DISK_USAGE_DATA}</small></strong>
+        <span>{TR_DISK_USAGE}</span>
+    </div>
 </div>

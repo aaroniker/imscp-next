@@ -24,7 +24,7 @@
         <span>{TR_DOMAINS_ALIASES}</span>
     </div>
     <div class="box">
-        <strong>{MAIL_ACCOUNTS}</strong>
+        <strong><?=get_mail_accounts_count(); ?></strong>
         <span>{TR_MAIL_ACCOUNTS}</span>
     </div>
     <div class="box">
@@ -40,7 +40,7 @@
         <span>{TR_SQL_USERS}</span>
     </div>
     <div class="box">
-        <strong title="{TRAFFIC_WARNING}">{TRAFFIC_PERCENT}%</strong>
+        <strong>{TRAFFIC_PERCENT}% <small>{TRAFFIC_WARNING}</small></strong>
         <span>{TR_SERVER_TRAFFIC}</span>
     </div>
 </div>
