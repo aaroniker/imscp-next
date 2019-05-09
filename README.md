@@ -1,4 +1,4 @@
-![iMSCP Theme](https://aaroniker.me/screen.png)
+![iMSCP Theme](https://aaroniker.me/screen@2x.png)
 
 # Information
 
