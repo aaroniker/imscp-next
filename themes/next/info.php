@@ -24,6 +24,6 @@ return [
     'theme_authors'   => [
         'Aaron Iker' => 'mail@aaroniker.me'
     ],
-    'theme_licence'   => 'MIT',
+    'theme_licence'   => 'GNU General Public License v3.0',
     'theme_color_set' => []
 ];
