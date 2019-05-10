@@ -12,6 +12,8 @@ $(document).ready(function() {
         $('html, body').toggleClass('openSide');
     });
 
+    $('[data-tooltip]').tooltip();
+
     // Function to initialize tables
     var initTables = function() {
         $("body").on("updateTable", "table", function () {
