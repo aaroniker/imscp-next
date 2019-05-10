@@ -33,3 +33,7 @@ I added my personal logo to the bottom at the login page & the sidebar - it's to
 
 * [Eva Icons](https://akveo.github.io/eva-icons/#/)
 * [DataTables](https://datatables.net/)
+
+## Author
+
+**Aaron Iker** - [Twitter](https://twitter.com/aaroniker_me) - [Website](https://aaroniker.me/)
