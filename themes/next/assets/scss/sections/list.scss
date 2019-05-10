@@ -141,12 +141,12 @@
     &.clients {
         .legend {
             ul {
-                grid-template-columns: 100px minmax(0, 1fr) 160px;
+                grid-template-columns: 80px minmax(0, 1fr) 160px;
             }
         }
         & > ul {
             & > li {
-                grid-template-columns: 100px minmax(0, 1fr) 160px;
+                grid-template-columns: 80px minmax(0, 1fr) 160px;
             }
         }
     }

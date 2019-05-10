@@ -14,25 +14,6 @@ $(document).ready(function() {
 
     $('[data-tooltip]').tooltip();
 
-    // Function to initialize tables
-    var initTables = function() {
-        $("body").on("updateTable", "table", function () {
-            $(this).find("tbody:first > tr:visible:odd").removeClass("odd").addClass("even");
-            $(this).find("tbody:first > tr:visible:even").removeClass("even").addClass("odd");
-        });
-        $("tbody").trigger("updateTable");
-
-        // Override some built-in jQuery method to automatically trigger the i-MSCP updateTable event
-        var origShow = $.fn.show;
-        $.fn.show = function () {
-            return origShow.apply(this, arguments).trigger("updateTable");
-        };
-        var origHide = $.fn.hide;
-        $.fn.hide = function () {
-            return origHide.apply(this, arguments).trigger("updateTable");
-        };
-    };
-
     // Function to initialize password generator
     // To enable the password generator for a password input field, just add the .pwd_generator class to it
     // Only password input fields with the password and cpassword identifier are filled
@@ -54,9 +35,11 @@ $(document).ready(function() {
                         var password = $pwdElements.first().val();
                         if (password != '') {
                             $('<div>', { html: $("<strong>", { text: password }) }).dialog({
+                                draggable: false,
                                 modal: true,
-                                hide: "blind",
-                                show: "blind",
+                                resizable: false,
+                                witdh: 'auto',
+                                closeOnEscape: false,
                                 title: imscp_i18n.core.your_new_password,
                                 buttons: [
                                     {
@@ -79,86 +62,79 @@ $(document).ready(function() {
         }
     };
 
-    var initLayout = () => {
-        passwordGenerator();
-        initTables();
-    };
-
     $(function() {
-        initLayout();
+        passwordGenerator();
     });
 
 });
 
-// Functions for confirmation and alert dialogs
 (function ($) {
-    // Override native alert() function
-    window.alert = function (message, caption) {
-        caption = caption || imscp_i18n.core.warning;
 
-        $("<div>", {title: caption}).dialog({
+    window.alert = (message, caption) => {
+        $('<div>', {
+            title: caption || imscp_i18n.core.warning
+        }).dialog({
             draggable: false,
             modal: true,
             resizable: false,
             witdh: 'auto',
             closeOnEscape: false,
-            open: function (event, ui) {
-                $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+            open(event, ui) {
+                $('.ui-dialog-titlebar-close', ui.dialog | ui).hide();
             },
             buttons: [
                 {
                     text: imscp_i18n.core.ok,
-                    click: function () {
+                    click() {
                         $(this).dialog('close');
                     }
                 }
             ],
-            close: function () {
+            close() {
                 $(this).remove()
             }
         }).html(message);
     };
 
     $.imscp = {
-        confirm: function (message, callback, caption) {
-            caption = caption || imscp_i18n.core.confirmation_required;
-
-            $("<div>", {title: caption}).dialog({
+        confirm(message, callback, caption) {
+            $('<div>', {
+                title: caption || imscp_i18n.core.confirmation_required
+            }).dialog({
                 draggable: false,
                 modal: true,
                 resizable: false,
                 witdh: 'auto',
                 closeOnEscape: false,
-                open: function (event, ui) {
-                    $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+                open(event, ui) {
+                    $('.ui-dialog-titlebar-close', ui.dialog | ui).hide();
                 },
                 buttons: [
                     {
                         text: imscp_i18n.core.yes,
-                        click: function () {
+                        click() {
                             $(this).dialog('close');
                             callback(true);
                         }
                     },
                     {
                         text: imscp_i18n.core.no,
-                        click: function () {
+                        click() {
                             $(this).dialog('close');
-                            callback(false)
+                            callback(false);
                         }
                     }
                 ],
-                close: function () {
+                close() {
                     $(this).remove()
                 }
             }).html(message);
-
             return false;
         },
-        confirmOnclick: function (link, message) {
+        confirmOnclick(link, message) {
             link.blur();
-            return this.confirm(message, function (ret) {
-                if (ret) {
+            return this.confirm(message, ret => {
+                if(ret) {
                     window.location.href = link.href;
                 }
             });
@@ -167,14 +143,12 @@ $(document).ready(function() {
 })(jQuery);
 
 // PHP editor (dialog and validation routines)
-(function ($) {
-    $(function () {
+(function($) {
+    $(function() {
         var $phpEditorDialog = $("#php_editor_dialog");
         if (!$phpEditorDialog.length) return; // Avoid attaching event handler when not necessary
 
         $phpEditorDialog.dialog({
-            hide: "blind",
-            show: "slide",
             focus: false,
             autoOpen: false,
             width: 650,
@@ -308,8 +282,6 @@ $(document).ready(function() {
             } else { // No dialog. We create one
                 $.get("/shared/ftp_choose_dir.php", function(data) {
                     $dialog = $('<div id="ftp_choose_dir_dialog">').html(data).dialog({
-                        hide: "blind",
-                        show: "slide",
                         focus: false,
                         width: 650,
                         height: 500,
