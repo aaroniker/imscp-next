@@ -19,8 +19,10 @@ echo '<ul>';
 foreach(clone iMSCP_Registry::get('navigation') as $obj) {
     if($obj->_visible) {
 
-        echo $obj->_active || $obj->_uri == $_SERVER['REQUEST_URI'] || count(array_filter($obj->_pages, function($r) {
-            return $r->_active || $r->_uri == $_SERVER['REQUEST_URI'];
+        $url = strtok($_SERVER['REQUEST_URI'], '?');
+
+        echo $obj->_active || $obj->_uri == $url || count(array_filter($obj->_pages, function($r) {
+            return $r->_active || $r->_uri == $url;
         })) ? '<li class="active opened">' : '<li>';
 
         echo '<a href="'.$obj->_uri.'">';
@@ -32,7 +34,7 @@ foreach(clone iMSCP_Registry::get('navigation') as $obj) {
             echo '<span></span><ul>';
             foreach($obj->_pages as $sub) {
                 if($sub->_visible) {
-                    echo $sub->_active || $sub->_uri == $_SERVER['REQUEST_URI'] ? '<li class="active">' : '<li>';
+                    echo $sub->_active || $sub->_uri == $url ? '<li class="active">' : '<li>';
                     echo '<a href="'.$sub->_uri.'">'.$sub->_label.'</a>';
                     echo '</li>';
                 }
