@@ -1,6 +1,6 @@
 # I-MSCP Next
 
-![iMSCP Theme Next](https://aaroniker.me/screen@2x.png)
+![iMSCP Theme Next](https://aaroniker.me/overview.png)
 
 ## Important
 
