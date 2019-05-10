@@ -21,6 +21,7 @@ I added my personal logo to the bottom at the login page & the sidebar - it's to
 ## Known bugs
 
 * `Profile -> Layout` settings doenst affect the theme yet
+* ...
 
 ## Development
 
