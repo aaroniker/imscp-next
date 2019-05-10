@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/jquery-ui.css">
-    <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/ui.css">
     <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/style.min.css">
 
     <script>
@@ -24,6 +23,7 @@
     <script src="{THEME_ASSETS_PATH}/js/jquery/plugins/dataTables.js"></script>
     <script src="{THEME_ASSETS_PATH}/js/jquery/plugins/dataTables_naturalSorting.js"></script>
     <script src="{THEME_ASSETS_PATH}/js/jquery/plugins/pGenerator.js"></script>
+    <script src="{THEME_ASSETS_PATH}/js/tooltips.js"></script>
     <script src="{THEME_ASSETS_PATH}/js/imscp.js"></script>
     <script src="https://unpkg.com/eva-icons"></script>
 

@@ -6,10 +6,30 @@
     border: 1px solid var(--border);
     box-shadow: 0 1px 2px var(--shadow);
     margin: 24px 0;
-    .toolbar {
+    header {
         padding: 16px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         h3 {
             margin: 0;
+        }
+    }
+    footer {
+        padding: 16px 20px;
+        border-top: 1px solid var(--line);
+        .paginate {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            li {
+                &:not(:last-child) {
+                    margin-right: 12px;
+                }
+            }
         }
     }
     .legend {
@@ -24,6 +44,7 @@
             grid-template-columns: repeat(3, minmax(0, 1fr)) 160px;
             text-transform: uppercase;
             font-size: 12px;
+            line-height: 14px;
             font-weight: 500;
             color: var(--text-light);
         }
@@ -40,7 +61,7 @@
             &:not(:last-child) {
                 border-bottom: 1px solid var(--line);
             }
-            &.no {
+            &.full {
                 .message {
                     grid-column: 1 / 5;
                 }
@@ -56,7 +77,103 @@
                         }
                     }
                 }
+                &:first-child {
+                    color: var(--text-dark);
+                }
             }
+            .status {
+                & > a,
+                & > span {
+                    display: table;
+                    svg {
+                        display: none;
+                    }
+                    &.i_ok {
+                        color: var(--success);
+                        .eva-checkmark-circle-2 {
+                            display: block;
+                        }
+                    }
+                    &.i_disabled {
+                        color: var(--text-light);
+                        .eva-close-circle {
+                            display: block;
+                        }
+                    }
+                    &.i_reload {
+                        color: var(--text-light);
+                        .eva-refresh {
+                            display: block;
+                        }
+                    }
+                    &.i_error {
+                        color: var(--error);
+                        .eva-alert-circle {
+                            display: block;
+                        }
+                    }
+                    &.alias {
+                        color: var(--text-light);
+                        .eva-globe {
+                            display: block;
+                        }
+                    }
+                }
+            }
+            .user {
+                div {
+                    color: var(--text-dark);
+                    line-height: 24px;
+                    .globe {
+                        display: inline-block;
+                        vertical-align: top;
+                        margin: 4px 0 4px 2px;
+                        svg {
+                            display: block;
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.clients {
+        .legend {
+            ul {
+                grid-template-columns: 100px minmax(0, 1fr) 160px;
+            }
+        }
+        & > ul {
+            & > li {
+                grid-template-columns: 100px minmax(0, 1fr) 160px;
+            }
+        }
+    }
+}
+
+[name="search_user"] {
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        label {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            margin: 0 12px 0 0;
+            span {
+                display: block;
+                font-size: 14px;
+                white-space: nowrap;
+                margin-right: 12px;
+            }
+            .form-select {
+                flex-grow: 1;
+            }
+        }
+        button {
+            flex: 0 0 32px;
         }
     }
 }

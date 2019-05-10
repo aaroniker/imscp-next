@@ -14,8 +14,8 @@
     border: none;
     padding: 12px 24px;
     font-size: 16px;
-    line-height: 25px;
-    font-weight: bold;
+    line-height: 23px;
+    font-weight: 500;
     background: var(--background);
     color: var(--color);
     border-radius: var(--border-radius);
@@ -72,6 +72,19 @@
         &:hover {
             --background: var(--light);
         }
+        &.outline {
+            --color: var(--text);
+            --outline: var(--border);
+            &:hover {
+                background: var(--pale);
+            }
+        }
+    }
+    &.disabled {
+        --background: var(--pale);
+        --color: var(--text-light);
+        cursor: not-allowed;
+        box-shadow: none;
     }
     &.link {
         --background: none;
@@ -86,6 +99,25 @@
             height: 16px;
             margin-top: 4px;
             left: -3px;
+        }
+    }
+    &.icon {
+        padding: 12px;
+        svg {
+            left: auto;
+            right: auto;
+            display: block;
+            width: 23px;
+            margin: 0;
+            height: 23px;
+        }
+        &.sm {
+            padding: 6px;
+            svg {
+                width: 19px;
+                margin: 2px;
+                height: 19px;
+            }
         }
     }
     &.center {

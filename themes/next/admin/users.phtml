@@ -8,9 +8,9 @@
 
 <!-- BDP: administrator_list -->
 <div class="list">
-    <div class="toolbar">
+    <header>
         <h3><?=tohtml(tr('Administrator')); ?></h3>
-    </div>
+    </header>
     <div class="legend">
         <ul>
             <li><?=tohtml(tr('Username')); ?></li>
@@ -27,13 +27,20 @@
             <div>
                 <a href="user_edit.php?edit_id={ADMINISTRATOR_ID}" class="btn sm muted"><?=tohtml(tr('Edit')); ?></a>
                 <!-- BDP: administrator_delete_link -->
-                <a href="user_delete.php?delete_id={ADMINISTRATOR_ID}" onclick="return action_delete(this)"><?=tohtml(tr('Delete')); ?></a>
+                <div class="dropdown">
+                    <span>
+                        <i></i>
+                    </span>
+                    <ul>
+                        <li class="delete"><a href="user_delete.php?delete_id={ADMINISTRATOR_ID}" onclick="return action_delete(this)"><?=tohtml(tr('Delete')); ?></a></li>
+                    </ul>
+                </div>
                 <!-- EDP: administrator_delete_link -->
             </div>
         </li>
         <!-- EDP: administrator_item -->
         <!-- BDP: administrator_message -->
-        <li class="no">
+        <li class="full">
             <div class="message info"><?=tohtml(tr('No account found.')); ?></div>
         </li>
         <!-- EDP: administrator_message -->
@@ -43,9 +50,9 @@
 
 <!-- BDP: reseller_list -->
 <div class="list">
-    <div class="toolbar">
+    <header>
         <h3><?=tohtml(tr('Resellers')); ?></h3>
-    </div>
+    </header>
     <div class="legend">
         <ul>
             <li><?=tohtml(tr('Username')); ?></li>
@@ -74,7 +81,7 @@
         </li>
         <!-- EDP: reseller_item -->
         <!-- BDP: reseller_message -->
-        <li class="no">
+        <li class="full">
             <div class="message info"><?=tohtml(tr('No account found.')); ?></div>
         </li>
         <!-- EDP: reseller_message -->

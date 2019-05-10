@@ -12,7 +12,7 @@
     border: 1px solid var(--border);
     padding: 12px 16px;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 21px;
     font-weight: 500;
     color: var(--text);
     border-radius: var(--border-radius);
@@ -37,6 +37,10 @@
     }
     &::placeholder {
         color: var(--text-light);
+    }
+    &.sm {
+        padding: 6px 12px;
+        font-size: 14px;
     }
 }
 
@@ -91,8 +95,8 @@
     }
     &.sm {
         select {
-            padding: 4px 26px 4px 8px;
-            font-size: 11px;
+            padding: 6px 28px 6px 12px;
+            font-size: 14px;
         }
         &:before {
             --scale: .7;
