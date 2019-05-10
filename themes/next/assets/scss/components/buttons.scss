@@ -3,7 +3,6 @@
 .btn {
     --color: #fff;
     --background: var(--primary);
-    --hover: var(--primary-dark);
     --shadow-c: var(--primary-shadow);
     --shadow-blur: 8px;
     display: inline-block;
@@ -17,7 +16,6 @@
     font-size: 16px;
     line-height: 25px;
     font-weight: bold;
-    min-width: 132px;
     background: var(--background);
     color: var(--color);
     border-radius: var(--border-radius);
@@ -30,7 +28,7 @@
         --color: #fff;
     }
     &:hover {
-        --background: var(--hover);
+        --background: var(--primary-dark);
         --shadow-blur: 16px;
     }
     svg {
@@ -67,14 +65,12 @@
             }
         }
     }
-    &.white {
-        --background: #fff;
-        --color: var(--primary);
-        --shadow-c: var(--shadow);
-        &.outline {
-            --color: #fff;
-            --outline: #fff;
-            --background: none;
+    &.muted {
+        --background: var(--lighter);
+        --color: var(--text);
+        --shadow-c: none;
+        &:hover {
+            --background: var(--light);
         }
     }
     &.link {
@@ -85,7 +81,6 @@
     &.sm {
         font-size: 14px;
         padding: 6px 16px;
-        min-width: 120px;
         svg {
             width: 16px;
             height: 16px;

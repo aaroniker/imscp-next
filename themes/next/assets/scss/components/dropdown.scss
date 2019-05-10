@@ -1,0 +1,135 @@
+//main: ../style.scss
+
+.dropdown {
+    position: relative;
+    z-index: 1;
+    display: table;
+    ul {
+        margin: 0;
+        list-style: none;
+        position: absolute;
+        border-radius: 3px;
+        opacity: 0;
+        visibility: hidden;
+        transform: scaleY(.6);
+        transform-origin: 50% 0;
+        background: #fff;
+        border: 1px solid var(--line);
+        box-shadow: 0 1px 2px var(--shadow-dark);
+        transition: opacity .2s ease, visibility .2s ease, transform .3s cubic-bezier(.4, .6, .5, 1.2);
+        padding: 36px 0 0 0;
+        right: -4px;
+        top: -7px;
+        min-width: 112px;
+        li {
+            opacity: 0;
+            transition: opacity .2s ease;
+            $i: 1;
+            @while $i <= 10 {
+                $delay: $i * 60;
+                &:nth-child(#{$i}) {
+                    transition-delay: #{$delay}ms;
+                }
+                $i: $i + 1;
+            }
+            a {
+                display: block;
+                white-space: nowrap;
+                padding: 10px 16px;
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--text);
+                transition: background .3s ease, color .3s ease;
+                &:hover {
+                    background: var(--pale);
+                    color: var(--primary);
+                }
+            }
+            &:last-child {
+                a {
+                    border-radius: 0 0 3px 3px;
+                }
+            }
+            &.delete {
+                a {
+                    color: var(--error);
+                    &:hover {
+                        color: var(--error);
+                    }
+                }
+            }
+        }
+    }
+    & > span {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
+        display: block;
+        z-index: 1;
+        transition: transform .3s ease;
+        i {
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -2px 0 0 -2px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--text-light);
+            transition: background .3s ease;
+            &:before,
+            &:after {
+                content: '';
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background: inherit;
+                position: absolute;
+                top: 0;
+            }
+            &:before {
+                left: -6px;
+            }
+            &:after {
+                left: 6px;
+            }
+        }
+        &:hover {
+            i {
+                background: var(--text);
+            }
+        }
+    }
+    &:hover,
+    &.open {
+        z-index: 2;
+        & > span {
+            transform: rotate(90deg);
+            &:hover i,
+            i {
+                background: var(--text);
+            }
+        }
+        .btn {
+            .caret {
+                &:before {
+                    margin-right: 5px;
+                    transform: scale(.92, .8) rotate(-130deg);
+                }
+                &:after {
+                    transform: scale(.92, .8) rotate(130deg);
+                }
+            }
+        }
+        ul {
+            opacity: 1;
+            visibility: visible;
+            transform: scaleY(1) translateY(0);
+            li {
+                opacity: 1;
+            }
+        }
+    }
+}
