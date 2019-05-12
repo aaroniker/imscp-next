@@ -1,5 +1,43 @@
 $(document).ready(function() {
 
+    let dialogOptions = (options, open, close) => {
+        return $.extend({}, options, {
+            draggable: false,
+            modal: true,
+            resizable: false,
+            witdh: 'auto',
+            closeOnEscape: false,
+            open(e) {
+                let elem = $(e.target).closest('.ui-dialog');
+                if(open && typeof(open) === 'function') {
+                    open(e, elem);
+                }
+            },
+            close(e) {
+                let elem = $(e.target).closest('.ui-dialog');
+                elem.remove();
+                if(close && typeof(close) === 'function') {
+                    close(e, elem);
+                }
+            }
+        });
+    };
+
+    window.alert = (message, caption) => {
+        $('<div>', {
+            title: caption || imscp_i18n.core.warning
+        }).dialog(dialogOptions({
+            buttons: [
+                {
+                    text: imscp_i18n.core.ok,
+                    click() {
+                        $(this).dialog('close');
+                    }
+                }
+            ]
+        })).html(message);
+    };
+
     $('#sidebar > .inner > nav > ul > li > span').on('click', e => {
         let _this = $(e.currentTarget).parent();
         _this.children('ul').slideToggle(200, e => {
@@ -14,9 +52,6 @@ $(document).ready(function() {
 
     $('[data-tooltip]').tooltip();
 
-    // Function to initialize password generator
-    // To enable the password generator for a password input field, just add the .pwd_generator class to it
-    // Only password input fields with the password and cpassword identifier are filled
     var passwordGenerator = function() {
         var $pwdGenerator = $(".pwd_generator");
 
@@ -34,20 +69,21 @@ $(document).ready(function() {
                     $("<button>", { id: "pwd_show", type: "button", text: imscp_i18n.core.show }).click(function() {
                         var password = $pwdElements.first().val();
                         if (password != '') {
-                            $('<div>', { html: $("<strong>", { text: password }) }).dialog({
-                                draggable: false,
-                                modal: true,
-                                resizable: false,
-                                witdh: 'auto',
-                                closeOnEscape: false,
+                            $('<div>', {
+                                html: $('<strong>', {
+                                    text: password
+                                })
+                            }).dialog(dialogOptions({
                                 title: imscp_i18n.core.your_new_password,
                                 buttons: [
                                     {
                                         text: imscp_i18n.core.close,
-                                        click: function () { $(this).dialog("destroy").remove(); }
+                                        click() {
+                                            $(this).dialog('close');
+                                        }
                                     }
                                 ]
-                            });
+                            }));
                         } else {
                             alert(imscp_i18n.core.password_generate_alert);
                         }
@@ -62,53 +98,13 @@ $(document).ready(function() {
         }
     };
 
-    $(function() {
-        passwordGenerator();
-    });
-
-});
-
-(function ($) {
-
-    window.alert = (message, caption) => {
-        $('<div>', {
-            title: caption || imscp_i18n.core.warning
-        }).dialog({
-            draggable: false,
-            modal: true,
-            resizable: false,
-            witdh: 'auto',
-            closeOnEscape: false,
-            open(event, ui) {
-                $('.ui-dialog-titlebar-close', ui.dialog | ui).hide();
-            },
-            buttons: [
-                {
-                    text: imscp_i18n.core.ok,
-                    click() {
-                        $(this).dialog('close');
-                    }
-                }
-            ],
-            close() {
-                $(this).remove()
-            }
-        }).html(message);
-    };
+    passwordGenerator();
 
     $.imscp = {
         confirm(message, callback, caption) {
             $('<div>', {
                 title: caption || imscp_i18n.core.confirmation_required
-            }).dialog({
-                draggable: false,
-                modal: true,
-                resizable: false,
-                witdh: 'auto',
-                closeOnEscape: false,
-                open(event, ui) {
-                    $('.ui-dialog-titlebar-close', ui.dialog | ui).hide();
-                },
+            }).dialog(dialogOptions({
                 buttons: [
                     {
                         text: imscp_i18n.core.yes,
@@ -124,11 +120,8 @@ $(document).ready(function() {
                             callback(false);
                         }
                     }
-                ],
-                close() {
-                    $(this).remove()
-                }
-            }).html(message);
+                ]
+            })).html(message);
             return false;
         },
         confirmOnclick(link, message) {
@@ -140,10 +133,7 @@ $(document).ready(function() {
             });
         }
     };
-})(jQuery);
 
-// PHP editor (dialog and validation routines)
-(function($) {
     $(function() {
         var $phpEditorDialog = $("#php_editor_dialog");
         if (!$phpEditorDialog.length) return; // Avoid attaching event handler when not necessary
@@ -157,31 +147,29 @@ $(document).ready(function() {
             buttons: [
                 {
                     text: imscp_i18n.core.close,
-                    click: function () {
-                        $(this).dialog("close");
+                    click() {
+                        $(this).dialog('close');
                     }
                 }
             ],
-            open: function () {
+            open() {
                 var $dialog = $(this);
                 $(window).on("resize scroll", function() {
                     $dialog.dialog("option", "position", { my: "center", at: "center", of: window });
                 });
             },
-            close: function() {
+            close() {
                 $('input').blur();
                 $(window).off("resize scroll");
             }
         });
 
-        // Prevent form submission in case an INI value is not valid
         $("form").submit(function (e) {
             if (!$("#php_editor_msg_default").length) {
                 e.preventDefault();
                 $phpEditorDialog.dialog("open");
                 return false;
             }
-
             return true;
         });
 
@@ -253,11 +241,8 @@ $(document).ready(function() {
                 });
             }, 200);
         }).first().trigger('keyup'); // We trigger the keyup event on page load to catch any inconsistency with ini values
-    })
-})(jQuery);
+    });
 
-// Initialize FTP chooser event handler
-(function($) {
     $(function() {
         if(!$(".ftp_choose_dir").length) return; // Avoid attaching event handler when not necessary
 
@@ -295,14 +280,14 @@ $(document).ready(function() {
                                 $(this).dialog("close");
                             }
                         }],
-                        open: function () {
+                        open() {
                             var $dialog = $(this);
                             $dialog.find('table').trigger('updateTable').tooltip();
                             $(window).on("resize scroll", function() {
                                 $dialog.dialog("option", "position", { my: "center", at: "center", of: window });
                             });
                         },
-                        close: function () {
+                        close() {
                             $(window).off("resize scroll");
                             $(this).remove();
                         }
@@ -313,7 +298,8 @@ $(document).ready(function() {
             }
         });
     });
-})(jQuery);
+
+});
 
 function sbmt(form, uaction) {
     form.uaction.value = uaction;
