@@ -64,6 +64,7 @@
         list-style: none;
         & > li {
             padding: 8px 20px;
+            min-height: 51px;
             display: grid;
             align-items: center;
             grid-template-columns: repeat(3, minmax(0, 1fr)) 160px;
