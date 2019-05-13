@@ -13,12 +13,12 @@
     <div class="action">
         <!-- BDP: lost_password_support -->
         <a href="lostpassword.php">
-            <i data-eva="question-mark-circle" data-eva-fill="currentColor"></i>
+            <i data-eva="question-mark-circle"></i>
             {TR_LOSTPW}
         </a>
         <!-- EDP: lost_password_support -->
         <button class="btn" type="submit" name="Submit">
-            <i data-eva="unlock" data-eva-fill="currentColor"></i>
+            <i data-eva="unlock"></i>
             {TR_LOGIN}
         </button>
     </div>

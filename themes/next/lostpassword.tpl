@@ -18,11 +18,11 @@
 
     <div class="action">
         <a href="/">
-            <i data-eva="close-circle" data-eva-fill="currentColor"></i>
+            <i data-eva="close-circle"></i>
             {TR_CANCEL}
         </a>
         <button class="btn" type="submit" name="Submit">
-            <i data-eva="email" data-eva-fill="currentColor"></i>
+            <i data-eva="email"></i>
             {TR_SEND}
         </button>
     </div>

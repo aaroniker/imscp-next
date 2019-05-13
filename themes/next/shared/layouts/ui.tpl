@@ -92,7 +92,9 @@
     <div id="overlay" class="hide"></div>
 
     <script>
-        eva.replace();
+        eva.replace({
+            fill: 'currentColor'
+        });
     </script>
 
 </body>

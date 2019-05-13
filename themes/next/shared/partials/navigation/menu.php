@@ -49,7 +49,7 @@ foreach(clone iMSCP_Registry::get('navigation') as $obj) {
         })) ? '<li class="active opened">' : '<li>';
 
         echo '<a href="'.$obj->_uri.'">';
-        echo isset($icons[$obj->_class]) ? '<i data-eva="'.$icons[$obj->_class].'" data-eva-fill="currentColor"></i>' : '<i data-eva="arrow-right-outline" data-eva-fill="currentColor"></i>';
+        echo isset($icons[$obj->_class]) ? '<i data-eva="'.$icons[$obj->_class].'"></i>' : '<i data-eva="arrow-right-outline"></i>';
         echo $obj->_label;
         echo '</a>';
         echo $submenu;

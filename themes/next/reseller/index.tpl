@@ -33,19 +33,19 @@
     </div>
     <div class="box">
         <strong class="<?=($resellerProperties['support_system'] == 'yes') ? 'success' : 'error'; ?>">
-            <?=($resellerProperties['support_system'] == 'yes') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=($resellerProperties['support_system'] == 'yes') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_SUPPORT}</span>
     </div>
     <div class="box">
         <strong class="<?=($resellerProperties['php_ini_system'] == 'yes') ? 'success' : 'error'; ?>">
-            <?=($resellerProperties['php_ini_system'] == 'yes') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=($resellerProperties['php_ini_system'] == 'yes') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_PHP_EDITOR}</span>
     </div>
     <div class="box">
         <strong class="<?=($resellerProperties['software_allowed'] == 'yes') ? 'success' : 'error'; ?>">
-            <?=($resellerProperties['software_allowed'] == 'yes') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=($resellerProperties['software_allowed'] == 'yes') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_APS}</span>
     </div>

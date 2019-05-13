@@ -25,15 +25,15 @@
             <!-- BDP: client_domain_status_ok -->
             <div class="status">
                 <a href="domain_status_change.php?domain_id={CLIENT_DOMAIN_ID}" data-tooltip="{TR_CLIENT_STATUS_TOOLTIP}" class="{CLIENT_STATUS_CLASS}">
-                    <i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>
-                    <i data-eva="close-circle" data-eva-fill="currentColor"></i>
+                    <i data-eva="checkmark-circle-2"></i>
+                    <i data-eva="close-circle"></i>
                 </a>
             </div>
             <div class="user">
                 <div>
                     {CLIENT_USERNAME}
                     <a href="http://{CLIENT_DOMAIN_URL}/" target="_blank" class="globe">
-                        <i data-eva="globe-3" data-eva-fill="currentColor"></i>
+                        <i data-eva="globe-3"></i>
                     </a>
                 </div>
                 <small>
@@ -44,8 +44,8 @@
             <!-- BDP: client_domain_status_not_ok -->
             <div class="status">
                 <span data-tooltip="{TR_CLIENT_STATUS_TOOLTIP}" class="{CLIENT_STATUS_CLASS}">
-                    <i data-eva="alert-circle" data-eva-fill="currentColor"></i>
-                    <i data-eva="refresh" data-eva-fill="currentColor"></i>
+                    <i data-eva="alert-circle"></i>
+                    <i data-eva="refresh"></i>
                 </span>
             </div>
             <div class="user">
@@ -80,14 +80,14 @@
         <li>
             <div class="status">
                 <span data-tooltip="<?=tohtml(tr('Domain alias')); ?>" class="alias">
-                    <i data-eva="globe" data-eva-fill="currentColor"></i>
+                    <i data-eva="globe"></i>
                 </span>
             </div>
             <div class="user">
                 <div>
                     {CLIENT_DOMAIN_ALIAS}
                     <a href="http://{CLIENT_DOMAIN_ALIAS_URL}/" target="_blank" class="globe">
-                        <i data-eva="globe-3" data-eva-fill="currentColor"></i>
+                        <i data-eva="globe-3"></i>
                     </a>
                 </div>
             </div>
@@ -139,7 +139,7 @@
                 </label>
                 <input type="hidden" name="client_domain_aliases_switch" value="{CLIENT_DOMAIN_ALIASES_SWITCH_VALUE}">
                 <button class="btn icon sm" name="Submit" type="submit">
-                    <i data-eva="search" data-eva-fill="currentColor"></i>
+                    <i data-eva="search"></i>
                 </button>
             </div>
         </form>
@@ -182,13 +182,13 @@
             <li>
                 <!-- BDP: client_scroll_prev -->
                 <a class="btn sm" href="users.php?psi={CLIENT_PREV_PSI}">
-                    <i data-eva="chevron-left" data-eva-fill="currentColor"></i>
+                    <i data-eva="chevron-left"></i>
                     <?=tohtml(tr('Previous')); ?>
                 </a>
                 <!-- EDP: client_scroll_prev -->
                 <!-- BDP: client_scroll_prev_gray -->
                 <a class="btn disabled sm">
-                    <i data-eva="chevron-left" data-eva-fill="currentColor"></i>
+                    <i data-eva="chevron-left"></i>
                     <?=tohtml(tr('Previous')); ?>
                 </a>
                 <!-- EDP: client_scroll_prev_gray -->
@@ -197,13 +197,13 @@
                 <!-- BDP: client_scroll_next_gray -->
                 <a class="btn disabled sm">
                     <?=tohtml(tr('Next')); ?>
-                    <i data-eva="chevron-right" data-eva-fill="currentColor"></i>
+                    <i data-eva="chevron-right"></i>
                 </a>
                 <!-- EDP: client_scroll_next_gray -->
                 <!-- BDP: client_scroll_next -->
                 <a class="btn sm" href="users.php?psi={CLIENT_NEXT_PSI}">
                     <?=tohtml(tr('Next')); ?>
-                    <i data-eva="chevron-right" data-eva-fill="currentColor"></i>
+                    <i data-eva="chevron-right"></i>
                 </a>
                 <!-- EDP: client_scroll_next -->
             </li>

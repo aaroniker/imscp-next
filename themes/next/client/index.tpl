@@ -3,7 +3,7 @@
     list($subdomainCount, $domainAliasCount, $mailAccountsCount, $ftpAccountsCount, $sqlDatabasesCount, $sqlUsersCount) = get_customer_objects_counts($_SESSION['user_id']);
     function numLimitMessage($num, $limit) {
         if($limit == -1) {
-            return '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tr('Disabled');
+            return '<i data-eva="close-circle"></i>'.tr('Disabled');
         }
         if($limit == 0) {
             return $num . ' / ∞';
@@ -31,18 +31,18 @@
             if(count($bkTranslation) > 0) {
                 return [
                     true,
-                    '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.implode(', ', $bkTranslation)
+                    '<i data-eva="checkmark-circle-2"></i>'.implode(', ', $bkTranslation)
                 ];
             } else {
                 return [
                     false,
-                    '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tr('Disabled')
+                    '<i data-eva="close-circle"></i>'.tr('Disabled')
                 ];
             }
         } else {
             return [
                 false,
-                '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tr('Disabled')
+                '<i data-eva="close-circle"></i>'.tr('Disabled')
             ];
         }
     }
@@ -91,43 +91,43 @@
     </div>
     <div class="box">
         <strong class="<?=customerHasFeature('php') ? 'success' : 'error'; ?>">
-            <?=customerHasFeature('php') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=customerHasFeature('php') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_PHP_SUPPORT_FEATURE}</span>
     </div>
     <div class="box">
         <strong class="<?=customerHasFeature('php_editor') ? 'success' : 'error'; ?>">
-            <?=customerHasFeature('php_editor') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=customerHasFeature('php_editor') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_PHP_DIRECTIVES_EDITOR_SUPPORT_FEATURE}</span>
     </div>
     <div class="box">
         <strong class="<?=customerHasFeature('cgi') ? 'success' : 'error'; ?>">
-            <?=customerHasFeature('cgi') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=customerHasFeature('cgi') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_CGI_SUPPORT_FEATURE}</span>
     </div>
     <div class="box">
         <strong class="<?=customerHasFeature('custom_dns_records') ? 'success' : 'error'; ?>">
-            <?=customerHasFeature('custom_dns_records') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=customerHasFeature('custom_dns_records') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_CUSTOM_DNS_RECORDS_FEATURE}</span>
     </div>
     <div class="box">
         <strong class="<?=customerHasFeature('external_mail') ? 'success' : 'error'; ?>">
-            <?=customerHasFeature('external_mail') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=customerHasFeature('external_mail') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_EXTERNAL_MAIL_SERVER_FEATURE}</span>
     </div>
     <div class="box">
         <strong class="<?=customerHasFeature('aps') ? 'success' : 'error'; ?>">
-            <?=customerHasFeature('aps') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=customerHasFeature('aps') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_APP_INSTALLER_FEATURE}</span>
     </div>
     <div class="box">
         <strong class="<?=customerHasFeature('webstats') ? 'success' : 'error'; ?>">
-            <?=customerHasFeature('webstats') ? '<i data-eva="checkmark-circle-2" data-eva-fill="currentColor"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle" data-eva-fill="currentColor"></i>'.tohtml(tr('Disabled')); ?>
+            <?=customerHasFeature('webstats') ? '<i data-eva="checkmark-circle-2"></i>'.tohtml(tr('Enabled')) : '<i data-eva="close-circle"></i>'.tohtml(tr('Disabled')); ?>
         </strong>
         <span>{TR_WEBSTATS_FEATURE}</span>
     </div>

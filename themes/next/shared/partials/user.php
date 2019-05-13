@@ -4,7 +4,7 @@
     <ul>
         <li>
             <a href="/index.php?action=logout">
-                <i data-eva="log-out" data-eva-fill="currentColor"></i>
+                <i data-eva="log-out"></i>
             </a>
         </li>
     </ul>
