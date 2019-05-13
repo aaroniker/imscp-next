@@ -40,6 +40,8 @@
 
     --sidebar-width: 260px;
 
+    --overlay: rgba(27, 28, 40, .9);
+
     @include max(xs) {
         --sidebar-width: 220px;
     }

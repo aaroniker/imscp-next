@@ -1,0 +1,25 @@
+//main: ../style.scss
+
+#overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    z-index: 20;
+    background: var(--overlay);
+    padding: 32px 20px;
+    &.show {
+        display: flex;
+    }
+    .ui-dialog {
+        margin: auto;
+    }
+}
+
+.ui-widget-overlay {
+}

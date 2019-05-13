@@ -6,12 +6,15 @@
 @import 'base/reset';
 @import 'base/base';
 
+@import 'plugins/jquery-ui';
+
 @import 'components/buttons';
 @import 'components/forms';
 @import 'components/typography';
 @import 'components/messages';
 @import 'components/tooltips';
 @import 'components/dropdown';
+@import 'components/dialog';
 
 @import 'sections/general';
 @import 'sections/simple';

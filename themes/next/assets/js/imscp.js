@@ -1,24 +1,45 @@
 $(document).ready(function() {
 
-    let dialogOptions = (options, open, close) => {
+    let body = $('body'),
+        overlay = $('#overlay'),
+        dialogOptions = (options, open, close, stay) => {
         return $.extend({}, options, {
             draggable: false,
             modal: true,
             resizable: false,
             witdh: 'auto',
             closeOnEscape: false,
+            appendTo: '#overlay',
             open(e) {
+
                 let elem = $(e.target).closest('.ui-dialog');
+
+                $(e.target).removeAttr('style')
+                elem.removeAttr('style');
+
+                body.addClass('overlay');
+                overlay.addClass('show');
+
                 if(open && typeof(open) === 'function') {
                     open(e, elem);
                 }
+
             },
             close(e) {
+
                 let elem = $(e.target).closest('.ui-dialog');
-                elem.remove();
+
+                body.removeClass('overlay');
+                overlay.removeClass('show');
+
+                if(!stay) {
+                    elem.remove();
+                }
+
                 if(close && typeof(close) === 'function') {
                     close(e, elem);
                 }
+
             }
         });
     };
@@ -53,22 +74,30 @@ $(document).ready(function() {
     $('[data-tooltip]').tooltip();
 
     var passwordGenerator = function() {
-        var $pwdGenerator = $(".pwd_generator");
+        var $pwdGenerator = $('.pwd_generator');
 
         if($pwdGenerator.length) {
-            var $pwdElements = $("#password,#cpassword");
+            var $pwdElements = $('#password, #cpassword');
 
-            $("<span>", {
-                style: "display:inline-block;margin-left:5px",
+            $('<span>', {
+                style: 'display:inline-block;margin-left:5px',
                 html: [
-                    $("<button>", { id: "pwd_generate", type: "button", text: imscp_i18n.core.generate }).pGenerator({
+                    $('<button>', {
+                        id: 'pwd_generate',
+                        type: 'button',
+                        text: imscp_i18n.core.generate
+                    }).pGenerator({
                         'passwordElement': $pwdElements,
                         'passwordLength': imscp_i18n.core.password_length > 16 ? imscp_i18n.core.password_length : 16,
                         'specialChars': false
                     }),
-                    $("<button>", { id: "pwd_show", type: "button", text: imscp_i18n.core.show }).click(function() {
+                    $('<button>', {
+                        id: 'pwd_show',
+                        type: 'button',
+                        text: imscp_i18n.core.show
+                    }).click(function() {
                         var password = $pwdElements.first().val();
-                        if (password != '') {
+                        if(password != '') {
                             $('<div>', {
                                 html: $('<strong>', {
                                     text: password
@@ -91,9 +120,8 @@ $(document).ready(function() {
                 ]
             }).insertAfter($pwdGenerator);
 
-            // Prefill password field if needed
-            if($(".pwd_prefill").length && $pwdElements.val() == '') {
-                $("#pwd_generate").trigger("click");
+            if($('.pwd_prefill').length && $pwdElements.val() == '') {
+                $('#pwd_generate').trigger('click');
             }
         }
     };
@@ -135,15 +163,11 @@ $(document).ready(function() {
     };
 
     $(function() {
-        var $phpEditorDialog = $("#php_editor_dialog");
-        if (!$phpEditorDialog.length) return; // Avoid attaching event handler when not necessary
+        var $phpEditorDialog = $('#php_editor_dialog');
+        if(!$phpEditorDialog.length) return;
 
-        $phpEditorDialog.dialog({
-            focus: false,
+        $phpEditorDialog.dialog(dialogOptions({
             autoOpen: false,
-            width: 650,
-            modal: true,
-            appendTo: "form",
             buttons: [
                 {
                     text: imscp_i18n.core.close,
@@ -151,74 +175,63 @@ $(document).ready(function() {
                         $(this).dialog('close');
                     }
                 }
-            ],
-            open() {
-                var $dialog = $(this);
-                $(window).on("resize scroll", function() {
-                    $dialog.dialog("option", "position", { my: "center", at: "center", of: window });
-                });
-            },
-            close() {
-                $('input').blur();
-                $(window).off("resize scroll");
-            }
-        });
+            ]
+        }, false, (e, elem) => {
+            $('input').blur();
+        }, true));
 
-        $("form").submit(function (e) {
-            if (!$("#php_editor_msg_default").length) {
+        $('form').submit(function(e) {
+            if (!$('#php_editor_msg_default').length) {
                 e.preventDefault();
-                $phpEditorDialog.dialog("open");
+                $phpEditorDialog.dialog('open');
                 return false;
             }
             return true;
         });
 
-        var $phpEditorBlock = $("#php_editor_block");
+        var $phpEditorBlock = $('#php_editor_block');
         if($phpEditorBlock.length) {
-            if ($("#php_no").is(":checked")) {
+            if ($('#php_no').is(':checked')) {
                 $phpEditorBlock.hide();
             }
-
-            $("#php_yes,#php_no").change(function () {
+            $('#php_yes, #php_no').change(function() {
                 $phpEditorBlock.toggle();
             });
         }
 
-        var $phpEditorDialogOpen = $("#php_editor_dialog_open");
+        var $phpEditorDialogOpen = $('#php_editor_dialog_open');
 
-        $phpEditorDialogOpen.click(function () {
-            $phpEditorDialog.dialog("open");
+        $phpEditorDialogOpen.click(function() {
+            $phpEditorDialog.dialog('open');
         });
 
-        if ($("#php_ini_system_no").is(":checked")) {
+        if($('#php_ini_system_no').is(':checked')) {
             $phpEditorDialogOpen.hide();
         }
 
-        $("#php_ini_system_yes, #php_ini_system_no").change(function () {
+        $('#php_ini_system_yes, #php_ini_system_no').change(function() {
             $phpEditorDialogOpen.fadeToggle();
         });
 
-        var $errorMessages = $(".php_editor_error");
+        var $errorMessages = $('.php_editor_error');
 
         function _updateMesssages(k, t) {
-            if (typeof(t) != "undefined") {
-                if (!$("#err_" + k).length) {
-                    $("#php_editor_msg_default").remove();
-                    $errorMessages.append('<span style="display:block" id="err_' + k + '">' + t + "</span>").
-                        removeClass("static_success").addClass("static_error");
+            if(typeof(t) != 'undefined') {
+                if(!$('#err_' + k).length) {
+                    $('#php_editor_msg_default').remove();
+                    $errorMessages.append('<span style="display:block" id="err_' + k + '">' + t + '</span>').removeClass('static_success').addClass('static_error');
                 }
-            } else if ($("#err_" + k).length) {
-                $("#err_" + k).remove();
+            } else if($('#err_' + k).length) {
+                $('#err_' + k).remove();
             }
 
-            if ($.trim($errorMessages.text()) == "") {
-                $errorMessages.empty().append('<span id="php_editor_msg_default">' + imscp_i18n.core.fields_ok + '</span>').
-                    removeClass("static_error").addClass("static_success");
+            if($.trim($errorMessages.text()) == '') {
+                $errorMessages.empty().append('<span id="php_editor_msg_default">' + imscp_i18n.core.fields_ok + '</span>').removeClass('static_error').addClass('static_success');
             }
         }
 
         var timerId;
-        var $iniFields = $("#php_ini_values").find("input");
+        var $iniFields = $('#php_ini_values').find('input');
 
         $iniFields.on('keyup click', function () {
             clearTimeout(timerId);
@@ -226,74 +239,57 @@ $(document).ready(function() {
                 $iniFields.each(function () { // We revalidate all fields because some are dependent of others
                     var id = $(this).attr("id");
                     var curLimit = parseInt($(this).val() || 0);
-                    var maxLimit = parseInt($(this).attr("max"));
+                    var maxLimit = parseInt($(this).attr('max'));
 
-                    if (curLimit < 1 || curLimit > maxLimit) {
-                        $(this).addClass("ui-state-error");
+                    if(curLimit < 1 || curLimit > maxLimit) {
+                        $(this).addClass('ui-state-error');
                         _updateMesssages(id, sprintf(imscp_i18n.core.out_of_range_value_error, '<strong>' + id + '</strong>', 1, maxLimit));
-                    } else if (id == 'upload_max_filesize' && parseInt($("#post_max_size").val()) < curLimit) {
-                        $(this).addClass("ui-state-error");
+                    } else if(id == 'upload_max_filesize' && parseInt($('#post_max_size').val()) < curLimit) {
+                        $(this).addClass('ui-state-error');
                         _updateMesssages(id, sprintf(imscp_i18n.core.lower_value_expected_error, '<strong>' + id + '</strong>', '<strong>post_max_size</strong>'));
                     } else {
-                        $(this).removeClass("ui-state-error");
+                        $(this).removeClass('ui-state-error');
                         _updateMesssages(id);
                     }
                 });
             }, 200);
-        }).first().trigger('keyup'); // We trigger the keyup event on page load to catch any inconsistency with ini values
+        }).first().trigger('keyup');
     });
 
     $(function() {
-        if(!$(".ftp_choose_dir").length) return; // Avoid attaching event handler when not necessary
+        if(!$('.ftp_choose_dir').length) return;
 
-        $("body").on("click", ".ftp_choose_dir", function () {
-            var $dialog = $("#ftp_choose_dir_dialog");
-
+        $('body').on('click', '.ftp_choose_dir', function () {
+            let $dialog = $('#ftp_choose_dir_dialog');
             if($dialog.length) {
-                var link = $(this).data("link") || 'none';
-
-                if(link == "none") { // 'none' means that we want set directory.
-                    var directory = $(this).data("directory");
+                let link = $(this).data('link') || 'none';
+                if(link == 'none') {
+                    var directory = $(this).data('directory');
                     if(directory == '') directory = '/';
-                    $("#ftp_directory").val(directory);
-                    $dialog.dialog("close");
-                } else { // We already have a dialog. We just need to update it content
-                    $.get(link, function(data) {
-                        $dialog.html(data).dialog("open").find('table').trigger('updateTable').tooltip();
-                    }).fail(function() {
-                        alert("Request failed");
+                    $('#ftp_directory').val(directory);
+                    $dialog.dialog('close');
+                } else {
+                    $.get(link, data => {
+                        $dialog.html(data).dialog('open');
+                    }).fail(response => {
+                        alert('Request failed');
                     });
                 }
-            } else { // No dialog. We create one
-                $.get("/shared/ftp_choose_dir.php", function(data) {
-                    $dialog = $('<div id="ftp_choose_dir_dialog">').html(data).dialog({
-                        focus: false,
-                        width: 650,
-                        height: 500,
+            } else {
+                $.get('/shared/ftp_choose_dir.php', data => {
+                    $dialog = $('<div id="ftp_choose_dir_dialog">').html(data).dialog(dialogOptions({
                         autoOpen: true,
-                        appendTo: "body",
-                        modal: true,
-                        title: imscp_i18n.core.ftp_directories,
-                        buttons: [{
-                            text: imscp_i18n.core.close,
-                            click: function () {
-                                $(this).dialog("close");
+                        buttons: [
+                            {
+                                text: imscp_i18n.core.close,
+                                click() {
+                                    $(this).dialog('close');
+                                }
                             }
-                        }],
-                        open() {
-                            var $dialog = $(this);
-                            $dialog.find('table').trigger('updateTable').tooltip();
-                            $(window).on("resize scroll", function() {
-                                $dialog.dialog("option", "position", { my: "center", at: "center", of: window });
-                            });
-                        },
-                        close() {
-                            $(window).off("resize scroll");
-                            $(this).remove();
-                        }
-                    });
-                }).fail(function() {
-                    alert("Request failed")
+                        ]
+                    }));
+                }).fail(response => {
+                    alert('Request failed')
                 });
             }
         });

@@ -12,7 +12,6 @@
     <link rel="shortcut icon" href="{THEME_ASSETS_PATH}/images/favicon.ico">
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/jquery-ui.css">
     <link rel="stylesheet" href="{THEME_ASSETS_PATH}/css/style.min.css">
 
     <script>
@@ -89,6 +88,8 @@
         {LAYOUT_CONTENT}
 
     </section>
+
+    <div id="overlay"></div>
 
     <script>
         eva.replace();

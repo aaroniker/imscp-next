@@ -19,6 +19,9 @@ body {
             }
         }
     }
+    &.overlay {
+        overflow: hidden;
+    }
 }
 
 html {
