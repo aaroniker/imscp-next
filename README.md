@@ -7,6 +7,8 @@
 Still heavily work in progress, so it may looks a bit unfinished.  
 If there is **broken functionality** or layout issues (maybe broken layout for some languages because of the translation) please report [under issues](https://github.com/aaroniker/imscp-next/issues).
 
+Because many people asked how to support me - you can by [donating with PayPal here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q43ZCK5VERE4Q&source=url).
+
 ## How to use
 
 * Download & copy the `themes/next` folder to `/var/www/imscp/gui/themes`
