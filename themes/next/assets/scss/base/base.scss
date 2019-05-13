@@ -4,9 +4,13 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html {
+    height: var(--min-height);
+}
+
 html,
 body {
-    min-height: 100vh;
+    min-height: var(--min-height);
     @include max(md) {
         &.openSide {
             overflow: hidden;

@@ -7,7 +7,7 @@
 </script>
 
 <!-- BDP: administrator_list -->
-<div class="list">
+<div class="list adminlist">
     <header>
         <h3><?=tohtml(tr('Administrator')); ?></h3>
     </header>
@@ -21,21 +21,26 @@
     <ul>
         <!-- BDP: administrator_item -->
         <li>
-            <div class="username">{ADMINISTRATOR_USERNAME}</div>
+            <div class="username">
+                {ADMINISTRATOR_USERNAME}
+                <small>
+                    {ADMINISTRATOR_CREATED_ON} ({ADMINISTRATPR_CREATED_BY})
+                </small>
+            </div>
             <div class="created_on">{ADMINISTRATOR_CREATED_ON}</div>
             <div class="created_by">{ADMINISTRATPR_CREATED_BY}</div>
             <div>
-                <a href="user_edit.php?edit_id={ADMINISTRATOR_ID}" class="btn sm muted"><?=tohtml(tr('Edit')); ?></a>
-                <!-- BDP: administrator_delete_link -->
-                <div class="dropdown">
+                <div ref="dropdown" class="dropdown">
                     <span>
                         <i></i>
                     </span>
                     <ul>
+                        <li><a href="user_edit.php?edit_id={ADMINISTRATOR_ID}"><?=tohtml(tr('Edit')); ?></a></li>
+                        <!-- BDP: administrator_delete_link -->
                         <li class="delete"><a href="user_delete.php?delete_id={ADMINISTRATOR_ID}" onclick="return action_delete(this)"><?=tohtml(tr('Delete')); ?></a></li>
+                        <!-- EDP: administrator_delete_link -->
                     </ul>
                 </div>
-                <!-- EDP: administrator_delete_link -->
             </div>
         </li>
         <!-- EDP: administrator_item -->
@@ -49,7 +54,7 @@
 <!-- EDP: administrator_list -->
 
 <!-- BDP: reseller_list -->
-<div class="list">
+<div class="list adminlist">
     <header>
         <h3><?=tohtml(tr('Resellers')); ?></h3>
     </header>
@@ -63,12 +68,20 @@
     <ul>
         <!-- BDP: reseller_item -->
         <li>
-            <div class="username">{RESELLER_USERNAME}</div>
+            <div class="username">
+                {RESELLER_USERNAME}
+                <small>
+                    {RESELLER_CREATED_ON} ({RESELLER_CREATED_BY})
+                </small>
+            </div>
             <div class="created_on">{RESELLER_CREATED_ON}</div>
             <div class="created_by">{RESELLER_CREATED_BY}</div>
             <div>
-                <a href="change_user_interface.php?to_id={RESELLER_ID}" class="btn sm muted"><?=tohtml(tr('Switch')); ?></a>
-                <div class="dropdown">
+                <a href="change_user_interface.php?to_id={RESELLER_ID}" class="btn sm muted switch">
+                    <i data-eva="swap"></i>
+                    <span><?=tohtml(tr('Switch')); ?></span>
+                </a>
+                <div ref="dropdown" class="dropdown">
                     <span>
                         <i></i>
                     </span>

@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    let setMinHeight = e => {
+        document.documentElement.style.setProperty('--min-height', window.innerHeight + 'px');
+    };
+
+    $(window).on('resize', setMinHeight).trigger('resize');
+
     let body = $('body'),
         overlay = $('#overlay'),
         dialogOptions = (options, open, close, stay) => {
@@ -32,18 +38,14 @@ $(document).ready(function() {
                 overlay.removeClass('show');
 
                 setTimeout(() => {
-
                     body.removeClass('overlay');
                     overlay.addClass('hide');
-
                     if(!stay) {
                         elem.remove();
                     }
-
                     if(close && typeof(close) === 'function') {
                         close(e, elem);
                     }
-
                 }, 200);
 
             }
@@ -76,6 +78,15 @@ $(document).ready(function() {
     $('#mobile .burger').on('click', e => {
         $(e.currentTarget).toggleClass('active');
         $('html, body').toggleClass('openSide');
+    });
+
+    $(document).on('touchstart', function(e) {
+        $('[ref="dropdown"]').removeClass('open');
+    });
+
+    $('[ref="dropdown"]').on('touchstart', function(e) {
+        e.stopPropagation();
+        $(this).toggleClass('open');
     });
 
     $('[data-tooltip]').tooltip();

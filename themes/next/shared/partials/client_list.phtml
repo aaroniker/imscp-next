@@ -27,6 +27,7 @@
                 <a href="domain_status_change.php?domain_id={CLIENT_DOMAIN_ID}" data-tooltip="{TR_CLIENT_STATUS_TOOLTIP}" class="{CLIENT_STATUS_CLASS}">
                     <i data-eva="checkmark-circle-2"></i>
                     <i data-eva="close-circle"></i>
+                    <strong><?=tohtml(tr('Status')); ?></strong>
                 </a>
             </div>
             <div class="user">
@@ -46,6 +47,7 @@
                 <span data-tooltip="{TR_CLIENT_STATUS_TOOLTIP}" class="{CLIENT_STATUS_CLASS}">
                     <i data-eva="alert-circle"></i>
                     <i data-eva="refresh"></i>
+                    <strong><?=tohtml(tr('Status')); ?></strong>
                 </span>
             </div>
             <div class="user">
@@ -58,8 +60,11 @@
             </div>
             <!-- EDP: client_domain_status_not_ok -->
             <div>
-                <a href="change_user_interface.php?to_id={CLIENT_ID}" class="btn sm muted"><?=tohtml(tr('Switch')); ?></a>
-                <div class="dropdown">
+                <a href="change_user_interface.php?to_id={CLIENT_ID}" class="btn sm muted switch">
+                    <i data-eva="swap"></i>
+                    <span><?=tohtml(tr('Switch')); ?></span>
+                </a>
+                <div ref="dropdown" class="dropdown">
                     <span>
                         <i></i>
                     </span>
@@ -81,6 +86,7 @@
             <div class="status">
                 <span data-tooltip="<?=tohtml(tr('Domain alias')); ?>" class="alias">
                     <i data-eva="globe"></i>
+                    <strong><?=tohtml(tr('Domain alias')); ?></strong>
                 </span>
             </div>
             <div class="user">
