@@ -89,7 +89,7 @@
 
     </section>
 
-    <div id="overlay"></div>
+    <div id="overlay" class="hide"></div>
 
     <script>
         eva.replace();

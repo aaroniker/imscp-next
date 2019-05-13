@@ -18,7 +18,7 @@ $(document).ready(function() {
                 elem.removeAttr('style');
 
                 body.addClass('overlay');
-                overlay.addClass('show');
+                overlay.removeClass('hide').addClass('show');
 
                 if(open && typeof(open) === 'function') {
                     open(e, elem);
@@ -29,16 +29,22 @@ $(document).ready(function() {
 
                 let elem = $(e.target).closest('.ui-dialog');
 
-                body.removeClass('overlay');
                 overlay.removeClass('show');
 
-                if(!stay) {
-                    elem.remove();
-                }
+                setTimeout(() => {
 
-                if(close && typeof(close) === 'function') {
-                    close(e, elem);
-                }
+                    body.removeClass('overlay');
+                    overlay.addClass('hide');
+
+                    if(!stay) {
+                        elem.remove();
+                    }
+
+                    if(close && typeof(close) === 'function') {
+                        close(e, elem);
+                    }
+
+                }, 200);
 
             }
         });
@@ -51,6 +57,7 @@ $(document).ready(function() {
             buttons: [
                 {
                     text: imscp_i18n.core.ok,
+                    class: 'btn sm',
                     click() {
                         $(this).dialog('close');
                     }
@@ -107,6 +114,7 @@ $(document).ready(function() {
                                 buttons: [
                                     {
                                         text: imscp_i18n.core.close,
+                                        class: 'btn sm',
                                         click() {
                                             $(this).dialog('close');
                                         }
@@ -136,6 +144,7 @@ $(document).ready(function() {
                 buttons: [
                     {
                         text: imscp_i18n.core.yes,
+                        class: 'btn sm',
                         click() {
                             $(this).dialog('close');
                             callback(true);
@@ -143,6 +152,7 @@ $(document).ready(function() {
                     },
                     {
                         text: imscp_i18n.core.no,
+                        class: 'btn sm muted',
                         click() {
                             $(this).dialog('close');
                             callback(false);
@@ -171,6 +181,7 @@ $(document).ready(function() {
             buttons: [
                 {
                     text: imscp_i18n.core.close,
+                    class: 'btn sm',
                     click() {
                         $(this).dialog('close');
                     }
@@ -282,6 +293,7 @@ $(document).ready(function() {
                         buttons: [
                             {
                                 text: imscp_i18n.core.close,
+                                class: 'btn sm',
                                 click() {
                                     $(this).dialog('close');
                                 }

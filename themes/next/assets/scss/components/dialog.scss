@@ -6,20 +6,96 @@
     top: 0;
     right: 0;
     bottom: 0;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     overflow: auto;
+    visibility: hidden;
+    opacity: 0;
     z-index: 20;
     background: var(--overlay);
     padding: 32px 20px;
-    &.show {
-        display: flex;
+    transition: opacity .2s ease, visibility .2s ease;
+    &.hide {
+        display: none;
     }
     .ui-dialog {
+        --y: -8px;
+        --s: .98;
+        outline: none;
         margin: auto;
+        padding: 16px 20px;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 4px 16px var(--black);
+        transition: opacity .2s ease, visibility .2s ease, transform .24s ease;
+        transform: translateY(var(--y)) scale(var(--s));
+        .ui-dialog-titlebar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            .ui-dialog-title {
+                color: var(--text-dark);
+                font-size: 18px;
+                font-weight: 500;
+                display: block;
+            }
+            button {
+                border: 0;
+                background: none;
+                display: block;
+                outline: none;
+                padding: 0;
+                text-indent: -9999px;
+                width: 24px;
+                height: 24px;
+                position: relative;
+                &:before,
+                &:after {
+                    --r: 45deg;
+                    content: '';
+                    width: 16px;
+                    height: 2px;
+                    border-radius: 1px;
+                    background: var(--text);
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    margin: -1px 0 0 -8px;
+                    transform-origin: 50% 50%;
+                    transform: rotate(var(--r));
+                }
+                &:after {
+                    --r: -45deg;
+                }
+            }
+        }
+        .ui-dialog-content {
+            margin-bottom: 16px;
+        }
+        .ui-dialog-buttonpane {
+            button {
+                display: block;
+                &:not(:last-child) {
+                    margin-right: 12px;
+                }
+            }
+            .ui-dialog-buttonset {
+                display: flex;
+            }
+        }
     }
-}
-
-.ui-widget-overlay {
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        .ui-dialog {
+            --y: 0;
+            --s: 1;
+            transition-delay: .18s;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
 }
