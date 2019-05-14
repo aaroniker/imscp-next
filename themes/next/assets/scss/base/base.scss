@@ -55,6 +55,12 @@ body {
                 margin: 0 0 24px 0;
                 line-height: 1;
             }
+            .message-container {
+                margin: 20px 0;
+                @include max(xs) {
+                    margin: 12px 0;
+                }
+            }
             .copyright {
                 --color: var(--text-light);
                 display: table;
