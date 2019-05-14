@@ -6,6 +6,9 @@
     border: 1px solid var(--border);
     box-shadow: 0 1px 2px var(--shadow);
     margin: 24px 0;
+    @include max(xs) {
+        margin: 16px 0 24px 0;
+    }
     header {
         padding: 16px 20px;
         display: flex;
