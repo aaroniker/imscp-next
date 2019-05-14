@@ -83,8 +83,6 @@
             <!-- EDP: page_message -->
         </div>
 
-        <h2>{TR_TITLE}</h2>
-
         {LAYOUT_CONTENT}
 
     </section>
