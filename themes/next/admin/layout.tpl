@@ -25,10 +25,23 @@
 <!-- BDP: logo_remove_button -->
 <form name="ispLogoDeleteFrm" method="post" enctype="application/x-www-form-urlencoded" action="layout.php">
     <input type="hidden" name="uaction" value="deleteIspLogo">
-    <img src="{OWN_LOGO}">
-    <button class="btn" name="Submit" type="submit">
-        {TR_REMOVE}
-    </button>
+    <div class="form sectionBox horizontal">
+        <header>
+            <h3>{TR_LOGO_FILE}</h3>
+        </header>
+        <section>
+            <div class="form-element logo-delete">
+                <div>
+                    <img src="{OWN_LOGO}">
+                </div>
+                <div>
+                    <button class="btn" name="Submit" type="submit">
+                        {TR_REMOVE}
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
 </form>
 <!-- EDP: logo_remove_button -->
 

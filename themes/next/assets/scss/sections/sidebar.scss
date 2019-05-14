@@ -32,6 +32,7 @@
             display: block;
             margin: 32px;
             max-width: 112px;
+            max-height: 56px;
             @include max(md) {
                 display: none;
             }

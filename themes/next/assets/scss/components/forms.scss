@@ -151,6 +151,14 @@
             }
         }
     }
+    .logo-delete {
+        img {
+            display: block;
+            max-width: 120px;
+            max-height: 48px;
+            margin-bottom: 12px;
+        }
+    }
     &.horizontal {
         .form-element {
             @include min(sm) {
@@ -174,6 +182,13 @@
                 }
                 .buttons {
                     grid-column: 2;
+                }
+            }
+        }
+        .logo-delete {
+            img {
+                @include min(sm) {
+                    margin-bottom: 0;
                 }
             }
         }

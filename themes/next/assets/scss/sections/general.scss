@@ -222,7 +222,8 @@
     }
     & > img {
         display: table;
-        height: 44px;
+        max-width: 112px;
+        max-height: 56px;
     }
     .right {
         display: flex;
