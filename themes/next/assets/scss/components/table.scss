@@ -1,0 +1,32 @@
+//main: ../style.scss
+
+.table {
+    --columns: 2;
+    & > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        & > li {
+            display: grid;
+            align-items: center;
+            padding: 12px 20px;
+            grid-gap: 12px;
+            &:not(:last-child) {
+                border-bottom: 1px solid var(--line);
+            }
+            @include min(xxs) {
+                grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+            }
+            @include max(xxs) {
+                grid-gap: 4px;
+                padding: 8px 12px;
+            }
+            & > div {
+                &:first-child {
+                    font-weight: 500;
+                    color: var(--text-dark);
+                }
+            }
+        }
+    }
+}

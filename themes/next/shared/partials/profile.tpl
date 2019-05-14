@@ -1,22 +1,19 @@
-
-<table class="firstColFixed">
-    <thead>
-    <tr>
-        <th colspan="2">{TR_ACCOUNT_SUMMARY}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>{TR_USERNAME}</td>
-        <td>{USERNAME}</td>
-    </tr>
-    <tr>
-        <td>{TR_ACCOUNT_TYPE}</td>
-        <td>{ACCOUNT_TYPE}</td>
-    </tr>
-    <tr>
-        <td>{TR_REGISTRATION_DATE}</td>
-        <td>{REGISTRATION_DATE}</td>
-    </tr>
-    </tbody>
-</table>
+<div class="table sectionBox">
+    <header>
+        <h3>{TR_ACCOUNT_SUMMARY}</h3>
+    </header>
+    <ul>
+        <li>
+            <div>{TR_USERNAME}</div>
+            <div>{USERNAME}</div>
+        </li>
+        <li>
+            <div>{TR_ACCOUNT_TYPE}</div>
+            <div>{ACCOUNT_TYPE}</div>
+        </li>
+        <li>
+            <div>{TR_REGISTRATION_DATE}</div>
+            <div>{REGISTRATION_DATE}</div>
+        </li>
+    </ul>
+</div>
