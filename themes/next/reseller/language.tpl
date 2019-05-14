@@ -16,9 +16,11 @@
                 </div>
             </div>
             <div class="form-element">
-                <button name="Submit" type="submit" class="btn">
-                    {TR_UPDATE}
-                </button>
+                <div class="action">
+                    <button name="Submit" type="submit" class="btn">
+                        {TR_UPDATE}
+                    </button>
+                </div>
             </div>
         </section>
     </div>

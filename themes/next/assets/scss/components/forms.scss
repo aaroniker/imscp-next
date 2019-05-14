@@ -138,10 +138,33 @@
         @include max(xxs) {
             padding: 16px 12px;
         }
+        &.two-columns {
+            @include min(lg) {
+                display: grid;
+                grid-gap: 20px 8%;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                .form-element {
+                    &:last-child {
+                        grid-column: 1 / 3;
+                    }
+                }
+            }
+        }
     }
     .form-element {
         &:last-child {
             margin-bottom: 0;
+        }
+    }
+    .action {
+        display: flex;
+        .btn {
+            &:not(:last-child) {
+                margin-right: 16px;
+                @include max(xs) {
+                    margin-right: 12px;
+                }
+            }
         }
     }
     &.horizontal {
@@ -154,10 +177,16 @@
                     margin-bottom: 0;
                     font-size: 16px;
                 }
-                button {
+                .action {
                     grid-column: 2;
                     margin-left: auto;
-                    display: table;
+                    flex-direction: row-reverse;
+                    .btn {
+                        &:not(:last-child) {
+                            margin-left: 20px;
+                            margin-right: 0;
+                        }
+                    }
                 }
             }
         }

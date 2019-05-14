@@ -38,10 +38,16 @@
 }
 
 .message-container {
+    margin: 20px 0 32px 0;
+    @include max(xs) {
+        margin: 12px 0 20px 0;
+    }
     .message {
-        margin: 20px 0 32px 0;
-        @include max(xs) {
-            margin: 12px 0 20px 0;
+        &:not(:last-child) {
+            margin-bottom: 16px;
+            @include max(xs) {
+                margin-bottom: 12px;
+            }
         }
     }
 }
