@@ -91,30 +91,30 @@ $(document).ready(function() {
 
     $('[data-tooltip]').tooltip();
 
-    var passwordGenerator = function() {
-        var $pwdGenerator = $('.pwd_generator');
-
-        if($pwdGenerator.length) {
-            var $pwdElements = $('#password, #cpassword');
-
-            $('<span>', {
-                style: 'display:inline-block;margin-left:5px',
+    let passwordGenerator = () => {
+        let input = $('.pwd_generator');
+        if(input.length) {
+            let inputs = $('#password, #cpassword');
+            $('<div>', {
+                class: 'password-generate',
                 html: [
                     $('<button>', {
                         id: 'pwd_generate',
                         type: 'button',
+                        class: 'btn sm',
                         text: imscp_i18n.core.generate
                     }).pGenerator({
-                        'passwordElement': $pwdElements,
+                        'passwordElement': inputs,
                         'passwordLength': imscp_i18n.core.password_length > 16 ? imscp_i18n.core.password_length : 16,
                         'specialChars': false
                     }),
                     $('<button>', {
                         id: 'pwd_show',
                         type: 'button',
+                        class: 'btn muted sm',
                         text: imscp_i18n.core.show
                     }).click(function() {
-                        var password = $pwdElements.first().val();
+                        let password = inputs.first().val();
                         if(password != '') {
                             $('<div>', {
                                 html: $('<strong>', {
@@ -137,9 +137,8 @@ $(document).ready(function() {
                         }
                     })
                 ]
-            }).insertAfter($pwdGenerator);
-
-            if($('.pwd_prefill').length && $pwdElements.val() == '') {
+            }).insertAfter(input);
+            if($('.pwd_prefill').length && inputs.val() == '') {
                 $('#pwd_generate').trigger('click');
             }
         }

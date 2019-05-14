@@ -106,6 +106,18 @@
         margin: 0 0 4px 0;
         display: block;
     }
+    .password-generate {
+        margin-top: 12px;
+        display: flex;
+        @include max(xs) {
+            margin-top: 8px;
+        }
+        .btn {
+            &:not(:last-child) {
+                margin-right: 8px;
+            }
+        }
+    }
 }
 
 .form {
@@ -187,6 +199,9 @@
                             margin-right: 0;
                         }
                     }
+                }
+                .password-generate {
+                    grid-column: 2;
                 }
             }
         }
