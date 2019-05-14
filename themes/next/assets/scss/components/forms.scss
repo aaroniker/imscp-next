@@ -106,7 +106,7 @@
         margin: 0 0 4px 0;
         display: block;
     }
-    .password-generate {
+    .buttons {
         margin-top: 12px;
         display: flex;
         @include max(xs) {
@@ -200,7 +200,7 @@
                         }
                     }
                 }
-                .password-generate {
+                .buttons {
                     grid-column: 2;
                 }
             }

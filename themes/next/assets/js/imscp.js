@@ -96,7 +96,7 @@ $(document).ready(function() {
         if(input.length) {
             let inputs = $('#password, #cpassword');
             $('<div>', {
-                class: 'password-generate',
+                class: 'buttons',
                 html: [
                     $('<button>', {
                         id: 'pwd_generate',

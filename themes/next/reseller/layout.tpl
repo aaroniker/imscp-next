@@ -1,83 +1,90 @@
-
-<table class="firstColFixed">
-    <thead>
-    <tr>
-        <th>{TR_LOGO_FILE}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- BDP: logo_remove_button -->
-    <tr>
-        <td style="text-align:center;">
-            <img src="{OWN_LOGO}" alt="reseller logo"/>
-
-            <form method="post" action="layout.php">
-                <div class="buttons">
-                    <input type="hidden" name="uaction" value="deleteIspLogo">
-                    <input name="Submit" type="submit" value="{TR_REMOVE}">
+<form enctype="multipart/form-data" name="set_layout" method="post" action="layout.php">
+    <input type="hidden" name="uaction" value="updateIspLogo">
+    <div class="form horizontal">
+        <header>
+            <h3>{TR_TITLE}</h3>
+        </header>
+        <section>
+            <div class="form-element">
+                <label>{TR_LOGO_FILE}</label>
+                <div>
+                    <input class="form-field" type="file" name="logoFile">
                 </div>
-            </form>
-        </td>
-    </tr>
-    <!-- EDP: logo_remove_button -->
-    <tr>
-        <td>
-            <form enctype="multipart/form-data" name="set_layout" method="post" action="layout.php">
-                <input type="file" name="logoFile">
-
-                <div class="buttons" style="display: inline;">
-                    <input type="hidden" name="uaction" value="updateIspLogo">
-                    <input name="Submit" type="submit" value="{TR_UPLOAD}">
+            </div>
+            <div class="form-element">
+                <div class="action">
+                    <button class="btn" type="submit" name="Submit">
+                        {TR_UPLOAD}
+                    </button>
                 </div>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+            </div>
+        </section>
+    </div>
+</form>
+
+<!-- BDP: logo_remove_button -->
+<form method="post" action="layout.php">
+    <input type="hidden" name="uaction" value="deleteIspLogo">
+    <img src="{OWN_LOGO}">
+    <button class="btn" name="Submit" type="submit">
+        {TR_REMOVE}
+    </button>
+</form>
+<!-- EDP: logo_remove_button -->
+
 <!-- BDP: layout_colors_block -->
-<form class="layoutColor" method="post" action="layout.php">
-    <table class="firstColFixed">
-        <thead>
-        <tr>
-            <th colspan="2">{TR_LAYOUT_COLOR}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><label for="layoutColor">{TR_CHOOSE_LAYOUT_COLOR}</label></td>
-            <td>
-                <select name="layoutColor" id="layoutColor">
-                    <!-- BDP: layout_color_block -->
-                    <option value="{COLOR}" {SELECTED_COLOR}>{COLOR}</option>
-                    <!-- EDP: layout_color_block -->
-                </select>
-                <input name="Submit" type="submit" value="{TR_CHANGE}">
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <input type="hidden" name="uaction" value="changeLayoutColor"/>
+<form method="post" action="layout.php">
+    <input type="hidden" name="uaction" value="changeLayoutColor">
+    <div class="form horizontal">
+        <header>
+            <h3>{TR_LAYOUT_COLOR}</h3>
+        </header>
+        <section>
+            <div class="form-element">
+                <label for="layoutColor">{TR_CHOOSE_LAYOUT_COLOR}</label>
+                <div class="form-select">
+                    <select name="layoutColor" id="layoutColor">
+                        <!-- BDP: layout_color_block -->
+                        <option value="{COLOR}" {SELECTED_COLOR}>{COLOR}</option>
+                        <!-- EDP: layout_color_block -->
+                    </select>
+                </div>
+            </div>
+            <div class="form-element">
+                <div class="action">
+                    <button class="btn" type="submit" name="Submit">
+                        {TR_CHANGE}
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
 </form>
 <!-- EDP: layout_colors_block -->
+
 <form name="otherSettings" method="post" action="layout.php">
-    <table class="firstColFixed">
-        <thead>
-        <tr>
-            <th colspan="2">{TR_OTHER_SETTINGS}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><label for="mainMenuShowLabels">{TR_MAIN_MENU_SHOW_LABELS}</label></td>
-            <td>
-                <select name="mainMenuShowLabels" id="mainMenuShowLabels">
-                    <option value="0"{MAIN_MENU_SHOW_LABELS_OFF}>{TR_DISABLED}</option>
-                    <option value="1"{MAIN_MENU_SHOW_LABELS_ON}>{TR_ENABLED}</option>
-                </select>
-                <input type="hidden" name="uaction" value="changeShowLabels">
-                <input name="Submit" type="submit" value="{TR_CHANGE}">
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <input type="hidden" name="uaction" value="changeShowLabels">
+    <div class="form horizontal">
+        <header>
+            <h3>{TR_OTHER_SETTINGS}</h3>
+        </header>
+        <section>
+            <div class="form-element">
+                <label for="mainMenuShowLabels">{TR_MAIN_MENU_SHOW_LABELS}</label>
+                <div class="form-select">
+                    <select name="mainMenuShowLabels" id="mainMenuShowLabels">
+                        <option value="0"{MAIN_MENU_SHOW_LABELS_OFF}>{TR_DISABLED}</option>
+                        <option value="1"{MAIN_MENU_SHOW_LABELS_ON}>{TR_ENABLED}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-element">
+                <div class="action">
+                    <button class="btn" type="submit" name="Submit">
+                        {TR_CHANGE}
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
 </form>
