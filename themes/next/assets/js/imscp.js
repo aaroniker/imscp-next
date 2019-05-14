@@ -113,7 +113,7 @@ $(document).ready(function() {
                         type: 'button',
                         class: 'btn muted sm',
                         text: imscp_i18n.core.show
-                    }).click(function() {
+                    }).click(e => {
                         let password = inputs.first().val();
                         if(password != '') {
                             $('<div>', {
@@ -183,10 +183,10 @@ $(document).ready(function() {
     };
 
     $(function() {
-        var $phpEditorDialog = $('#php_editor_dialog');
-        if(!$phpEditorDialog.length) return;
+        let dialog = $('#php_editor_dialog');
+        if(!dialog.length) return;
 
-        $phpEditorDialog.dialog(dialogOptions({
+        dialog.dialog(dialogOptions({
             autoOpen: false,
             buttons: [
                 {
@@ -204,64 +204,62 @@ $(document).ready(function() {
         $('form').submit(function(e) {
             if (!$('#php_editor_msg_default').length) {
                 e.preventDefault();
-                $phpEditorDialog.dialog('open');
+                dialog.dialog('open');
                 return false;
             }
             return true;
         });
 
-        var $phpEditorBlock = $('#php_editor_block');
-        if($phpEditorBlock.length) {
-            if ($('#php_no').is(':checked')) {
-                $phpEditorBlock.hide();
+        let block = $('#php_editor_block');
+        if(block.length) {
+            if($('#php_no').is(':checked')) {
+                block.hide();
             }
             $('#php_yes, #php_no').change(function() {
-                $phpEditorBlock.toggle();
+                block.toggle();
             });
         }
 
-        var $phpEditorDialogOpen = $('#php_editor_dialog_open');
+        let dialogOpen = $('#php_editor_dialog_open');
 
-        $phpEditorDialogOpen.click(function() {
-            $phpEditorDialog.dialog('open');
+        dialogOpen.click(function() {
+            dialog.dialog('open');
         });
 
         if($('#php_ini_system_no').is(':checked')) {
-            $phpEditorDialogOpen.hide();
+            dialogOpen.hide();
         }
 
         $('#php_ini_system_yes, #php_ini_system_no').change(function() {
-            $phpEditorDialogOpen.fadeToggle();
+            dialogOpen.toggle();
         });
 
-        var $errorMessages = $('.php_editor_error');
+        let errorMessages = $('.php_editor_error');
 
         function _updateMesssages(k, t) {
             if(typeof(t) != 'undefined') {
                 if(!$('#err_' + k).length) {
                     $('#php_editor_msg_default').remove();
-                    $errorMessages.append('<span style="display:block" id="err_' + k + '">' + t + '</span>').removeClass('static_success').addClass('static_error');
+                    errorMessages.append('<span style="display:block" id="err_' + k + '">' + t + '</span>').removeClass('static_success').addClass('static_error');
                 }
             } else if($('#err_' + k).length) {
                 $('#err_' + k).remove();
             }
-
-            if($.trim($errorMessages.text()) == '') {
-                $errorMessages.empty().append('<span id="php_editor_msg_default">' + imscp_i18n.core.fields_ok + '</span>').removeClass('static_error').addClass('static_success');
+            if($.trim(errorMessages.text()) == '') {
+                errorMessages.empty().append('<span id="php_editor_msg_default">' + imscp_i18n.core.fields_ok + '</span>').removeClass('static_error').addClass('static_success');
             }
         }
 
         var timerId;
-        var $iniFields = $('#php_ini_values').find('input');
+        var iniFields = $('#php_ini_values').find('input');
 
-        $iniFields.on('keyup click', function () {
+        iniFields.on('keyup click', function () {
             clearTimeout(timerId);
             timerId = setTimeout(function () {
-                $iniFields.each(function () { // We revalidate all fields because some are dependent of others
+                iniFields.each(function () {
                     var id = $(this).attr("id");
                     var curLimit = parseInt($(this).val() || 0);
                     var maxLimit = parseInt($(this).attr('max'));
-
                     if(curLimit < 1 || curLimit > maxLimit) {
                         $(this).addClass('ui-state-error');
                         _updateMesssages(id, sprintf(imscp_i18n.core.out_of_range_value_error, '<strong>' + id + '</strong>', 1, maxLimit));
@@ -279,26 +277,25 @@ $(document).ready(function() {
 
     $(function() {
         if(!$('.ftp_choose_dir').length) return;
-
         $('body').on('click', '.ftp_choose_dir', function () {
-            let $dialog = $('#ftp_choose_dir_dialog');
-            if($dialog.length) {
+            let dialog = $('#ftp_choose_dir_dialog');
+            if(dialog.length) {
                 let link = $(this).data('link') || 'none';
                 if(link == 'none') {
                     var directory = $(this).data('directory');
                     if(directory == '') directory = '/';
                     $('#ftp_directory').val(directory);
-                    $dialog.dialog('close');
+                    dialog.dialog('close');
                 } else {
                     $.get(link, data => {
-                        $dialog.html(data).dialog('open');
+                        dialog.html(data).dialog('open');
                     }).fail(response => {
                         alert('Request failed');
                     });
                 }
             } else {
                 $.get('/shared/ftp_choose_dir.php', data => {
-                    $dialog = $('<div id="ftp_choose_dir_dialog">').html(data).dialog(dialogOptions({
+                    dialog = $('<div id="ftp_choose_dir_dialog">').html(data).dialog(dialogOptions({
                         autoOpen: true,
                         buttons: [
                             {
