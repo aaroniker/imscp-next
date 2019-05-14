@@ -1,32 +1,7 @@
 //main: ../style.scss
 
 .list {
-    background: #fff;
-    border-radius: 4px;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 2px var(--shadow);
-    margin: 24px 0;
-    @include max(xs) {
-        margin: 16px 0 24px 0;
-    }
-    header {
-        padding: 16px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        @include max(xxs) {
-            padding: 12px;
-        }
-        h3 {
-            margin: 0;
-        }
-    }
     footer {
-        padding: 16px 20px;
-        border-top: 1px solid var(--line);
-        @include max(xxs) {
-            padding: 12px;
-        }
         .paginate {
             margin: 0;
             padding: 0;

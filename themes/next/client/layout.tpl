@@ -1,7 +1,7 @@
 <!-- BDP: layout_colors_block -->
 <form method="post" action="layout.php">
     <input type="hidden" name="uaction" value="changeLayoutColor">
-    <div class="form horizontal">
+    <div class="form sectionBox horizontal">
         <header>
             <h3>{TR_LAYOUT_COLOR}</h3>
         </header>
@@ -30,7 +30,7 @@
 
 <form method="post" action="layout.php">
     <input type="hidden" name="uaction" value="changeShowLabels">
-    <div class="form horizontal">
+    <div class="form sectionBox horizontal">
         <header>
             <h3>{TR_OTHER_SETTINGS}</h3>
         </header>

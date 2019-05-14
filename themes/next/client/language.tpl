@@ -1,6 +1,6 @@
 <!-- BDP: languages_available -->
 <form id="client_language_frm" method="post" action="language.php">
-    <div class="form horizontal">
+    <div class="form sectionBox horizontal">
         <header>
             <h3>{TR_LANGUAGE}</h3>
         </header>

@@ -1,6 +1,6 @@
 <!-- BDP: languages_available -->
 <form name="adminChangeLanguage" method="post" action="language.php">
-    <div class="form horizontal">
+    <div class="form sectionBox horizontal">
         <header>
             <h3>{TR_LANGUAGE}</h3>
         </header>

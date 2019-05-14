@@ -1,6 +1,6 @@
 <form enctype="multipart/form-data" name="set_layout" method="post" action="layout.php">
     <input type="hidden" name="uaction" value="updateIspLogo">
-    <div class="form horizontal">
+    <div class="form sectionBox horizontal">
         <header>
             <h3>{TR_TITLE}</h3>
         </header>
@@ -35,7 +35,7 @@
 <!-- BDP: layout_colors_block -->
 <form method="post" action="layout.php">
     <input type="hidden" name="uaction" value="changeLayoutColor">
-    <div class="form horizontal">
+    <div class="form sectionBox horizontal">
         <header>
             <h3>{TR_LAYOUT_COLOR}</h3>
         </header>
@@ -64,7 +64,7 @@
 
 <form name="otherSettings" method="post" action="layout.php">
     <input type="hidden" name="uaction" value="changeShowLabels">
-    <div class="form horizontal">
+    <div class="form sectionBox horizontal">
         <header>
             <h3>{TR_OTHER_SETTINGS}</h3>
         </header>
