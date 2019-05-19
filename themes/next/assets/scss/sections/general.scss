@@ -321,16 +321,12 @@
         margin: 16px 0 24px 0;
     }
     header {
-        padding: 16px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid var(--line);
+        @include sectionHeader;
         &:not(:first-child) {
             border-top: 1px solid var(--line);
-        }
-        @include max(xxs) {
-            padding: 12px;
         }
         h3 {
             margin: 0;
@@ -343,10 +339,6 @@
         }
     }
     footer {
-        padding: 16px 20px;
-        border-top: 1px solid var(--line);
-        @include max(xxs) {
-            padding: 12px;
-        }
+        @include sectionFooter;
     }
 }

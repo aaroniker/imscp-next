@@ -31,3 +31,26 @@ $breakpoints: (
         }
     }
 }
+
+@mixin sectionHeader() {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+    @include max(xxs) {
+        padding: 12px;
+    }
+}
+
+@mixin sectionFooter() {
+    padding: 16px 20px;
+    border-top: 1px solid var(--line);
+    @include max(xxs) {
+        padding: 12px;
+    }
+}
+
+@mixin label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+    display: block;
+}

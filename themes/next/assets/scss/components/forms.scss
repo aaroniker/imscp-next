@@ -100,11 +100,8 @@
         margin-bottom: 16px;
     }
     label {
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--text-dark);
         margin: 0 0 4px 0;
-        display: block;
+        @include label;
     }
     .buttons {
         margin-top: 12px;

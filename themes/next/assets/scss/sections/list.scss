@@ -245,37 +245,3 @@
         }
     }
 }
-
-[name="search_user"] {
-    & > div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        label {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            margin: 0 12px 0 0;
-            @include max(sm) {
-                margin: 0 0 8px 0;
-                flex: 0 0 100%;
-            }
-            span {
-                display: block;
-                font-size: 14px;
-                white-space: nowrap;
-                margin-right: 12px;
-            }
-            .form-select {
-                flex-grow: 1;
-            }
-        }
-        button {
-            flex: 0 0 32px;
-            @include max(sm) {
-                margin-left: auto;
-            }
-        }
-    }
-}
