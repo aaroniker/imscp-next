@@ -132,14 +132,15 @@
                 grid-gap: 20px 8%;
                 align-items: start;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                grid-auto-flow: dense;
                 .form-element {
+                    margin-bottom: 0;
                     &.full-width {
                         grid-column: 1 / 3;
                     }
                 }
                 h4 {
                     grid-column: 1 / 3;
+                    margin-bottom: 0;
                 }
             }
         }
