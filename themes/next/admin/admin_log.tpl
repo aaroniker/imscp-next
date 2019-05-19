@@ -125,7 +125,7 @@
     <header>
         <h3>{TR_TITLE}</h3>
     </header>
-    <table>
+    <table class="th-small">
         <thead>
             <tr>
                 <th>{TR_DATE}</th>

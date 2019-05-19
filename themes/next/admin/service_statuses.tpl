@@ -1,30 +1,32 @@
-<div class="table sectionBox four-columns mobile-legend">
+<div class="table sectionBox">
     <header>
         <h3>{TR_TITLE}</h3>
         <button class="btn sm" type="button" onclick="window.location.href = window.location.href.replace(/[\?#].*|$/, '?refresh');">
             {TR_FORCE_REFRESH}
         </button>
     </header>
-    <div class="legend">
-        <ul>
-            <li>{TR_SERVICE}</li>
-            <li>{TR_IP}</li>
-            <li>{TR_PORT}</li>
-            <li>{TR_STATUS}</li>
-        </ul>
+    <div>
+        <table>
+            <thead>
+                <th>{TR_SERVICE}</th>
+                <th>{TR_IP}</th>
+                <th>{TR_PORT}</th>
+                <th>{TR_STATUS}</th>
+            </thead>
+            <tbody>
+                <!-- BDP: service_status -->
+                <tr>
+                    <td data-th="{TR_SERVICE}">{SERVICE}</td>
+                    <td data-th="{TR_IP}">{IP}</td>
+                    <td data-th="{TR_PORT}">{PORT}</td>
+                    <td data-th="{TR_SERVICE}" class="{CLASS}">
+                        <span data-tooltip="{STATUS_TOOLTIP}">
+                            <strong>{STATUS}</strong>
+                        </span>
+                    </td>
+                </tr>
+                <!-- EDP: service_status -->
+            </tbody>
+        </table>
     </div>
-    <ul>
-        <!-- BDP: service_status -->
-        <li>
-            <div data-legend="{TR_SERVICE}">{SERVICE}</div>
-            <div data-legend="{TR_IP}">{IP}</div>
-            <div data-legend="{TR_PORT}">{PORT}</div>
-            <div data-legend="{TR_STATUS}" class="{CLASS}">
-                <span data-tooltip="{STATUS_TOOLTIP}">
-                    <strong>{STATUS}</strong>
-                </span>
-            </div>
-        </li>
-        <!-- EDP: service_status -->
-    </ul>
 </div>

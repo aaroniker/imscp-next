@@ -1,19 +1,16 @@
-<div class="table sectionBox">
-    <header>
-        <h3>{TR_ACCOUNT_SUMMARY}</h3>
-    </header>
-    <ul>
-        <li>
-            <div>{TR_USERNAME}</div>
-            <div>{USERNAME}</div>
-        </li>
-        <li>
-            <div>{TR_ACCOUNT_TYPE}</div>
-            <div>{ACCOUNT_TYPE}</div>
-        </li>
-        <li>
-            <div>{TR_REGISTRATION_DATE}</div>
-            <div>{REGISTRATION_DATE}</div>
-        </li>
-    </ul>
+<h2>{TR_TITLE}</h2>
+
+<div id="overview-stats">
+    <div class="box">
+        <strong>{USERNAME}</strong>
+        <span>{TR_USERNAME}</span>
+    </div>
+    <div class="box">
+        <strong>{ACCOUNT_TYPE}</strong>
+        <span>{TR_ACCOUNT_TYPE}</span>
+    </div>
+    <div class="box">
+        <strong>{REGISTRATION_DATE}</strong>
+        <span>{TR_REGISTRATION_DATE}</span>
+    </div>
 </div>
