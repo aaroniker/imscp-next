@@ -119,15 +119,28 @@
 
 .form {
     section {
+        h4 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            @include max(xxs) {
+                margin-bottom: 16px;
+            }
+        }
         &.two-columns {
             @include min(lg) {
                 display: grid;
                 grid-gap: 20px 8%;
+                align-items: start;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-auto-flow: dense;
                 .form-element {
+                    &.full-width,
                     &:last-child {
                         grid-column: 1 / 3;
                     }
+                }
+                h4 {
+                    grid-column: 1 / 3;
                 }
             }
         }
