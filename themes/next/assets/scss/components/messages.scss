@@ -11,6 +11,9 @@
     background: var(--background);
     border: 1px solid var(--border);
     color: var(--color);
+    strong {
+        color: var(--color);
+    }
     &.static_success,
     &.success {
         --color: var(--success);

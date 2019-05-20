@@ -48,6 +48,8 @@ h4 {
     font-size: 16px;
     font-weight: bold;
     margin: 12px 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
     @include max(sm) {
         margin: 8px 0;
     }

@@ -6,6 +6,14 @@ $(document).ready(function() {
 
     $(window).on('resize', setMinHeight).trigger('resize');
 
+    $('.form-group input.form-field').on('focus', function(e) {
+        $(this).parent().addClass('focus');
+    });
+
+    $('.form-group input.form-field').on('blur', function(e) {
+        $(this).parent().removeClass('focus');
+    });
+
     let body = $('body'),
         overlay = $('#overlay'),
         dialogOptions = (options, open, close, stay) => {
@@ -18,9 +26,12 @@ $(document).ready(function() {
             appendTo: '#overlay',
             open(e) {
 
-                let elem = $(e.target).closest('.ui-dialog');
+                let elem = $(e.target).closest('.ui-dialog'),
+                    max = (options.maxWidth) ? options.maxWidth : 380;
 
-                $(e.target).removeAttr('style')
+                overlay.css('--max-width', max + 'px');
+
+                $(e.target).removeAttr('style');
                 elem.removeAttr('style');
 
                 body.addClass('overlay');
@@ -188,6 +199,7 @@ $(document).ready(function() {
 
         dialog.dialog(dialogOptions({
             autoOpen: false,
+            maxWidth: 692,
             buttons: [
                 {
                     text: imscp_i18n.core.close,
@@ -251,7 +263,7 @@ $(document).ready(function() {
         }
 
         var timerId;
-        var iniFields = $('#php_ini_values').find('input');
+        var iniFields = $('#php_editor_dialog').find('input[type="number"]');
 
         iniFields.on('keyup click', function () {
             clearTimeout(timerId);
@@ -297,6 +309,7 @@ $(document).ready(function() {
                 $.get('/shared/ftp_choose_dir.php', data => {
                     dialog = $('<div id="ftp_choose_dir_dialog">').html(data).dialog(dialogOptions({
                         autoOpen: true,
+                        maxWidth: 692,
                         buttons: [
                             {
                                 text: imscp_i18n.core.close,

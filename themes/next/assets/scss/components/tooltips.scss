@@ -1,5 +1,18 @@
 //main: ../style.scss
 
+.tooltip-circle {
+    display: inline-block;
+    vertical-align: top;
+    cursor: help;
+    color: var(--primary);
+    svg {
+        width: 17px;
+        height: 17px;
+        margin: 2px;
+        display: block;
+    }
+}
+
 #tooltip-container {
     --top: 0;
     --left: 0;
@@ -9,7 +22,7 @@
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    z-index: 12;
+    z-index: 21;
     background: var(--grey-dark);
     border-radius: 4px;
     color: #fff;
