@@ -234,17 +234,13 @@ $(document).ready(function() {
 
         let dialogOpen = $('#php_editor_dialog_open');
 
-        dialogOpen.click(function() {
+        dialogOpen.click(e => {
             dialog.dialog('open');
         });
 
-        if($('#php_ini_system_no').is(':checked')) {
-            dialogOpen.hide();
-        }
-
-        $('#php_ini_system_yes, #php_ini_system_no').change(function() {
-            dialogOpen.toggle();
-        });
+        $('input[name="php_ini_system"]').change(e => {
+            dialogOpen.toggleClass('show', $('#php_ini_system_yes').is(':checked'));
+        }).trigger('change');
 
         let errorMessages = $('.php_editor_error');
 
@@ -285,6 +281,7 @@ $(document).ready(function() {
                 });
             }, 200);
         }).first().trigger('keyup');
+
     });
 
     $(function() {

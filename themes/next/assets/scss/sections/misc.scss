@@ -1,0 +1,10 @@
+//main: ../style.scss
+
+#php_editor_dialog_open {
+    transition: all .3s ease;
+    &:not(.show) {
+        opacity: 0;
+        transform: translateX(4px);
+        pointer-events: none;
+    }
+}
