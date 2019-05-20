@@ -145,37 +145,44 @@
                 td {
                     padding-top: 8px;
                     padding-bottom: 8px;
+                    vertical-align: middle;
                     @include max(xs) {
                         font-size: 14px;
                         display: block;
-                        position: relative;
-                        padding-left: var(--th-width);
                         padding-top: 4px;
                         line-height: 18px;
                         padding-bottom: 4px;
-                        &:before {
-                            content: attr(data-th);
-                            position: absolute;
-                            text-transform: uppercase;
-                            font-size: 12px;
-                            font-weight: 500;
-                            color: var(--text-light);
-                            left: 20px;
-                            max-width: var(--th-width);
-                            top: 4px;
-                            line-height: 18px;
-                            @include max(xxs) {
-                                left: 12px;
-                            }
-                        }
                         &:first-child {
                             padding-top: 12px;
-                            &:before {
-                                top: 12px;
-                            }
                         }
                         &:last-child {
                             padding-bottom: 12px;
+                        }
+                    }
+                    &[data-th] {
+                        @include max(xs) {
+                            position: relative;
+                            padding-left: var(--th-width);
+                            &:before {
+                                content: attr(data-th);
+                                position: absolute;
+                                text-transform: uppercase;
+                                font-size: 12px;
+                                font-weight: 500;
+                                color: var(--text-light);
+                                left: 20px;
+                                max-width: var(--th-width);
+                                top: 4px;
+                                line-height: 18px;
+                                @include max(xxs) {
+                                    left: 12px;
+                                }
+                            }
+                            &:first-child {
+                                &:before {
+                                    top: 12px;
+                                }
+                            }
                         }
                     }
                 }
@@ -186,6 +193,37 @@
 
 .list,
 .table {
+    .action-column {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        &:not(.right-xs) {
+            @include max(xs) {
+                justify-content: flex-start;
+            }
+        }
+        & > * {
+            &:not(:last-child) {
+                margin-right: 12px;
+            }
+        }
+        .icon-xxs {
+            @include max(xxs) {
+                padding: 6px;
+                span {
+                    display: none;
+                }
+                svg {
+                    left: auto;
+                    right: auto;
+                    display: block;
+                    width: 19px;
+                    margin: 2px;
+                    height: 19px;
+                }
+            }
+        }
+    }
     footer {
         & > form {
             & > div {

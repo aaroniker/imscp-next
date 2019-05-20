@@ -29,7 +29,7 @@
             </div>
             <div class="created_on">{ADMINISTRATOR_CREATED_ON}</div>
             <div class="created_by">{ADMINISTRATPR_CREATED_BY}</div>
-            <div>
+            <div class="action-column right-xs">
                 <div ref="dropdown" class="dropdown">
                     <span>
                         <i></i>
@@ -76,8 +76,8 @@
             </div>
             <div class="created_on">{RESELLER_CREATED_ON}</div>
             <div class="created_by">{RESELLER_CREATED_BY}</div>
-            <div>
-                <a href="change_user_interface.php?to_id={RESELLER_ID}" class="btn sm muted switch">
+            <div class="action-column right-xs">
+                <a href="change_user_interface.php?to_id={RESELLER_ID}" class="btn sm muted icon-xxs">
                     <i data-eva="swap"></i>
                     <span><?=tohtml(tr('Switch')); ?></span>
                 </a>

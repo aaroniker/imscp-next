@@ -62,32 +62,6 @@
                 }
             }
             & > div {
-                &:last-child {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
-                    & > * {
-                        &:not(:last-child) {
-                            margin-right: 12px;
-                        }
-                    }
-                    .switch {
-                        @include max(xxs) {
-                            padding: 6px;
-                            span {
-                                display: none;
-                            }
-                            svg {
-                                left: auto;
-                                right: auto;
-                                display: block;
-                                width: 19px;
-                                margin: 2px;
-                                height: 19px;
-                            }
-                        }
-                    }
-                }
                 &:first-child {
                     color: var(--text-dark);
                 }

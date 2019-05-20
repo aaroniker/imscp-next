@@ -44,6 +44,13 @@
     }
 }
 
+textarea {
+    &.form-field {
+        resize: vertical;
+        min-height: 100px;
+    }
+}
+
 .form-select {
     position: relative;
     select {
