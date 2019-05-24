@@ -14,6 +14,10 @@ $(document).ready(function() {
         $(this).parent().removeClass('focus');
     });
 
+    $.extend($.fn.dataTableExt.oStdClasses, {
+        'sFilterInput': 'form-field sm'
+    });
+
     let body = $('body'),
         overlay = $('#overlay'),
         dialogOptions = (options, open, close, stay) => {

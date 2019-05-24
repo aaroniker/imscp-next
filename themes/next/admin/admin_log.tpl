@@ -20,10 +20,6 @@
             this.oApi._fnProcessingDisplay(settings, onoff);
         };
 
-        $.extend($.fn.dataTableExt.oStdClasses, {
-            'sFilterInput': 'form-field sm'
-        });
-
         dataTable = $('.table > table').dataTable({
             language: imscp_i18n.core.dataTable,
             displayLength: parseInt({ROWS_PER_PAGE}),

@@ -1,9 +1,6 @@
 
 <script>
     $(function () {
-        $.extend($.fn.dataTableExt.oStdClasses, {
-            'sFilterInput': 'form-field sm'
-        });
         let lang = JSON.parse(imscp_i18n.core.dataTable);
         dataTable = $('.dataTable > table').dataTable({
             language: imscp_i18n.core.dataTable,
