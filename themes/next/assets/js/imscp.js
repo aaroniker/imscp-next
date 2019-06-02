@@ -328,6 +328,43 @@ $(document).ready(function() {
         });
     });
 
+    let lang = (typeof imscp_i18n.core.dataTable === 'object') ? imscp_i18n.core.dataTable : JSON.parse(imscp_i18n.core.dataTable);
+
+    dataTable = $('.dataTable-static > table').dataTable({
+        language: imscp_i18n.core.dataTable,
+        displayLength: 10,
+        stateSave: true,
+        pagingType: 'simple',
+        dom: '<"dataTable"<"toolbar"lf><t><"paginate"ip>>',
+        pagingType: 'simple',
+        language: {
+            paginate: {
+                previous: '<i data-eva="chevron-left"></i>' + lang.paginate.previous,
+                next: lang.paginate.next + '<i data-eva="chevron-right"></i>'
+            }
+        },
+        drawCallback() {
+            let that = this[0],
+                toolbar = $(that.parentNode.previousSibling),
+                paginate = $(that.parentNode.nextSibling),
+                table = $(that);
+            toolbar.find('.dataTables_length > label > select').wrap($('<div />').addClass('form-select sm'));
+            table.find('strong').removeAttr('style');
+            eva.replace({
+                fill: 'currentColor'
+            });
+            let titles = [],
+                c = 0;
+            table.children('thead').children('tr').children('th').each(function() {
+                titles[c] = $(this).text();
+                c++;
+            });
+            table.children('tbody').children('tr').children('td').each(function() {
+                $(this).attr('data-th', titles[$(this).index()]);
+            });
+        }
+    });
+
 });
 
 function sbmt(form, uaction) {

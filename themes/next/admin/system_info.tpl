@@ -1,48 +1,3 @@
-
-<script>
-    $(function () {
-        let lang = JSON.parse(imscp_i18n.core.dataTable);
-        dataTable = $('.dataTable > table').dataTable({
-            language: imscp_i18n.core.dataTable,
-            stateSave: true,
-            columnDefs: [
-                {
-                    type: "natural",
-                    targets: [1]
-                }
-            ],
-            dom: '<"dataTable"<"toolbar"lf><t><"paginate"ip>>',
-            pagingType: 'simple',
-            language: {
-                paginate: {
-                    previous: '<i data-eva="chevron-left"></i>' + lang.paginate.previous,
-                    next: lang.paginate.next + '<i data-eva="chevron-right"></i>'
-                }
-            },
-            drawCallback() {
-                let that = this[0],
-                    toolbar = $(that.parentNode.previousSibling),
-                    paginate = $(that.parentNode.nextSibling),
-                    table = $(that);
-                toolbar.find('.dataTables_length > label > select').wrap($('<div />').addClass('form-select sm'));
-                table.find('strong').removeAttr('style');
-                eva.replace({
-                    fill: 'currentColor'
-                });
-                let titles = [],
-                    c = 0;
-                table.children('thead').children('tr').children('th').each(function() {
-                    titles[c] = $(this).text();
-                    c++;
-                });
-                table.children('tbody').children('tr').children('td').each(function() {
-                    $(this).attr('data-th', titles[$(this).index()]);
-                });
-            }
-        });
-    });
-</script>
-
 <h2>{TR_SYSTEM_INFO}</h2>
 
 <div id="overview-stats" class="large">
@@ -131,7 +86,7 @@
     </table>
 </div>
 
-<div class="table dataTable sectionBox">
+<div class="table dataTable-static sectionBox">
     <header>
         <h3>{TR_FILE_SYSTEM_INFO}</h3>
     </header>
