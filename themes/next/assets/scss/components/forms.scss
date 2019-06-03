@@ -99,6 +99,10 @@ textarea {
             right: 6px;
         }
     }
+    &.inline {
+        display: inline-block;
+        vertical-align: middle;
+    }
 }
 
 .form-element {
