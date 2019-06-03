@@ -133,7 +133,9 @@ textarea {
     width: 100%;
     display: flex;
     & > span,
+    .form-select,
     .form-field,
+    .toggle,
     .btn {
         white-space: nowrap;
         &:not(:first-child):not(:last-child) {
@@ -166,6 +168,15 @@ textarea {
         font-weight: 500;
         background: var(--pale);
         transition: background .3s ease, border-color .3s ease;
+    }
+    .toggle {
+        padding: 0 12px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        & > * {
+            margin: 0 !important;
+        }
     }
     &.focus {
         & > span {
