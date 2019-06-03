@@ -189,6 +189,11 @@
                             }
                         }
                     }
+                    &[colspan] {
+                        .message {
+                            margin: 8px 0;
+                        }
+                    }
                 }
                 th {
                     font-weight: 500;

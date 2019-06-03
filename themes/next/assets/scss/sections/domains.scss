@@ -1,0 +1,38 @@
+//main: ../style.scss
+
+table {
+    &.domains {
+        --th-width: 140px;
+        @include min(xxs) {
+            --th-width: 40%;
+        }
+        .icon-alternative {
+            --color: var(--text);
+            display: inline-block;
+            vertical-align: top;
+            &:hover {
+                --color: var(--text-dark);
+            }
+            svg {
+                margin: 2px;
+                display: block;
+                width: 19px;
+                height: 19px;
+                @include max(xs) {
+                    width: 17px;
+                    height: 17px;
+                    margin: 0 0 0 2px;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    &:not(:first-child) {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
