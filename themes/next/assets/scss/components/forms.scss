@@ -138,17 +138,23 @@ textarea {
     .toggle,
     .btn {
         white-space: nowrap;
-        &:not(:first-child):not(:last-child) {
-            border-radius: 0;
-        }
-        &:first-child {
-            border-radius: var(--border-radius) 0 0 var(--border-radius);
-        }
-        &:last-child {
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-        }
         &:not(:first-child) {
             margin-left: -1px;
+        }
+        &:not(:first-child):not(:last-child),
+        &:not(:first-child):not(:last-child) select {
+            border-radius: 0;
+        }
+        &:first-child,
+        &:first-child select {
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+        &:last-child,
+        &:last-child select {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        &:hover {
+            z-index: 2;
         }
     }
     .form-field {
@@ -168,6 +174,10 @@ textarea {
         font-weight: 500;
         background: var(--pale);
         transition: background .3s ease, border-color .3s ease;
+        &.sm {
+            padding: 12px 8px;
+            min-width: 0;
+        }
     }
     .toggle {
         padding: 0 12px;
