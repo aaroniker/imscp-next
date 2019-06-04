@@ -6,12 +6,12 @@ $(document).ready(function() {
 
     $(window).on('resize', setMinHeight).trigger('resize');
 
-    $('.form-group input.form-field').on('focus', function(e) {
-        $(this).parent().addClass('focus');
+    $('.form-group input.form-field, .form-group .form-select select').on('focus', function(e) {
+        $(this).closest('.form-group').addClass('focus');
     });
 
-    $('.form-group input.form-field').on('blur', function(e) {
-        $(this).parent().removeClass('focus');
+    $('.form-group input.form-field, .form-group .form-select select').on('blur', function(e) {
+        $(this).closest('.form-group').removeClass('focus');
     });
 
     $.extend($.fn.dataTableExt.oStdClasses, {

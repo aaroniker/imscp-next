@@ -179,6 +179,10 @@ textarea {
         }
     }
     &.focus {
+        .form-select select,
+        .form-field {
+            border-color: var(--primary);
+        }
         & > span {
             color: var(--primary);
             background: var(--primary-pale);
