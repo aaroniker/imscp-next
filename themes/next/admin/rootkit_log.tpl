@@ -1,16 +1,12 @@
 <!-- BDP: antirootkits_log -->
-<table class="logtable">
-    <thead>
-    <tr>
-        <th>{FILENAME}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>
-            <div class="log" style="margin:0;padding:0;overflow: auto;height: 300px;">{LOG}</div>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<div class="sectionBox">
+    <header>
+        <h3>{FILENAME}</h3>
+    </header>
+    <section>
+        <div class="scroll">
+            {LOG}
+        </div>
+    </section>
+</div>
 <!-- EDP: antirootkits_log -->

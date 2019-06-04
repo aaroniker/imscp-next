@@ -337,6 +337,27 @@
         @include max(xxs) {
             padding: 16px 12px;
         }
+        .scroll {
+            max-height: 400px;
+            overflow: auto;
+            font-size: 14px;
+            @include max(xs) {
+                font-size: 12px;
+            }
+            &::-webkit-scrollbar {
+                width: 5px;
+                height: 5px;
+            }
+            &::-webkit-scrollbar-track {
+                background: var(--lighter);
+                border-radius: 3px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: var(--primary);
+                border-radius: 3px;
+                outline: none;
+            }
+        }
     }
     footer {
         @include sectionFooter;
