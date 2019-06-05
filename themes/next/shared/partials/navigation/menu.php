@@ -28,6 +28,19 @@ foreach(clone iMSCP_Registry::get('navigation') as $obj) {
             ob_start();
             echo '<span></span><ul>';
             foreach($obj->_pages as $sub) {
+
+                $subActive = false;
+                $subUri = [];
+
+                if($obj->hasPages()) {
+                    foreach(new RecursiveIteratorIterator($obj, RecursiveIteratorIterator::SELF_FIRST) as $subpage) {
+                        if($subpage->isActive(true)) {
+                            $subActive = true;
+                        }
+                        $subUri[] = $subpage->_uri;
+                    }
+                }
+
                 if($sub->_visible) {
                     if($sub->_active || $sub->_uri == $url) {
                         $parentActive = true;
@@ -44,7 +57,7 @@ foreach(clone iMSCP_Registry::get('navigation') as $obj) {
             ob_end_clean();
         }
 
-        echo $parentActive || $obj->_active || $obj->_uri == $url || count(array_filter($obj->_pages, function($r) {
+        echo $subActive || $parentActive || $obj->_active || $obj->_uri == $url || in_array($url, $subUri) || count(array_filter($obj->_pages, function($r) {
             return $r->_active || $r->_uri == $url;
         })) ? '<li class="active opened">' : '<li>';
 
