@@ -28,6 +28,11 @@
         outline: none;
         border-color: var(--primary);
     }
+    &[disabled] {
+        background: var(--pale-light);
+        color: var(--text-light);
+        cursor: not-allowed;
+    }
 }
 
 .form-field {
