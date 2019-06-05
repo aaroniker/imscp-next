@@ -188,6 +188,9 @@ textarea {
             margin: 0 !important;
         }
     }
+    .btn {
+        z-index: 3;
+    }
     &.focus {
         .form-select select,
         .form-field {

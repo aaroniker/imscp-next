@@ -124,6 +124,18 @@
             }
         }
     }
+    &.icon-right {
+        svg {
+            left: auto;
+            right: -4px;
+        }
+        &.sm {
+            svg {
+                left: auto;
+                right: -3px;
+            }
+        }
+    }
     &.center {
         display: table;
         margin-left: auto;

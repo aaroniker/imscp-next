@@ -1,24 +1,25 @@
-
 <!-- BDP: page_message -->
 <div class="{MESSAGE_CLS}">{MESSAGE}</div>
 <!-- EDP: page_message -->
+
 <!-- BDP: ftp_chooser -->
 <div class="ftp_chooser">
-    <table class="firstColFixed">
-        <tbody>
+    <ul>
         <!-- BDP: dir_item -->
-        <tr>
-            <td style="width:80%">
-                <span data-link="{LINK}" class="icon i_bc_{ICON} ftp_choose_dir clickable">{DIR_NAME}</span>
-            </td>
-            <td>
-                <!-- BDP: action_link -->
-                <span data-directory="{DIRECTORY}" class="ftp_choose_dir clickable" title="{TOOLTIP_CHOOSE}">{CHOOSE}</span>
-                <!-- EDP: action_link -->
-            </td>
-        </tr>
+        <li>
+            <span data-link="{LINK}" class="ftp_choose_dir {ICON}">
+                <i data-eva="corner-left-up"></i>
+                <i data-eva="folder-outline"></i>
+                {DIR_NAME}
+            </span>
+            <!-- BDP: action_link -->
+            <span data-directory="{DIRECTORY}" class="ftp_choose_dir btn link sm icon-right" data-tooltip="{TOOLTIP_CHOOSE}">
+                {CHOOSE}
+                <i data-eva="chevron-right"></i>
+            </span>
+            <!-- EDP: action_link -->
+        </li>
         <!-- EDP: dir_item -->
-        </tbody>
-    </table>
+    </ul>
 </div>
 <!-- EDP: ftp_chooser -->

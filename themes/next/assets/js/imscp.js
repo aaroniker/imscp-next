@@ -290,7 +290,8 @@ $(document).ready(function() {
 
     $(function() {
         if(!$('.ftp_choose_dir').length) return;
-        $('body').on('click', '.ftp_choose_dir', function () {
+        $('body').on('click', '.ftp_choose_dir', function(e) {
+            e.preventDefault();
             let dialog = $('#ftp_choose_dir_dialog');
             if(dialog.length) {
                 let link = $(this).data('link') || 'none';
@@ -304,6 +305,10 @@ $(document).ready(function() {
                         dialog.html(data).dialog('open');
                     }).fail(response => {
                         alert('Request failed');
+                    }).done(response => {
+                        eva.replace({
+                            fill: 'currentColor'
+                        });
                     });
                 }
             } else {
@@ -323,6 +328,10 @@ $(document).ready(function() {
                     }));
                 }).fail(response => {
                     alert('Request failed')
+                }).done(response => {
+                    eva.replace({
+                        fill: 'currentColor'
+                    });
                 });
             }
         });

@@ -1,0 +1,70 @@
+//main: ../style.scss
+
+.ftp_chooser {
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li {
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0 4px 12px;
+            &:not(:last-child) {
+                margin-bottom: 8px;
+            }
+            & > span {
+                display: block;
+                cursor: pointer;
+                &:first-child {
+                    padding-left: 32px;
+                    position: relative;
+                    @include max(xxs) {
+                        font-size: 14px;
+                    }
+                    svg {
+                        display: block;
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: var(--primary);
+                    }
+                    &.parent {
+                        .eva-folder-outline {
+                            display: none;
+                        }
+                    }
+                    &.folder {
+                        .eva-corner-left-up {
+                            display: none;
+                        }
+                    }
+                }
+                &.btn {
+                    display: block;
+                    &.icon-right {
+                        &.sm {
+                            svg {
+                                right: 2px;
+                                top: -1px;
+                            }
+                        }
+                    }
+                    svg {
+                        transition: transform .3s ease;
+                    }
+                    &:hover {
+                        svg {
+                            transform: translateX(2px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
