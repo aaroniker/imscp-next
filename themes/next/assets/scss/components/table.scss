@@ -32,6 +32,7 @@
             @include sectionFooter;
             .dataTables_info {
                 @include label;
+                color: var(--text);
                 @include max(xs) {
                     margin-bottom: 8px;
                 }
@@ -193,6 +194,10 @@
                         .message {
                             margin: 8px 0;
                         }
+                    }
+                    &.strong {
+                        color: var(--text-dark);
+                        font-weight: 500;
                     }
                 }
                 th {
