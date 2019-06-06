@@ -324,10 +324,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        @include sectionHeader;
-        &:not(:first-child) {
-            border-top: 1px solid var(--line);
-        }
+        @include sectionArea;
         h3 {
             margin: 0;
         }
@@ -360,6 +357,6 @@
         }
     }
     footer {
-        @include sectionFooter;
+        @include sectionArea;
     }
 }

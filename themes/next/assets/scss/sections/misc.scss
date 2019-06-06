@@ -8,3 +8,25 @@
         pointer-events: none;
     }
 }
+
+.stats-in-out {
+    span {
+        width: max-content;
+        display: block;
+        line-height: 16px;
+        padding-left: 20px;
+        position: relative;
+        white-space: nowrap;
+        &:not(:last-child) {
+            margin-bottom: 4px;
+        }
+        svg {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--text-light);
+        }
+    }
+}

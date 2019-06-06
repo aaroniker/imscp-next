@@ -368,7 +368,7 @@ $(document).ready(function() {
                     titles[c] = $(this).text();
                     c++;
                 });
-                table.children('tbody').children('tr').children('td').each(function() {
+                table.children('tbody, tfoot').children('tr').children('td').each(function() {
                     $(this).attr('data-th', titles[$(this).index()]);
                 });
             }

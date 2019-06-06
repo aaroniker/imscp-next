@@ -45,16 +45,9 @@
             display: grid;
             align-items: center;
             grid-template-columns: repeat(3, minmax(0, 1fr)) 160px;
-            @include max(sm) {
-                &:first-child {
-                    border-top: 1px solid var(--line);
-                }
-            }
+            border-bottom: 1px solid var(--line);
             @include max(xxs) {
                 padding: 12px;
-            }
-            &:not(:last-child) {
-                border-bottom: 1px solid var(--line);
             }
             &.full {
                 .message {
@@ -119,6 +112,13 @@
                             height: 16px;
                         }
                     }
+                }
+            }
+        }
+        &:last-child {
+            & > li {
+                &:last-child {
+                    border-bottom: 0;
                 }
             }
         }

@@ -32,17 +32,11 @@ $breakpoints: (
     }
 }
 
-@mixin sectionHeader() {
+@mixin sectionArea() {
     padding: 16px 20px;
-    border-bottom: 1px solid var(--line);
-    @include max(xxs) {
-        padding: 12px;
+    &:not(:last-child) {
+        border-bottom: 1px solid var(--line);
     }
-}
-
-@mixin sectionFooter() {
-    padding: 16px 20px;
-    border-top: 1px solid var(--line);
     @include max(xxs) {
         padding: 12px;
     }

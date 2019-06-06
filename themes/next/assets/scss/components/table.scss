@@ -3,7 +3,7 @@
 .table {
     .dataTable {
         .toolbar {
-            @include sectionHeader;
+            @include sectionArea;
             .dataTables_length {
                 @include max(xs) {
                     display: none;
@@ -29,7 +29,7 @@
             }
         }
         .paginate {
-            @include sectionFooter;
+            @include sectionArea;
             .dataTables_info {
                 @include label;
                 color: var(--text);
@@ -98,6 +98,12 @@
         &.th-small {
             --th-width: 30%;
         }
+        &.th-medium {
+            --th-width: 40%;
+        }
+        &.font-small {
+            font-size: 14px;
+        }
         th,
         td {
             padding-left: 20px;
@@ -129,26 +135,37 @@
                 }
             }
         }
-        tbody {
+        tfoot {
             tr {
-                &:not(:last-child) {
-                    th,
-                    td {
-                        @include min(xs) {
-                            border-bottom: 1px solid var(--line);
-                        }
-                        &:last-child {
+                td {
+                    border-top: 1px solid var(--line);
+                    background: var(--pale);
+                    &[data-th] {
+                        &:not(:first-child) {
                             @include max(xs) {
-                                border-bottom: 1px solid var(--line);
+                                border-top: 0;
                             }
                         }
                     }
                 }
+            }
+        }
+        tbody,
+        tfoot {
+            tr {
                 th,
                 td {
                     padding-top: 8px;
                     padding-bottom: 8px;
                     vertical-align: middle;
+                    &:last-child {
+                        @include max(xs) {
+                            border-bottom: 1px solid var(--line);
+                        }
+                    }
+                    @include min(xs) {
+                        border-bottom: 1px solid var(--line);
+                    }
                     @include max(xs) {
                         font-size: 14px;
                         display: block;
@@ -190,6 +207,12 @@
                             }
                         }
                     }
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
                     &[colspan] {
                         .message {
                             margin: 8px 0;
@@ -203,6 +226,21 @@
                 th {
                     font-weight: 500;
                     color: var(--text-dark);
+                }
+            }
+        }
+        &:last-child {
+            &:not(.dataTable) {
+                tfoot,
+                tbody {
+                    tr {
+                        &:last-child {
+                            th,
+                            td {
+                                border-bottom: none;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -253,9 +291,7 @@
                     display: flex;
                     align-items: center;
                     flex-grow: 1;
-                    margin: 0 12px 0 0;
                     @include max(sm) {
-                        margin: 0 0 8px 0;
                         flex: 0 0 100%;
                     }
                     span {
@@ -267,6 +303,12 @@
                     }
                     .form-select {
                         flex-grow: 1;
+                    }
+                    &:not(:last-child) {
+                        margin: 0 12px 0 0;
+                        @include max(sm) {
+                            margin: 0 0 8px 0;
+                        }
                     }
                 }
                 button {
