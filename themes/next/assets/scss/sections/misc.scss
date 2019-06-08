@@ -30,3 +30,30 @@
         }
     }
 }
+
+.stats-graph {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    & > div {
+        height: 8px;
+        border-radius: 4px;
+        flex-grow: 1;
+        background: var(--line);
+        span {
+            display: block;
+            border-radius: 4px;
+            height: 8px;
+            background: var(--primary);
+        }
+    }
+    strong {
+        display: block;
+        line-height: 16px;
+        font-size: 10px;
+        font-weight: 500;
+        margin-right: 8px;
+    }
+}
