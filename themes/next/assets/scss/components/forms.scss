@@ -20,7 +20,9 @@
     &:hover {
         &:not(:focus) {
             &:not(:disabled) {
-                border-color: var(--border-dark);
+                &:not(.error) {
+                    border-color: var(--border-dark);
+                }
             }
         }
     }
@@ -32,6 +34,9 @@
         background: var(--pale-light);
         color: var(--text-light);
         cursor: not-allowed;
+    }
+    &.error {
+        --border: var(--error);
     }
 }
 

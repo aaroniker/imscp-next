@@ -218,9 +218,13 @@
                             margin: 8px 0;
                         }
                     }
+                    .strong-block,
                     &.strong {
                         color: var(--text-dark);
                         font-weight: 500;
+                    }
+                    .strong-block {
+                        display: block;
                     }
                 }
                 th {
