@@ -6,9 +6,16 @@
         background: #fff;
         transition: box-shadow .4s ease, color .4s ease;
         border: 1px solid var(--line);
-        margin: 16px 0;
-        border-radius: 4px;
+        border-left: 0;
+        border-right: 0;
+        margin: 16px -20px;
         transition: box-shadow .4s ease;
+        @include max(xs) {
+            margin: 12px -20px;
+        }
+        @include max(xxs) {
+            margin: 8px -12px;
+        }
         &:first-child {
             margin-top: 0;
         }
@@ -16,9 +23,12 @@
             &:first-child {
                 position: relative;
                 cursor: pointer;
-                padding: 8px 16px;
+                padding: 8px 20px;
                 font-weight: 500;
                 transition: color .4s ease, padding .4s ease;
+                @include max(xxs) {
+                    padding: 8px 12px;
+                }
                 & > span {
                     --y: 0;
                     width: 24px;
@@ -27,7 +37,7 @@
                     position: absolute;
                     z-index: 1;
                     top: 9px;
-                    right: 12px;
+                    right: 20px;
                     cursor: pointer;
                     transition: transform .4s ease;
                     transform: translateY(var(--y));
@@ -62,8 +72,11 @@
                 }
             }
             &:last-child {
-                padding: 8px 16px 16px 16px;
+                padding: 0 20px 16px 20px;
                 display: none;
+                @include max(xxs) {
+                    padding: 0 12px 20px 12px;
+                }
             }
         }
         &:hover {
@@ -78,8 +91,11 @@
             box-shadow: 0 1px 4px -1px var(--shadow);
             & > div {
                 &:first-child {
-                    padding: 16px;
+                    padding: 16px 20px;
                     color: var(--primary);
+                    @include max(xxs) {
+                        padding: 12px;
+                    }
                     & > span {
                         --y: 7px;
                         &:before {
