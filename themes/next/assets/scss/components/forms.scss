@@ -265,6 +265,7 @@ textarea {
             @include min(sm) {
                 display: grid;
                 align-items: start;
+                grid-gap: 16px;
                 grid-template-columns: 36% minmax(0, 1fr);
                 min-height: 47px;
                 & > label {
