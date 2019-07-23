@@ -19,8 +19,9 @@
                 sessionStorage.setItem('/admin/settings.php', parseInt(index));
             }
             if($(boxes[index]).find(' > div:last-child').is(':hidden')) {
-                boxes.removeClass('active');
+                boxes.removeClass('expand active');
                 boxes.find(' > div:last-child').slideUp(400);
+                $(boxes[index]).addClass('expand');
                 $(boxes[index]).find(' > div:last-child').slideDown(400, function() {
                     $(boxes[index]).addClass('active');
                 });

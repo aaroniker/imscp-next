@@ -12,9 +12,15 @@
         transition: box-shadow .4s ease;
         @include max(xs) {
             margin: 12px -20px;
+            &:last-child {
+                margin-bottom: 16px;
+            }
         }
         @include max(xxs) {
             margin: 8px -12px;
+            &:last-child {
+                margin-bottom: 12px;
+            }
         }
         &:first-child {
             margin-top: 0;
@@ -41,6 +47,9 @@
                     cursor: pointer;
                     transition: transform .4s ease;
                     transform: translateY(var(--y));
+                    @include max(xxs) {
+                        right: 12px;
+                    }
                     &:before,
                     &:after {
                         --r: 0deg;
@@ -87,17 +96,28 @@
                 }
             }
         }
-        &.active {
-            box-shadow: 0 1px 4px -1px var(--shadow);
+        &.expand {
             & > div {
                 &:first-child {
                     padding: 16px 20px;
-                    color: var(--primary);
                     @include max(xxs) {
                         padding: 12px;
                     }
                     & > span {
                         --y: 7px;
+                        @include max(xxs) {
+                            --y: 4px;
+                        }
+                    }
+                }
+            }
+        }
+        &.active {
+            box-shadow: 0 1px 4px -1px var(--shadow);
+            & > div {
+                &:first-child {
+                    color: var(--primary);
+                    & > span {
                         &:before {
                             --r: -130deg;
                         }
