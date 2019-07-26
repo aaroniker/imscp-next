@@ -339,8 +339,21 @@ $(document).ready(function() {
 
     if(typeof imscp_i18n.core.dataTable !== 'undefined') {
         let lang = (typeof imscp_i18n.core.dataTable === 'object') ? imscp_i18n.core.dataTable : JSON.parse(imscp_i18n.core.dataTable);
-        dataTable = $('.dataTable-static > table').dataTable({
-            language: imscp_i18n.core.dataTable,
+        dataTable = setDataTable($('.dataTable-static > table'), lang);
+    }
+
+    $('[data-dataTable]').each(function() {
+        let table = $(this),
+            lang = $(this).data('dataTable');
+        console.log(lang);
+        if(lang) {
+            setDataTable(table, lang);
+        }
+    });
+
+    function setDataTable(table, lang) {
+        return table.dataTable({
+            language: lang,
             displayLength: 10,
             stateSave: true,
             pagingType: 'simple',
@@ -362,15 +375,17 @@ $(document).ready(function() {
                 eva.replace({
                     fill: 'currentColor'
                 });
-                let titles = [],
-                    c = 0;
-                table.children('thead').children('tr').children('th').each(function() {
-                    titles[c] = $(this).text();
-                    c++;
-                });
-                table.children('tbody, tfoot').children('tr').children('td').each(function() {
-                    $(this).attr('data-th', titles[$(this).index()]);
-                });
+                if(!table.hasClass('no-th')) {
+                    let titles = [],
+                        c = 0;
+                    table.children('thead').children('tr').children('th').each(function() {
+                        titles[c] = $(this).text();
+                        c++;
+                    });
+                    table.children('tbody, tfoot').children('tr').children('td').each(function() {
+                        $(this).attr('data-th', titles[$(this).index()]);
+                    });
+                }
             }
         });
     }
