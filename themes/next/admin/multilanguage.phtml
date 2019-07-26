@@ -1,76 +1,86 @@
 <!-- BDP: language_block_js -->
 <script>
-    $(function () {
-        $('#languagesTable').find("input[type=radio]").button().change(function () {
+    $(function() {
+        $('#languagesTable').find('input[type=radio]').change(function() {
             $(this).closest("form").submit();
-        }).closest("table").dataTable({
-            language: <?= getDataTablesPluginTranslations(); ?>,
-            stateSave: true,
-            pagingType: "simple",
-            columnDefs: [
-                {type: "natural", targets: [1]},
-                {sortable: false, searchable: false, targets: [3]}
-            ]
         });
+        imscp_i18n.core.dataTable = <?=getDataTablesPluginTranslations(); ?>;
     });
 </script>
 <!-- EDP: language_block_js -->
+
 <!-- BDP: languages_block -->
-<table class="firstColFixed" id="languagesTable">
-    <thead>
-    <tr>
-        <th>{TR_LANGUAGE_NAME}</th>
-        <th>{TR_NUMBER_TRANSLATED_STRINGS}</th>
-        <th>{TR_LANGUAGE_CREATION_DATE}</th>
-        <th>{TR_LAST_TRANSLATOR}</th>
-        <th>{TR_DEFAULT_LANGUAGE}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- BDP: language_block -->
-    <tr>
-        <td><label for="defaultLanguage_{LOCALE}"><span class="icon i_locale">{LANGUAGE_NAME}</span></label></td>
-        <td>{NUMBER_TRANSLATED_STRINGS}</td>
-        <td>{LANGUAGE_CREATION_DATE}</td>
-        <td>{LAST_TRANSLATOR}</td>
-        <td>
-            <form method="post">
-                <label for="radio_defaultLanguage_{LOCALE}">{TR_DEFAULT}</label>
-                <input type="radio" name="defaultLanguage" id="radio_defaultLanguage_{LOCALE}" value="{LOCALE}"{LOCALE_CHECKED}>
-                <input type="hidden" name="uaction" id="uaction" value="changeLanguage">
-            </form>
-        </td>
-    </tr>
-    <!-- EDP: language_block -->
-    </tbody>
-    <tbody>
-    <tr>
-        <td class="buttons" colspan="5" style="background-color: #b0def5">
-            <form method="post">
-                <input name="rebuildIndex" type="submit" value="{TR_REBUILD_INDEX}">
-                <input type="hidden" name="uaction" id="uaction" value="rebuildIndex">
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<!-- EDP: languages_block -->
-<form method="post" enctype="multipart/form-data">
-    <table>
+<div class="table dataTable-static sectionBox">
+    <header>
+        <h3>{TR_TITLE}</h3>
+    </header>
+    <table id="languagesTable" class="font-small no-th">
         <thead>
-        <tr>
-            <th colspan="2">{TR_IMPORT_NEW_LANGUAGE}</th>
-        </tr>
+            <tr>
+                <th>{TR_LANGUAGE_NAME}</th>
+                <th>{TR_NUMBER_TRANSLATED_STRINGS}</th>
+                <th>{TR_LANGUAGE_CREATION_DATE}</th>
+                <th>{TR_DEFAULT_LANGUAGE}</th>
+            </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>{TR_LANGUAGE_FILE} <span class="icon i_help" title="{TR_UPLOAD_HELP}"></span></td>
-            <td>
-                <input type="file" name="languageFile">
-                <input name="uploadLanguage" type="submit" value="{TR_IMPORT}">
-            </td>
-        </tr>
+            <!-- BDP: language_block -->
+            <tr>
+                <td>
+                    <label class="strong-block" for="radio_defaultLanguage_{LOCALE}">{LANGUAGE_NAME}</label>
+                    <small data-tooltip="{TR_LAST_TRANSLATOR}">{LAST_TRANSLATOR}</small>
+                </td>
+                <td>{NUMBER_TRANSLATED_STRINGS}</td>
+                <td>{LANGUAGE_CREATION_DATE}</td>
+                <td>
+                    <form method="post">
+                        <label class="radio noMargin">
+                            <input type="radio" name="defaultLanguage" id="radio_defaultLanguage_{LOCALE}" value="{LOCALE}"{LOCALE_CHECKED}>
+                            <span>
+                                <div class="hide--xs">{TR_DEFAULT_LANGUAGE}</div>
+                            </span>
+                        </label>
+                        <input type="hidden" name="uaction" id="uaction" value="changeLanguage">
+                    </form>
+                </td>
+            </tr>
+            <!-- EDP: language_block -->
         </tbody>
     </table>
+    <footer>
+        <form method="post">
+            <input type="hidden" name="uaction" id="uaction" value="rebuildIndex">
+            <button class="btn sm" type="submit" name="rebuildIndex">
+                {TR_REBUILD_INDEX}
+            </button>
+        </form>
+    </footer>
+</div>
+<!-- EDP: languages_block -->
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form sectionBox horizontal">
+        <header>
+            <h3>{TR_IMPORT_NEW_LANGUAGE}</h3>
+        </header>
+        <section>
+            <div class="form-element">
+                <label for="uploadLanguage">
+                    {TR_LANGUAGE_FILE}
+                    <span class="tooltip-circle" data-tooltip="{TR_UPLOAD_HELP}">
+                        <i data-eva="question-mark-circle"></i>
+                    </span>
+                </label>
+                <input class="form-field" type="file" name="languageFile">
+            </div>
+            <div class="form-element full-width">
+                <div class="action">
+                    <button class="btn" name="uploadLanguage" type="submit">
+                        {TR_IMPORT}
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
     <input type="hidden" name="uaction" id="uaction" value="uploadLanguage">
 </form>
