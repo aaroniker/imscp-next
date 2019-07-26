@@ -23,8 +23,6 @@
     <script src="{THEME_ASSETS_PATH}/js/jquery/plugins/dataTables_naturalSorting.js"></script>
     <script src="{THEME_ASSETS_PATH}/js/jquery/plugins/pGenerator.js"></script>
     <script src="{THEME_ASSETS_PATH}/js/tooltips.js"></script>
-    <script src="{THEME_ASSETS_PATH}/js/imscp.js"></script>
-    <script src="https://unpkg.com/eva-icons"></script>
 
 </head>
 <body class="interface">
@@ -89,6 +87,8 @@
 
     <div id="overlay" class="hide"></div>
 
+    <script src="{THEME_ASSETS_PATH}/js/imscp.js"></script>
+    <script src="https://unpkg.com/eva-icons"></script>
     <script>
         eva.replace({
             fill: 'currentColor'
