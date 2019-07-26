@@ -1,5 +1,55 @@
 //main: ../style.scss
 
-.hide {
-    display: none;
+//https://medium.com/codyhouse/a-new-approach-to-visibility-utility-classes-based-on-css-variables-eb1e2a01fa3b
+
+:root {
+    --display: block;
+}
+
+[class^="display--"] {
+    display: none !important;
+}
+
+@include min(xs) {
+    .display--xs {
+        display: var(--display) !important;
+    }
+    .hide--xs {
+        display: none !important;
+    }
+}
+
+@include min(sm) {
+    .display--sm {
+        display: var(--display) !important;
+    }
+    .hide--sm {
+        display: none !important;
+    }
+}
+
+@include min(md) {
+    .display--md {
+        display: var(--display) !important;
+    }
+    .hide--md {
+        display: none !important;
+    }
+}
+
+@include min(lg) {
+    .display--lg {
+        display: var(--display) !important;
+    }
+    .hide--lg {
+        display: none !important;
+    }
+}
+
+.is-visible {
+    display: var(--display) !important;
+}
+
+.is-hidden {
+    display: none !important;
 }
