@@ -339,8 +339,10 @@ label {
     &.checkbox,
     &.radio,
     &.switch {
-        margin: 0 0 12px 0;
         display: table;
+        &:not(.noMargin) {
+            margin: 0 0 12px 0;
+        }
         &.inline {
             margin: 0 12px 0 0;
             display: inline-block;
