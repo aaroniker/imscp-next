@@ -1,6 +1,11 @@
 //main: ../style.scss
 
 .table {
+    .dataTables_wrapper {
+        &:not(:last-child) {
+            border-bottom: 1px solid var(--line);
+        }
+    }
     .dataTable {
         .toolbar {
             @include sectionArea;
