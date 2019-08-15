@@ -21,51 +21,51 @@ $(document).ready(function() {
     let body = $('body'),
         overlay = $('#overlay'),
         dialogOptions = (options, open, close, stay) => {
-        return $.extend({}, options, {
-            draggable: false,
-            modal: true,
-            resizable: false,
-            witdh: 'auto',
-            closeOnEscape: false,
-            appendTo: '#overlay',
-            open(e) {
+            return $.extend({}, {
+                draggable: false,
+                modal: true,
+                resizable: false,
+                witdh: 'auto',
+                closeOnEscape: false,
+                appendTo: '#overlay',
+                open(e) {
 
-                let elem = $(e.target).closest('.ui-dialog'),
-                    max = (options.maxWidth) ? options.maxWidth : 380;
+                    let elem = $(e.target).closest('.ui-dialog'),
+                        max = (options.maxWidth) ? options.maxWidth : 380;
 
-                overlay.css('--max-width', max + 'px');
+                    overlay.css('--max-width', max + 'px');
 
-                $(e.target).removeAttr('style');
-                elem.removeAttr('style');
+                    $(e.target).removeAttr('style');
+                    elem.removeAttr('style');
 
-                body.addClass('overlay');
-                overlay.removeClass('hide').addClass('show');
+                    body.addClass('overlay');
+                    overlay.removeClass('hide').addClass('show');
 
-                if(open && typeof(open) === 'function') {
-                    open(e, elem);
+                    if(open && typeof(open) === 'function') {
+                        open(e, elem);
+                    }
+
+                },
+                close(e) {
+
+                    let elem = $(e.target).closest('.ui-dialog');
+
+                    overlay.removeClass('show');
+
+                    setTimeout(() => {
+                        body.removeClass('overlay');
+                        overlay.addClass('hide');
+                        if(!stay) {
+                            elem.remove();
+                        }
+                        if(close && typeof(close) === 'function') {
+                            close(e, elem);
+                        }
+                    }, 200);
+
                 }
-
-            },
-            close(e) {
-
-                let elem = $(e.target).closest('.ui-dialog');
-
-                overlay.removeClass('show');
-
-                setTimeout(() => {
-                    body.removeClass('overlay');
-                    overlay.addClass('hide');
-                    if(!stay) {
-                        elem.remove();
-                    }
-                    if(close && typeof(close) === 'function') {
-                        close(e, elem);
-                    }
-                }, 200);
-
-            }
-        });
-    };
+            }, options);
+        };
 
     window.alert = (message, caption) => {
         $('<div>', {
