@@ -16,7 +16,7 @@
                 <label for="cpassword">{TR_PASSWORD_CONFIRMATION}</label>
                 <input class="form-field" type="password" name="password_confirmation" id="cpassword" value="" autocomplete="new-password" required>
             </div>
-            <div class="form-element full-width">
+            <div class="form-element">
                 <div class="action">
                     <input type="hidden" name="sqlu_id" value="{SQLU_ID}">
                     <button class="btn" name="Submit" type="submit">
