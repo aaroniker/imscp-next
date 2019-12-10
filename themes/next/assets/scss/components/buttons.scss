@@ -69,6 +69,10 @@
             }
         }
     }
+    &.danger {
+        --background: var(--error);
+        --shadow-c: var(--error-shadow);
+    }
     &.muted {
         --background: var(--lighter);
         --color: var(--text);

@@ -16,7 +16,7 @@
 
     --primary: #4886FF;
     --primary-dark: #3D77E9;
-    --primary-shadow: rgba(72, 134, 255, .32);
+    --primary-shadow: #{rgba(#4886FF, .32)};
     --primary-pale: #E2EBFF;
 
     --success: #0FC258;
@@ -25,6 +25,8 @@
     --error-pale: #FAE1E1;
     --warning: #E1BD29;
     --warning-pale: #FAF4DD;
+
+    --error-shadow: #{rgba(#E14545, .32)};
 
     --text: var(--grey);
     --text-light: var(--grey-light);
