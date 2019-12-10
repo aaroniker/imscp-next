@@ -111,16 +111,22 @@
             <!-- EDP: ssl_certificate_certchain -->
             <div class="form-element full-width">
                 <div class="action">
+                    <!-- BDP: ssl_certificate_actions -->
+                    <!-- BDP: ssl_certificate_action_update -->
                     <button class="btn" name="add_update" id="add_update" type="submit">
                         {TR_ACTION}
                     </button>
+                    <!-- EDP: ssl_certificate_action_update -->
+                    <!-- BDP: ssl_certificate_action_delete -->
                     <button class="btn danger" name="delete" id="delete" type="submit">
                         {TR_DELETE}
                     </button>
+                    <!-- EDP: ssl_certificate_action_delete -->
+                    <input name="cert_id" type="hidden" value="{CERT_ID}">
+                    <!-- EDP: ssl_certificate_actions -->
                     <a href="domains_manage.php" class="btn muted">{TR_CANCEL}</a>
                 </div>
             </div>
         </section>
     </div>
-    <input name="cert_id" type="hidden" value="{CERT_ID}">
 </form>
