@@ -259,14 +259,15 @@
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    padding-left: 4px;
-                    border-left: 1px solid var(--border);
+                    border-radius: 3px;
+                    background: var(--lighter);
                     a {
-                        margin: 2px 0;
                         display: block;
+                        padding: 3px;
+                        color: var(--text-light);
                         svg {
-                            width: 20px;
-                            height: 20px;
+                            width: 16px;
+                            height: 16px;
                             display: block;
                         }
                     }
