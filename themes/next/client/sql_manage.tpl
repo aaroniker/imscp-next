@@ -15,50 +15,47 @@
         });
     }
 </script>
-<table class="firstColFixed">
-    <thead>
-    <tr>
-        <th>{TR_DATABASE}</th>
-        <th>{TR_ACTIONS}</th>
-    </tr>
-    </thead>
-    <tbody>
+
+<h2>{TR_DATABASE}</h2>
+<div id="sql-list">
     <!-- BDP: sql_databases_list -->
-    <tr>
-        <td><strong>{DB_NAME}</strong></td>
-        <td>
-            <!-- BDP: sql_user_add_link -->
-            <a href="sql_user_add.php?sqld_id={SQLD_ID}" class="icon i_add_user">{TR_ADD_USER}</a>
-            <!-- EDP: sql_user_add_link -->
-            <a href="#" class="icon i_delete" onclick="return action_delete('sql_database_delete.php?sqld_id={SQLD_ID}', '{DB_NAME_JS}', 'database')">{TR_DELETE}</a>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
+    <div class="box">
+        <h3>{DB_NAME}</h3>
+        <ul>
             <!-- BDP: sql_users_list -->
-            <table>
-                <tr>
-                    <td>
-                        <div>
-                            <div style="float:left;clear:left;width: 100px;text-align: left;font-weight: bold">{TR_DB_USER}</div>
-                            <div style="display: inline-block;float: left">{DB_USER}</span></div>
-                            <div style="float:left;clear: left;width: 100px;text-align: left;font-weight: bold">
-                                {TR_DB_USER_HOST}
-                                <span style="" class="icon i_help" title="{TR_DB_USER_HOST_TOOLTIP}"></span>
-                            </div>
-                            <div style="display: inline-block;float: left">{DB_USER_HOST}</div>
-                        </div>
-                    </td>
-                    <td>
-                        <a href="sql_change_password.php?sqlu_id={SQLU_ID}" class="icon i_change_password">{TR_CHANGE_PASSWORD}</a>
-                        <a href="#" class="icon i_delete" onclick="return action_delete('sql_delete_user.php?sqlu_id={SQLU_ID}', '{DB_USER_JS}', 'user')">{TR_DELETE}</a>
-                    </td>
-                </tr>
-            </table>
+            <li>
+                <p>
+                    <strong>{TR_DB_USER}</strong>
+                    <span>{DB_USER}</span>
+                </p>
+                <p>
+                    <strong>
+                        {TR_DB_USER_HOST}
+                        <span class="tooltip-circle" data-tooltip="{TR_DB_USER_HOST_TOOLTIP}">
+                            <i data-eva="question-mark-circle"></i>
+                        </span>
+                    </strong>
+                    <span>{DB_USER_HOST}</span>
+                </p>
+                <div class="buttons">
+                    <a href="sql_change_password.php?sqlu_id={SQLU_ID}" data-tooltip="{TR_CHANGE_PASSWORD}">
+                        <i data-eva="edit"></i>
+                    </a>
+                    <a href="#" onclick="return action_delete('sql_delete_user.php?sqlu_id={SQLU_ID}', '{DB_USER_JS}', 'user')" data-tooltip="{TR_DELETE}">
+                        <i data-eva="trash-2"></i>
+                    </a>
+                </div>
+            </li>
             <!-- EDP: sql_users_list -->
-        </td>
-    </tr>
+        </ul>
+        <div class="buttons">
+            <!-- BDP: sql_user_add_link -->
+            <a href="sql_user_add.php?sqld_id={SQLD_ID}" class="btn sm">{TR_ADD_USER}</a>
+            <!-- EDP: sql_user_add_link -->
+            <a href="#" class="btn sm danger" onclick="return action_delete('sql_database_delete.php?sqld_id={SQLD_ID}', '{DB_NAME_JS}', 'database')">{TR_DELETE}</a>
+        </div>
+    </div>
     <!-- EDP: sql_databases_list -->
-    </tbody>
-</table>
+</div>
+
 <!-- EDP: sql_databases_users_list -->
