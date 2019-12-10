@@ -19,7 +19,8 @@ $(document).ready(function() {
     });
 
     let body = $('body'),
-        overlay = $('#overlay'),
+        overlaySelector = '#overlay',
+        overlay = $(overlaySelector),
         dialogOptions = (options, open, close, stay) => {
             return $.extend({}, {
                 draggable: false,
@@ -27,13 +28,17 @@ $(document).ready(function() {
                 resizable: false,
                 witdh: 'auto',
                 closeOnEscape: false,
-                appendTo: '#overlay',
+                appendTo: overlaySelector,
                 open(e) {
 
                     let elem = $(e.target).closest('.ui-dialog'),
                         max = (options.maxWidth) ? options.maxWidth : 380;
 
                     overlay.css('--max-width', max + 'px');
+
+                    if(options.appendTo && options.appendTo != overlaySelector) {
+                        $(this).parent().detach().appendTo(overlaySelector);
+                    }
 
                     $(e.target).removeAttr('style');
                     elem.removeAttr('style');
@@ -57,6 +62,9 @@ $(document).ready(function() {
                         overlay.addClass('hide');
                         if(!stay) {
                             elem.remove();
+                        }
+                        if(options.appendTo && options.appendTo != overlaySelector) {
+                            $(this).parent().detach().appendTo(options.appendTo);
                         }
                         if(close && typeof(close) === 'function') {
                             close(e, elem);
@@ -203,6 +211,7 @@ $(document).ready(function() {
 
         dialog.dialog(dialogOptions({
             autoOpen: false,
+            appendTo: 'form',
             maxWidth: 692,
             buttons: [
                 {
