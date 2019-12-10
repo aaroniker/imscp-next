@@ -149,7 +149,7 @@
                 </div>
             </div>
             <!-- EDP: disable_exec_block -->
-            <div class="form-element full-width">
+            <div class="form-element">
                 <div class="action">
                     <button class="btn" name="Submit" type="submit">
                         {TR_UPDATE}

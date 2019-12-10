@@ -109,7 +109,7 @@
                 <textarea class="form-field" name="ca_bundle" id="ca_bundle">{CA_BUNDLE}</textarea>
             </div>
             <!-- EDP: ssl_certificate_certchain -->
-            <div class="form-element full-width">
+            <div class="form-element">
                 <div class="action">
                     <!-- BDP: ssl_certificate_actions -->
                     <!-- BDP: ssl_certificate_action_update -->
