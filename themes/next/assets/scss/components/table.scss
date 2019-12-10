@@ -76,6 +76,12 @@
                         vertical-align: top;
                         position: relative;
                     }
+                    &.next {
+                        svg {
+                            left: auto;
+                            right: -3px;
+                        }
+                    }
                     &.disabled {
                         cursor: not-allowed;
                         box-shadow: none;
