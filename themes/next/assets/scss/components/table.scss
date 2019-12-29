@@ -145,6 +145,11 @@
                     cursor: pointer;
                 }
             }
+            &.middle {
+                th {
+                    vertical-align: middle;
+                }
+            }
         }
         tfoot {
             tr {
@@ -245,6 +250,15 @@
                     }
                     .strong-block {
                         display: block;
+                    }
+                    .plugin_error {
+                        border-radius: 6px;
+                        padding: 8px;
+                        cursor: pointer;
+                        font-size: 12px;
+                        margin-top: 8px;
+                        background: var(--pale-light);
+                        border: 1px solid var(--border);
                     }
                 }
                 th {
