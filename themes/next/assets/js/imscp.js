@@ -353,6 +353,11 @@ $(document).ready(function() {
         dataTable = setDataTable($('.dataTable-static > table'), lang);
     }
 
+    if(typeof imscp_i18n.core.datatable !== 'undefined') {
+        let lang = (typeof imscp_i18n.core.datatable === 'object') ? imscp_i18n.core.datatable : JSON.parse(imscp_i18n.core.datatable);
+        dataTable = setDataTable($('.dataTable-static > table'), lang);
+    }
+
     $('[data-dataTable]').each(function() {
         let table = $(this),
             lang = $(this).data('dataTable');
