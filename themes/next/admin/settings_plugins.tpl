@@ -57,7 +57,7 @@
         <table>
             <thead class="middle">
                 <tr>
-                    <th class="shrink">
+                    <th class="toggle">
                         <label class="checkbox noMargin">
                             <input type="checkbox">
                             <span></span>
@@ -72,7 +72,7 @@
             <tbody>
                 <!-- BDP: plugin_block -->
                 <tr>
-                    <td class="shrink">
+                    <td class="toggle">
                         <label class="checkbox noMargin">
                             <input type="checkbox" name="checked[]" value="{PLUGIN_NAME}">
                             <span></span>
