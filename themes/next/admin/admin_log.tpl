@@ -20,16 +20,20 @@
             this.oApi._fnProcessingDisplay(settings, onoff);
         };
 
+        $.extend($.fn.dataTableExt.oStdClasses, {
+            'sFilterInput': 'form-field sm'
+        });
+
         dataTable = $('.table > table').dataTable({
             language: imscp_i18n.core.dataTable,
             displayLength: parseInt({ROWS_PER_PAGE}),
             processing: true,
             serverSide: true,
             pagingType: 'simple',
+            dom: '<"dataTable"<"toolbar"lf><t><"paginate"ip>>',
             ajaxSource: '/admin/admin_log.php?action=get_logs',
             stateSave: true,
             order: [0, 'desc'],
-            dom: '<"dataTable"<"toolbar"lf><t><"paginate"ip>>',
             pagingType: 'simple',
             language: {
                 paginate: {

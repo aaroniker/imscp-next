@@ -367,7 +367,6 @@ $(document).ready(function() {
             stateSave: true,
             pagingType: 'simple',
             dom: '<"dataTable"<"toolbar"lf><t><"paginate"ip>>',
-            pagingType: 'simple',
             language: {
                 paginate: {
                     previous: '<i data-eva="chevron-left"></i>' + lang.paginate.previous,
