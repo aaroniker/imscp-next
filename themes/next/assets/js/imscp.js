@@ -75,6 +75,8 @@ $(document).ready(function() {
             }, options);
         };
 
+    window.dialogOptions = dialogOptions;
+
     window.alert = (message, caption) => {
         $('<div>', {
             title: caption || imscp_i18n.core.warning
