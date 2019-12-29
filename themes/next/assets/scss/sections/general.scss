@@ -360,10 +360,20 @@
         @include sectionArea;
         &.align-right {
             display: flex;
+            align-items: center;
             justify-content: flex-end;
             & > * {
                 &:not(:last-child) {
                     margin-right: 12px;
+                }
+                &.align-right {
+                    display: flex;
+                    align-items: center;
+                    & > * {
+                        &:not(:last-child) {
+                            margin-right: 12px;
+                        }
+                    }
                 }
             }
         }

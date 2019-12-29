@@ -356,7 +356,6 @@ $(document).ready(function() {
     $('[data-dataTable]').each(function() {
         let table = $(this),
             lang = $(this).data('dataTable');
-        console.log(lang);
         if(lang) {
             setDataTable(table, lang);
         }
