@@ -29,7 +29,6 @@
             displayLength: parseInt({ROWS_PER_PAGE}),
             processing: true,
             serverSide: true,
-            pagingType: 'simple',
             dom: '<"dataTable"<"toolbar"lf><t><"paginate"ip>>',
             ajaxSource: '/admin/admin_log.php?action=get_logs',
             stateSave: true,
