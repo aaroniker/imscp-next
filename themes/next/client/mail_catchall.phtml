@@ -2,43 +2,46 @@
     function action_delete(link) {
         return jQuery.imscp.confirmOnclick(link, "<?= tojs(tr('Are you sure you want to delete this catch-all account?')); ?>");
     }
-
-    $(function () {
-        $('.datatable').dataTable({
-            language: <?= getDataTablesPluginTranslations(); ?>,
-            displayLength: 10,
-            stateSave: true,
-            pagingType: "simple"
-        });
-    });
 </script>
-<table class="firstColFixed datatable">
-    <thead>
-    <tr>
-        <th><?= tohtml(tr('Catch-all domain')); ?></th>
-        <th><?= tohtml(tr('Catch-all addresses')); ?></th>
-        <th><?= tohtml(tr('Status')); ?></th>
-        <th><?= tohtml(tr('Action')); ?></th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- BDP: catchall_item -->
-    <tr>
-        <td>{CATCHALL_DOMAIN}</td>
-        <td><span class="icon tips" title="{CATCHALL_LONG_FOWARD_LIST}">{CATCHALL_SHORT_FOWARD_LIST}</span></td>
-        <td>{CATCHALL_STATUS}</td>
-        <td>
-            <!-- BDP: catchall_add_link -->
-            <a href="mail_catchall_add.php?id={CATCHALL_ID}" class="icon i_open" title="<?= tohtml(tr('Add'), 'htmlAttr'); ?>"><?= tohtml(tr('Add')); ?></a>
-            <!-- EDP: catchall_add_link -->
-            <!-- BDP: catchall_delete_link -->
-            <a href="mail_catchall_delete.php?id={CATCHALL_ID}" class="icon i_close" title="<?= tohtml(tr('Delete'), 'htmlAttr'); ?>" onclick="return action_delete(this)"><?= tohtml(tr('Delete')); ?></a>
-            <!-- EDP: catchall_delete_link -->
-        </td>
-    </tr>
-    <!-- EDP: catchall_item -->
-    </tbody>
-</table>
-<div class="buttons">
-    <a href="mail_accounts.php" class="link_as_button"><?= tohtml(tr('Cancel')); ?></a>
+
+<div class="sectionBox table">
+    <header>
+        <h3>{TR_TITLE}</h3>
+    </header>
+    <table data-dataTable='<?=getDataTablesPluginTranslations(); ?>'>
+        <thead>
+            <th><?= tohtml(tr('Catch-all domain')); ?></th>
+            <th><?= tohtml(tr('Catch-all addresses')); ?></th>
+            <th><?= tohtml(tr('Status')); ?></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <!-- BDP: catchall_item -->
+            <tr>
+                <td data-th="<?= tohtml(tr('Catch-all domain')); ?>">{CATCHALL_DOMAIN}</td>
+                <td data-th="<?= tohtml(tr('Catch-all addresses')); ?>">
+                    <div class="tooltip-entry">
+                        <span class="tooltip-circle" data-tooltip="{CATCHALL_LONG_FOWARD_LIST}">
+                            <i data-eva="question-mark-circle"></i>
+                        </span>
+                        {CATCHALL_SHORT_FOWARD_LIST}
+                    </div>
+                </td>
+                <td data-th="<?= tohtml(tr('Status')); ?>">{CATCHALL_STATUS}</td>
+                <td>
+                    <div class="action-column">
+                        <!-- BDP: catchall_add_link -->
+                        <a href="mail_catchall_add.php?id={CATCHALL_ID}" class="btn sm" title="<?= tohtml(tr('Add'), 'htmlAttr'); ?>"><?= tohtml(tr('Add')); ?></a>
+                        <!-- EDP: catchall_add_link -->
+                        <!-- BDP: catchall_delete_link -->
+                        <a href="mail_catchall_delete.php?id={CATCHALL_ID}" class="btn sm danger" title="<?= tohtml(tr('Delete'), 'htmlAttr'); ?>" onclick="return action_delete(this)"><?= tohtml(tr('Delete')); ?></a>
+                        <!-- EDP: catchall_delete_link -->
+                    </div>
+                </td>
+            </tr>
+            <!-- EDP: catchall_item -->
+        </tbody>
+    </table>
 </div>
+
+<a href="mail_accounts.php" class="btn muted"><?= tohtml(tr('Cancel')); ?></a>
