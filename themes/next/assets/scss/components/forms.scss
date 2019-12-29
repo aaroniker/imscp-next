@@ -34,6 +34,7 @@
         background: var(--pale-light);
         color: var(--text-light);
         cursor: not-allowed;
+        border-color: var(--line);
     }
     &.error {
         --border: var(--error);
