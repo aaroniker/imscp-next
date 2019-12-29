@@ -358,5 +358,14 @@
     }
     footer {
         @include sectionArea;
+        &.align-right {
+            display: flex;
+            justify-content: flex-end;
+            & > * {
+                &:not(:last-child) {
+                    margin-right: 12px;
+                }
+            }
+        }
     }
 }
