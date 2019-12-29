@@ -90,7 +90,7 @@
     <header>
         <h3>{TR_TITLE}</h3>
     </header>
-    <table class="th-small">
+    <table>
         <thead>
             <tr>
                 <th>{TR_ALIAS_NAME}</th>
