@@ -115,7 +115,7 @@
                 <input id="dns_name" type="text" name="dns_name" value="{DNS_NAME}" class="form-field">
             </div>
             <div id="tr_dns_ttl" class="form-element">
-                <label for="dns_ttl">{TR_DNS_NAME}</label>
+                <label for="dns_ttl">{TR_DNS_TTL}</label>
                 <div class="form-group">
                     <input class="form-field" id="dns_ttl" type="number" min="60" max="2147483647" name="dns_ttl" value="{DNS_TTL}">
                     <span>{TR_SEC}</span>
