@@ -221,6 +221,9 @@ textarea {
         @include max(xxs) {
             margin-bottom: 16px;
         }
+        &:first-child {
+            margin-top: 0;
+        }
     }
     section {
         &.two-columns {
