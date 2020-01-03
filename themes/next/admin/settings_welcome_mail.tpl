@@ -1,5 +1,3 @@
-
-<!-- BDP: tickets_list -->
 <form name="admin_email_setup" method="post" action="settings_welcome_mail.php">
     <div class="form sectionBox horizontal">
         <header>
@@ -52,7 +50,6 @@
                 <label for="user">{TR_SENDER_NAME}</label>
                 <p class="static">{SENDER_NAME_VALUE}</p>
             </div>
-
             <div class="form-element">
                 <div class="action">
                     <button class="btn" name="Submit" type="submit">
