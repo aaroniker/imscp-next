@@ -270,6 +270,22 @@
                             margin: 2px 0 0 0;
                         }
                     }
+                    &.inline-edit {
+                        .tooltip-circle {
+                            margin: 6px 2px 0 0;
+                        }
+                        & > div {
+                            display: inline-block;
+                            vertical-align: top;
+                        }
+                        span[data-editable='1'] {
+                            display: inline-block;
+                            vertical-align: top;
+                            line-height: 35px;
+                            cursor: pointer;
+                            font-weight: 500;
+                        }
+                    }
                 }
                 th {
                     font-weight: 500;

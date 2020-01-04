@@ -167,6 +167,12 @@ textarea {
         &:hover {
             z-index: 2;
         }
+        &.grow-2 {
+            flex-grow: 2;
+        }
+        &.grow-3 {
+            flex-grow: 3;
+        }
     }
     .form-field {
         position: relative;
